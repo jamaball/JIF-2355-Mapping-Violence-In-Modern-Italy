@@ -2,37 +2,31 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Map {
+  margin: auto;
+  width: 600px;
+  height: 600px;
+  background-image: url('../public/Italy.png');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button {
+  margin-top: 150px;
+  border-radius: 50%;
+  padding: 5px;
+  color: red;
+  background-color: Red;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.DataInfo {
+  margin: auto;
+  height: 70px;
+  width: 594px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  text-align: left;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.InfoBar {
+  margin-top: 0px;
 }
