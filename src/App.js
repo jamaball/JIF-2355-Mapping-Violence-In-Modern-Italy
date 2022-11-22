@@ -8,6 +8,13 @@ function App() {
     setDescription(target.desc)
     setActive(!active)
   };
+  const buttons = jsonData.map(data => {
+    return (
+      <div id={data}>
+        <Button stateChanger={setDescription} data={data}/> 
+      </div>
+    )
+  })
 
   return (
     <div className="App">
@@ -16,16 +23,17 @@ function App() {
       </header>
       <div className="Map">
         <div id="italyImg"/>
-          {/*<button className='button' desc="hello" onClick={handleClick}></button>*/}
-          <div id="b1">
+          <div class="ButtonClass">{buttons}</div>
+          {/*<button className='button' desc="hello" onClick={handleClick}></button>
+          <div id="jD1">
             <Button stateChanger={setDescription} data={jsonData1}/> 
           </div>
-          <div id="b2">
+          <div id="jD2">
             <Button stateChanger={setDescription} data={jsonData2}/> 
           </div>
-          <div id="b3">
+          <div id="jD3">
             <Button stateChanger={setDescription} data={jsonData3}/> 
-          </div>
+          </div>*/}
         </div>    
       <div className='DataInfo'>
         <InfoBar isActive={active === true} desc={description}/>
@@ -40,23 +48,25 @@ function Button({stateChanger, data}) {
   )
 }
 
-let jsonData1 = {
+let jD1 = {
   "Name" : "Chris",
   "Location" : "Venice",
   "Weapon" : "Gold Crossbow"
 }
 
-let jsonData2 = {
+let jD2 = {
   "Name" : "Ben",
   "Location" : "Milan",
   "Weapon" : "Blikky"
 }
 
-let jsonData3 = {
+let jD3 = {
   "Name" : "John",
   "Location" : "Turin",
   "Weapon" : "massive sword"
 }
+
+let jsonData = [jD1, jD2, jD3]
 
 function InfoBar({desc, isActive}) {
   return (
