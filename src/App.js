@@ -7,13 +7,21 @@ import axios from "axios";
 function App() {
   const [description, setDescription] = useState('Click on a point to view is data here');
   const [active, setActive] = useState(true)
+  let jsonData = [];
   const handleClick = ({ target })=> {
     setDescription(target.desc)
     setActive(!active)
   };
+  axios
+  .get(API_URL)
+  .then((res) => {
+      jsonData.push.apply(jsonData, res.data);
+      console.log(res.data);
+  })
+  console.log(jsonData)
   const buttons = jsonData.map(data => {
     return (
-      <div id={data}>
+      <div id={data.Element}>
         <Button stateChanger={setDescription} data={data}/> 
       </div>
     )
@@ -69,7 +77,8 @@ let jD3 = {
   "Weapon" : "massive sword"
 }
 
-let jsonData = [jD1, jD2, jD3];
+//let jsonData = [jD1, jD2, jD3];
+
 
 function InfoBar({desc, isActive}) {
   return (
