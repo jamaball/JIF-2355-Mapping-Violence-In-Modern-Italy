@@ -10,7 +10,7 @@ function App() {
   };
   const buttons = jsonData.map(data => {
     return (
-      <div id={data}>
+      <div id={data.Element}>
         <Button stateChanger={setDescription} data={data}/> 
       </div>
     )
@@ -23,7 +23,7 @@ function App() {
       </header>
       <div className="Map">
         <div id="italyImg"/>
-          <div class="ButtonClass">{buttons}</div>
+          <div>{buttons}</div>
           {/*<button className='button' desc="hello" onClick={handleClick}></button>
           <div id="jD1">
             <Button stateChanger={setDescription} data={jsonData1}/> 
@@ -49,18 +49,21 @@ function Button({stateChanger, data}) {
 }
 
 let jD1 = {
+  "Element" : "jD1",
   "Name" : "Chris",
   "Location" : "Venice",
   "Weapon" : "Gold Crossbow"
 }
 
 let jD2 = {
+  "Element" : "jD2",
   "Name" : "Ben",
   "Location" : "Milan",
   "Weapon" : "Blikky"
 }
 
 let jD3 = {
+  "Element" : "jD3",
   "Name" : "John",
   "Location" : "Turin",
   "Weapon" : "massive sword"
