@@ -1,0 +1,57 @@
+[
+  {
+    "model": "crimes.crime",
+    "fields": {
+      "id": 1,
+      "date": "1700-09-11",
+      "location": "Bologna, Strada di Mirasole, sotto portico del Dottor Cortellini, parrochia S Maria/ S Marvolino (citta)",
+      "weapon": "archibugio",
+      "conviction": "No",
+      "description": "5 shots of archibugio, one bullet hole in wall, 4 in ground under body, 6 other holes nearby, 2 pistols found nearby"
+    }
+  },
+  {
+    "model": "crimes.crime",
+    "fields": {
+      "id": 2,
+      "date": "1700-08-29",
+      "location": "S. Agostino di Sopra (contado)",
+      "weapon": "rolling pin bastone",
+      "conviction": "Yes",
+      "description": "a man, his famiglia and his garzone are rolling hemp; they are joined by Santo Malservisi, who borrows a rolling pin from a \"putta\" and starts to help; the garzone and he get into a contest/argument over a plant; (I think the Garzone hits first) Malservisi hits the Garzone over the head and he falls to the ground, where Malservisi hits him over the head four more times \"with great breaking"
+    }
+  },
+  {
+    "model": "crimes.crime",
+    "fields": {
+      "id": 3,
+      "date": "1700-09-12",
+      "location": "Venezzano (contado)",
+      "weapon": "arma di taglio - falcinella pugnale",
+      "conviction": "Yes",
+      "description": "priest eating dinner when his servant stabbed him in the head repeatedly and robbed him"
+    }
+  },
+  {
+    "model": "crimes.crime",
+    "fields": {
+      "id": 4,
+      "date": "1700-02-07",
+      "location": "Bologna (citta) strada di Bocca di Lovo/Lupo",
+      "weapon": "arma di taglio pugnale",
+      "conviction": "Yes",
+      "description": "attacked by four unknown persons at night"
+    }
+  },
+  {
+    "model": "crimes.crime",
+    "fields": {
+      "id": 5,
+      "date": "1700-05-02",
+      "location": "Bologna (citta)",
+      "weapon": "instromento incidente e penetrante (spadoncello) pugnale",
+      "conviction": "Yes",
+      "description": "Carlo drops his wife Anna off at church and returns to pick her up; she doesn't yet want to leave, so he picks her up later. On the way home they meet Bernardino outside their door, and B. jumps C. and assaults his life. Maria doesn't intervene at all"
+    }
+  }
+]
