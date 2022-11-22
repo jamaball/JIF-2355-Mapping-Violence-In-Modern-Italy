@@ -1,5 +1,8 @@
 import './App.css';
 import {useState} from 'react';
+import React from 'react'
+import { API_URL } from "./constants";
+import axios from "axios";
 
 function App() {
   const [description, setDescription] = useState('Click on a point to view is data here');
@@ -66,7 +69,7 @@ let jD3 = {
   "Weapon" : "massive sword"
 }
 
-let jsonData = [jD1, jD2, jD3]
+let jsonData = [jD1, jD2, jD3];
 
 function InfoBar({desc, isActive}) {
   return (

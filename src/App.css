@@ -6,7 +6,7 @@
   margin: auto;
   width: 600px;
   height: 600px;
-  background-image: url('../public/Italy.png');
+  background-image: url('./assets/Italy.png');
 }
 
 .Button {
