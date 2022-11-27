@@ -9,26 +9,42 @@
   background-image: url('./assets/Italy.png');
 }
 
-.Button {
+#b1 {
   margin-top: 100px;
+  margin-left: 500px;
+}
+
+#b2 {
+  margin-left: 300px;
+}
+
+#b3 {
+  margin-top: 100px;
+  margin-left: 0px;
+}
+
+#b4 {
+  margin-left: 80px;
+}
+
+#b5 {
+  margin-left: -200px;
+}
+
+
+.Button {
+  margin-top: 40px;
   border-radius: 50%;
   padding: 5px;
-  color: red;
+  color: Red;
   background-color: Red;
-}
-
-#jD1 {
-  margin-left: 70px;
-}
-
-#jD3 {
-  margin-left: 320px;
 }
 
 .DataInfo {
   margin: auto;
-  height: 70px;
-  width: 594px;
+  height: auto;
+  min-height: 100px;;
+  width: 600px;
   border-color: black;
   border-width: 3px;
   border-style: solid;
