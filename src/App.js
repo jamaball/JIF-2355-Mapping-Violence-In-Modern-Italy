@@ -4,6 +4,7 @@ import { API_URL } from "./constants";
 import axios from "axios";
 import InfoBar from './InfoBar';
 import Button from './Button';
+import React from 'react';
 
 export default function App() {
   const [description, setDescription] = useState('Click on a point to view is data here');

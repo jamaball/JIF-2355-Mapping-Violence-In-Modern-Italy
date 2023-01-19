@@ -1,3 +1,4 @@
+import React from 'react';
 export default function InfoBar({desc, isActive}) {
     let output = JSON.stringify(desc)
     output = output.replace("{", '').replace("}", '').replaceAll('"', '').replaceAll(":", ": ")
