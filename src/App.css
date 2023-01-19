@@ -43,6 +43,7 @@
 .DataInfo {
   margin: auto;
   height: auto;
+  padding-left: 5px;
   min-height: 100px;;
   width: 600px;
   border-color: black;

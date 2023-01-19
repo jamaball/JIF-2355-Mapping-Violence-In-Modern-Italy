@@ -1,10 +1,11 @@
 import './App.css';
 import {useState, useEffect} from 'react';
-import React from 'react'
 import { API_URL } from "./constants";
 import axios from "axios";
+import InfoBar from './InfoBar';
+import Button from './Button';
 
-function App() {
+export default function App() {
   const [description, setDescription] = useState('Click on a point to view is data here');
   const [active, setActive] = useState(true)  
   const [posts, setPosts] = useState([]);
@@ -39,32 +40,18 @@ function App() {
   );
 }
 
-function Button({stateChanger, data}) {
-  return (
-    <button className='Button' onClick={event => {stateChanger(data)}}></button> 
-  )
-}
+  /*   ***Old Snippets***
 
-function InfoBar({desc, isActive}) {
-  let output = JSON.stringify(desc, null)
-  console.log(output)
-  return (
-    <div className="InfoBar">
-      {isActive ? (
-        <p>{output}</p>
-      ) : (
-        <p>Click on a point to view is data here</p>
-      )}
-    </div>
-  );
-}
+  const handleChange = () => ({target}) => {
+    setDescription((prev) => {
+      if (prev === target.data) {
+        return 'Click on a point to view is data here';
+      } else {
+        return target.data;
+      }
+    })
+  }
 
-export default App;
-
-
-
-
-{/*   ***Old Snippets***
 
 const handleClick = ({ target })=> {
   setDescription(target.desc)
@@ -120,4 +107,4 @@ let jsonData = [jD1, jD2, jD3];
       })
   })
 
-*/}
+*/
