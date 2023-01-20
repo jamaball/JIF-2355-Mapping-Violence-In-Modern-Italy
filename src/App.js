@@ -2,9 +2,9 @@ import './App.css';
 import React, { useRef, useEffect, useState } from 'react';
 import { API_URL } from "./constants";
 import axios from "axios";
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken = 'sk.eyJ1IjoiZWhhYXJlcjMiLCJhIjoiY2xkM285aHJxMGUzbzN2cnZ0MG1xcmIxcyJ9.PC7Ci6nV4p2JG3VDCDoMQQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
 export default function App() {
   const mapContainer = useRef(null);
