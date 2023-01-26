@@ -27,7 +27,7 @@ const Map = () => {
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [13, 43],
-      zoom: 8,
+      zoom: 5,
     });
 
     // Render custom marker components
