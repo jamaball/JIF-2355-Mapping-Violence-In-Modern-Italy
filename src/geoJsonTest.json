@@ -3,55 +3,55 @@
       {
         "type": "Feature",
         "properties": {
-          "title": "Lincoln Park",
-          "description": "A northside park that is home to the Lincoln Park Zoo"
+          "title": "Homicide",
+          "description": "arcibusata"
         },
         "geometry": {
-          "coordinates": [13.870000, 42.900000],
+          "coordinates": [11.75, 45.233333],
           "type": "Point"
         }
       },
       {
         "type": "Feature",
         "properties": {
-          "title": "Burnham Park",
-          "description": "A lakefront park on Chicago's south side"
+          "title": "Homicide",
+          "description": "Long arquebus; pistola"
         },
         "geometry": {
-          "coordinates": [13.850000, 42.930000],
+          "coordinates": [12.833333, 45.783333],
           "type": "Point"
         }
       },
       {
         "type": "Feature",
         "properties": {
-          "title": "Millennium Park",
-          "description": "A downtown park known for its art installations and unique architecture"
+          "title": "assassination",
+          "description": "Arquebus and Sword"
         },
         "geometry": {
-          "coordinates": [13.830000, 42.950000],
+          "coordinates": [16.44, 43.51],
           "type": "Point"
         }
       },
       {
         "type": "Feature",
         "properties": {
-          "title": "Grant Park",
-          "description": "A downtown park that is the site of many of Chicago's favorite festivals and events"
+          "title": "assasination",
+          "description": "arquebus"
         },
         "geometry": {
-          "coordinates": [13.800000, 42.980000],
+          "coordinates": [10.983333, 45.433334],
           "type": "Point"
         }
       },
       {
         "type": "Feature",
         "properties": {
-          "title": "Humboldt Park",
-          "description": "A large park on Chicago's northwest side"
+          "title": "murder",
+          "description": "arquebus"
         },
         "geometry": {
-          "coordinates": [13.770000, 43.000000],
+          "coordinates": [13.633333, 45.083333],
           "type": "Point"
         }
       },
@@ -95,7 +95,7 @@
           "description": "Weapon: pistol"
         },
         "geometry": {
-          "coordinates": [31.650000, 43.120000],
+          "coordinates": [13.650000, 43.120000],
           "type": "Point"
         }
       }
