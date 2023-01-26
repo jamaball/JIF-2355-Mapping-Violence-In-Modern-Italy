@@ -2,32 +2,7 @@
   text-align: center;
 }
 
-
-
-#b1 {
-  margin-top: 100px;
-  margin-left: 500px;
-}
-
-#b2 {
-  margin-left: 300px;
-}
-
-#b3 {
-  margin-top: 100px;
-  margin-left: 0px;
-}
-
-#b4 {
-  margin-left: 80px;
-}
-
-#b5 {
-  margin-left: -200px;
-}
-
-
-.Button {
+/* .Button {
   margin-top: 40px;
   border-radius: 50%;
   padding: 5px;
@@ -49,4 +24,4 @@
 
 .InfoBar {
   margin-top: 0px;
-}
+} */
