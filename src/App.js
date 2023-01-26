@@ -1,42 +1,49 @@
 import './App.css';
-import {useState, useEffect} from 'react';
+
+import React, { useRef, useEffect, useState } from 'react';
 import { API_URL } from "./constants";
 import axios from "axios";
-import InfoBar from './InfoBar';
-import Button from './Button';
-import React from 'react';
+import mapboxgl from 'mapbox-gl';
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
 export default function App() {
-  const [description, setDescription] = useState('Click on a point to view is data here');
-  const [active, setActive] = useState(true)  
-  const [posts, setPosts] = useState([]);
-
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const [lng, setLng] = useState(10.8441);
+  const [lat, setLat] = useState(42.1466);
+  const [zoom, setZoom] = useState(4.5);
+  const bounds = [
+      [9, 40], // Southwest coordinates
+      [16 , 47] // Northeast coordinates
+    ];
+   
   useEffect(() => {
-    axios.get(API_URL)
-    .then(res => setPosts(res.data))
-    .catch(err => console.log(err));
-  }, [])
-
-  const buttons = posts.map(data => {
-    return (
-      <div id={"b" + data.id}>
-        <Button stateChanger={setDescription} data={data}/>
-      </div>
-    )
-  })
-
+    if (map.current) return; // initialize map only once
+      map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [lng, lat],
+      zoom: zoom,
+      maxBounds: bounds
+    });
+  });
+   
+  useEffect(() => {
+    if (!map.current) return; // wait for map to initialize
+    map.current.on('move', () => {
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
+      setZoom(map.current.getZoom().toFixed(2));
+    });
+  });
+   
   return (
-    <div className="App">
-      <header className='header'>
-        <p>GMU History Dept. Mapping Volience In Italy</p>
-      </header>
-      <div className="Map">
-        <div id="italyImg"/>
-          <div>{buttons}</div>
-        </div>    
-      <div className='DataInfo'>
-        <InfoBar isActive={active === true} desc={description}/>
+    <div>
+      <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
+      <div ref={mapContainer} className="map-container" />
     </div>
   );
 }
@@ -109,3 +116,4 @@ let jsonData = [jD1, jD2, jD3];
   })
 
 */
+
