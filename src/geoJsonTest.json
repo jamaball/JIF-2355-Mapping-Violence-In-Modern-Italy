@@ -1,0 +1,104 @@
+{
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Homicide",
+          "description": "arcibusata"
+        },
+        "geometry": {
+          "coordinates": [11.75, 45.233333],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Homicide",
+          "description": "Long arquebus; pistola"
+        },
+        "geometry": {
+          "coordinates": [12.833333, 45.783333],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "assassination",
+          "description": "Arquebus and Sword"
+        },
+        "geometry": {
+          "coordinates": [16.44, 43.51],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "assasination",
+          "description": "arquebus"
+        },
+        "geometry": {
+          "coordinates": [9.582455645288942, 44.7225426025249],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "murder",
+          "description": "arquebus"
+        },
+        "geometry": {
+          "coordinates": [11.633333, 45.083333],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Injurious words and assault",
+          "description": "Weapon: fists"
+        },
+        "geometry": {
+          "coordinates": [16.66437, 39.28251],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Violent sexual assault",
+          "description": "Weapon: arquebus"
+        },
+        "geometry": {
+          "coordinates": [14.15625, 37.39608],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Homicide",
+          "description": "Weapon: arquebus"
+        },
+        "geometry": {
+          "coordinates": [17.6712, 40.46577],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Assault",
+          "description": "Weapon: pistol"
+        },
+        "geometry": {
+          "coordinates": [13.2928, 41.70534],
+          "type": "Point"
+        }
+      }
+    ],
+    "type": "FeatureCollection"
+  }
