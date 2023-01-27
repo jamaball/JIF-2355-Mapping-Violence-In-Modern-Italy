@@ -2,7 +2,7 @@
 
 This repository contains code, documentation, and related resources for the Mapping Early Modern Violence project at the [Roy Rosenzweig Center for History and New Media](https://rrchnm.org).
 
-## Project Team
+# Project Team
 
 - Dr. Amanda Madden (PI)
 - Dr. Jason Heppler (senior developer) 
@@ -11,3 +11,21 @@ This repository contains code, documentation, and related resources for the Mapp
 - Owen Huggins
 - Caleb McFarland
 - Hannah Wysocki
+
+# Release Notes
+
+## Version 0.1.0
+
+New Features
+- Added map of Italy
+- Map can be navigated
+- Map can be zoomed in and out
+- Data points appear on Map
+- Data points can be clicked to see more information
+
+Bug Fixes
+- Ajusted map to view all of Italy
+- No longer able to break out of map bounds
+
+Known Issues
+- Can't zoom out to see all of Italy

@@ -14,8 +14,8 @@ export default function App() {
   const [lat, setLat] = useState(42.1466);
   const [zoom, setZoom] = useState(4.5);
   const bounds = [
-      [9, 38], // Southwest coordinates
-      [16 , 46] // Northeast coordinates
+      [8, 37], // Southwest coordinates
+      [17, 47] // Northeast coordinates
     ];
    
   useEffect(() => {
