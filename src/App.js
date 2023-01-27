@@ -8,7 +8,6 @@ export default function App() {
       <Map/>
     </main>
   )
-
 }
 
   /*   ***Old Snippets***
