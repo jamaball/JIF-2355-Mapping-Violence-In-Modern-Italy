@@ -1,6 +1,6 @@
 # Mapping Early Modern Violence
 
-This repository contains code, documentation, and related resources for the Mapping Early Modern Violence project at the [Roy Rosenzweig Center for History and New Media](https://rrchnm.org).
+This repository contains code, documentation, and related resources for the Mapping Early Modern Violence project at the [Roy Rosenzweig Center for History and New Media](https://rrchnm.org). This project displays violent crime data in order to allow researchers, historians, and anthropologists to find new trends between violence and geographic space in history that would otherwise be difficult to determine.
 
 # Project Team
 
