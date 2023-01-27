@@ -40,7 +40,7 @@
           "description": "arquebus"
         },
         "geometry": {
-          "coordinates": [10.983333, 45.433334],
+          "coordinates": [9.582455645288942, 44.7225426025249],
           "type": "Point"
         }
       },
@@ -51,7 +51,7 @@
           "description": "arquebus"
         },
         "geometry": {
-          "coordinates": [13.633333, 45.083333],
+          "coordinates": [11.633333, 45.083333],
           "type": "Point"
         }
       },
@@ -62,7 +62,7 @@
           "description": "Weapon: fists"
         },
         "geometry": {
-          "coordinates": [13.740000, 43.030000],
+          "coordinates": [16.66437, 39.28251],
           "type": "Point"
         }
       },
@@ -73,7 +73,7 @@
           "description": "Weapon: arquebus"
         },
         "geometry": {
-          "coordinates": [13.710000, 43.060000],
+          "coordinates": [14.15625, 37.39608],
           "type": "Point"
         }
       },
@@ -84,7 +84,7 @@
           "description": "Weapon: arquebus"
         },
         "geometry": {
-          "coordinates": [13.680000, 43.090000],
+          "coordinates": [17.6712, 40.46577],
           "type": "Point"
         }
       },
@@ -95,7 +95,7 @@
           "description": "Weapon: pistol"
         },
         "geometry": {
-          "coordinates": [13.650000, 43.120000],
+          "coordinates": [13.2928, 41.70534],
           "type": "Point"
         }
       }
