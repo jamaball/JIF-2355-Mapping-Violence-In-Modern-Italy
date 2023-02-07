@@ -2,32 +2,13 @@
   text-align: center;
 }
 
-
-
-#b1 {
-  margin-top: 100px;
-  margin-left: 500px;
+.Main {
+  align-items: start;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
-
-#b2 {
-  margin-left: 300px;
-}
-
-#b3 {
-  margin-top: 100px;
-  margin-left: 0px;
-}
-
-#b4 {
-  margin-left: 80px;
-}
-
-#b5 {
-  margin-left: -200px;
-}
-
-
-.Button {
+/* .Button {
   margin-top: 40px;
   border-radius: 50%;
   padding: 5px;
@@ -38,6 +19,7 @@
 .DataInfo {
   margin: auto;
   height: auto;
+  padding-left: 5px;
   min-height: 100px;;
   width: 600px;
   border-color: black;
@@ -48,4 +30,4 @@
 
 .InfoBar {
   margin-top: 0px;
-}
+} */
