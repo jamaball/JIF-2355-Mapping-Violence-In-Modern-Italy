@@ -113,7 +113,40 @@ const Map = () => {
           'circle-stroke-color': '#fff'
         }
       });
-
+      map.on('click', 'clusters', (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ['clusters']
+        });
+        const clusterId = features[0].properties.cluster_id;
+        map.getSource('myData').getClusterExpansionZoom(
+          clusterId,
+          (err, zoom) => {
+            if (err) return;
+              
+            map.easeTo({
+              center: features[0].geometry.coordinates,
+              zoom: zoom
+            });
+          }
+        );
+      });
+        
+      map.on('click', 'unclustered-point', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const title = e.features[0].properties.title;
+        const description = e.features[0].properties.description;
+        
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        
+        new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(
+          `Title: ${title}<br>Description: ${description}`
+        )
+        .addTo(map);
+      });
     });
 
     // Add navigation control (the +/- zoom buttons)
