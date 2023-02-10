@@ -49,6 +49,13 @@ INSTALLED_APPS = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+# White listing the localhost:3000 port
+# for React
+CORS_ORIGIN_WHITELIST = (
+	'http://localhost:3000',
+)
+
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',

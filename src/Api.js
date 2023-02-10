@@ -10,10 +10,34 @@ export default {
     instance({
         'method':'GET',
         'url':'/api/crimes',
-        // 'params': {
-        //     'search':'parameter',
-        // },
-    }),
+        transformResponse: [function (data) {
+            var geojson = {
+                type: "FeatureCollection",
+                features: [],
+              };
+            const jsonData = JSON.parse(data)
+            for (let i = 0; i < jsonData.length; i++) {
+                geojson.features.push({
+                    "type": "Feature",
+                    "properties": {
+                        "id": jsonData[i].id,
+                        "date": jsonData[i].date,
+                        "location": jsonData[i].location,
+                        "weapon": jsonData[i].weapon,
+                        "conviction": jsonData[i].conviction,
+                        "description": jsonData[i].description
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": jsonData[i].coordinates.coordinates
+                    },
+                })
+            }
+            return geojson;
+    }],
+}),
+
+
     // postData: () =>
     // instance({
     //     'method': 'POST',
