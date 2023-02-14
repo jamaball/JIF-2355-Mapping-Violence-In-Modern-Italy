@@ -31,6 +31,7 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
+    /*
     // Render custom marker components
     geoJson.features.forEach((feature) => {
       // Create a React ref
@@ -47,6 +48,105 @@ const Map = () => {
       new mapboxgl.Marker(ref.current)
         .setLngLat(feature.geometry.coordinates)
         .addTo(map);
+    });
+    */
+
+    map.on('load', () => {
+      map.addSource('myData', {
+        type: 'geojson',
+        data: geoJson,
+        cluster: true,
+        clusterMaxZoom: 14, 
+        clusterRadius: 50
+      });
+
+      map.addLayer({
+        'id': 'clusters',
+        'type': 'circle',
+        'source': 'myData',
+        'filter': ['has', 'point_count'],
+        'paint': {
+          'circle-radius': [
+            'step',
+            ['get', 'point_count'],
+            20,
+            100,
+            30,
+            750,
+            40
+          ],
+          'circle-color': [
+            'step',
+            ['get', 'point_count'],
+            '#ff4542',
+            100,
+            '#f19e75',
+            750,
+            '#ddff80'
+          ],
+          'circle-stroke-width': 2,
+          'circle-stroke-color': 'white'
+        }
+      });
+
+      map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'myData',
+        filter: ['has', 'point_count'],
+        layout: {
+          'text-field': ['get', 'point_count_abbreviated'],
+          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-size': 12
+        }
+      });
+
+      map.addLayer({
+        id: 'unclustered-point',
+        type: 'circle',
+        source: 'myData',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+          'circle-color': '#ff4542',
+          'circle-radius': 4,
+          'circle-stroke-width': 1,
+          'circle-stroke-color': '#fff'
+        }
+      });
+      map.on('click', 'clusters', (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ['clusters']
+        });
+        const clusterId = features[0].properties.cluster_id;
+        map.getSource('myData').getClusterExpansionZoom(
+          clusterId,
+          (err, zoom) => {
+            if (err) return;
+              
+            map.easeTo({
+              center: features[0].geometry.coordinates,
+              zoom: zoom
+            });
+          }
+        );
+      });
+        
+      map.on('click', 'unclustered-point', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const title = e.features[0].properties.title;
+        const description = e.features[0].properties.description;
+        
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        
+        new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(
+          `Title: ${title}<br>Description: ${description}`
+        )
+        .addTo(map);
+      });
     });
 
     // Add navigation control (the +/- zoom buttons)
