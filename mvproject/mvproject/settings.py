@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'crimes',
     'rest_framework',
+    'rest_framework_gis',
     'corsheaders',
 
     'django.contrib.admin',
@@ -41,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.gis',
+
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -84,7 +88,7 @@ WSGI_APPLICATION = 'mvproject.wsgi.application'
 
 DATABASES = {
      'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mappingviolence', 
         'USER': 'postgres',
         'PASSWORD': 'admin',
