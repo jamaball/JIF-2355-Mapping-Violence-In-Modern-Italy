@@ -2,6 +2,7 @@ import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import geoJson from "./geoJsonTest.json";
+import {featureCollection} from "@turf/helpers";
 import "./Map.css";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
@@ -146,6 +147,12 @@ const Map = () => {
           `Title: ${title}<br>Description: ${description}`
         )
         .addTo(map);
+      });
+
+      document.getElementById('filter').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        sample.features = geoJson.features.filter(pt => pt.properties.title == "Homicide");
+        map.getSource('myData').setData(sample);
       });
     });
 
