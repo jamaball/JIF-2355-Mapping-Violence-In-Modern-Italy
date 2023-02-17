@@ -57,7 +57,6 @@ const Map = () => {
     .catch((error) => {
         console.log(error)
     });
-    */
 
     map.on('load', () => {
       map.addSource('myData', {
