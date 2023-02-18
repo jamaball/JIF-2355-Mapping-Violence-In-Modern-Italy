@@ -1,7 +1,7 @@
 import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import { FeatureCollection } from "@turf/helpers";
+import { featureCollection } from "@turf/helpers";
 import "./Map.css";
 import api from "./Api.js";
 
@@ -157,7 +157,7 @@ const Map = () => {
         // update the map
         console.log(1800 <= 1600-10-6);
 
-        sample.features = responseData.features.filter(pt => pt.properties.date >= date); 
+        sample.features = responseData.features.filter(pt => parseInt(pt.properties.date) <= date); 
         map.getSource('myData').setData(sample); 
         
       
@@ -165,7 +165,7 @@ const Map = () => {
         
       
         // update text in the UI
-        document.getElementById('active-year').innerText = date;
+        document.getElementById('active-hour').innerText = date;
       });
         
       map.on('click', 'unclustered-point', (e) => {
