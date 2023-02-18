@@ -58,9 +58,12 @@ const Map = () => {
     })
     .catch((error) => {
         console.log(error)
+<<<<<<< HEAD
 
    
 
+=======
+>>>>>>> d5b757e76e61c7dc9067a2ae656ff0ccee219fc7
     });
     */
 
