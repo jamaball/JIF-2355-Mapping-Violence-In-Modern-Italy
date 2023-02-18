@@ -5,7 +5,7 @@ const instance = axios.create({
         'content-type':'application/json',
     },
 });
-export default {
+const api = {
     getData: () =>
     instance({
         'method':'GET',
@@ -35,9 +35,9 @@ export default {
             }
             return geojson;
     }],
-}),
+}),}
 
-
+export default api;
     // postData: () =>
     // instance({
     //     'method': 'POST',
@@ -50,4 +50,3 @@ export default {
     //         'content-type':'application/json'  // override instance defaults
     //     }
     // })
-}

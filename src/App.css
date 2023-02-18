@@ -9,12 +9,16 @@
   flex-direction: column;
 }
 /* .Button {
+ .Button {
   margin-top: 40px;
-  border-radius: 50%;
+  position: fixed;
+  top: 400px;
   padding: 5px;
-  color: Red;
-  background-color: Red;
+  color: White;
+  background-color: Black;
 }
+
+/*
 
 .DataInfo {
   margin: auto;

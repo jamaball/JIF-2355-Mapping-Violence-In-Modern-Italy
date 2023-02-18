@@ -1,6 +1,7 @@
 import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
+import {featureCollection} from "@turf/helpers";
 import "./Map.css";
 import api from "./Api.js";
 
@@ -45,6 +46,7 @@ const Map = () => {
     //get the points from the database
     api.getData()
     .then((response) => {
+<<<<<<< HEAD
       setResponseData(response.data)
       //plot the points on the map
       response.data.features.forEach((feature) => {
@@ -62,7 +64,30 @@ const Map = () => {
         new mapboxgl.Marker(ref.current)
           .setLngLat(feature.geometry.coordinates)
           .addTo(map);
+=======
+      responseData = response.data;
+      console.log(responseData)
+      responseData.features.forEach((feature) => {
+        console.log(feature.properties.weapon)
+>>>>>>> fad9ee9ce41401e8e29cb11ea04db852d5bbce31
       });
+      //plot the points on the map
+      // response.data.features.forEach((feature) => {
+      //   // Create a React ref
+      //   const ref = React.createRef();
+      //   // Create a new DOM node and save it to the React ref
+      //   ref.current = document.createElement("div");
+      //   // Render a Marker Component on our new DOM node
+      //   ReactDOM.render(
+      //     <Marker onClick={markerClicked} feature={feature} />,
+      //     ref.current
+      //   );
+
+      //   // Create a Mapbox Marker at our new DOM node
+      //   new mapboxgl.Marker(ref.current)
+      //     .setLngLat(feature.geometry.coordinates)
+      //     .addTo(map);
+      // });
     })
     .catch((error) => {
         console.log(error)
@@ -186,10 +211,20 @@ const Map = () => {
         )
         .addTo(map);
       });
+<<<<<<< HEAD
       
 
 
 
+=======
+
+      document.getElementById('filter').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "arme da punta - spada pugnale");
+        map.getSource('myData').setData(sample);
+      });
+>>>>>>> fad9ee9ce41401e8e29cb11ea04db852d5bbce31
     });
 
 
