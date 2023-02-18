@@ -57,12 +57,11 @@ const Map = () => {
     .catch((error) => {
         console.log(error)
     });
-    */
 
     map.on('load', () => {
       map.addSource('myData', {
         type: 'geojson',
-        data: geoJson,
+        data: responseData,
         cluster: true,
         clusterMaxZoom: 14, 
         clusterRadius: 50
