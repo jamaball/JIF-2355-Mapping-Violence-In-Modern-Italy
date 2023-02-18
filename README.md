@@ -14,6 +14,20 @@ This repository contains code, documentation, and related resources for the Mapp
 
 # Release Notes
 
+## Version 0.2.0
+
+New Features
+- Added more data to our database
+- Added a coordinate field to data to allow for more accurate plotting
+- Added clustering of data points such that when you zoom in and out, data is clustered based on relative distance
+- Added filtering of data based on the weapon used, conviction type, and location of crime
+- Added a time slider to filter data based on the year the crime was committed
+
+Bug Fixes
+- Fixed zoom issues, you can now see all of Italy and zoom in and out
+
+Kown Isuues
+- Although its functionality is correct, the actual time slider component of the user interface does not slide
 ## Version 0.1.0
 
 New Features
