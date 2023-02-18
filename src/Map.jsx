@@ -18,14 +18,7 @@ const Marker = ({ onClick, children, feature }) => {
     </button>
   );
 };
-const onInput = () => { 
-  var input = document.getElementById("slidbar"); 
-  var currentVal = input.val;
-  this.setState({ 
 
-    vale: currentVal
-  })
-}
 
 const Map = () => {
   const mapContainerRef = useRef(null);
@@ -48,26 +41,30 @@ const Map = () => {
     .then((response) => {
       responseData = response.data
       //plot the points on the map
-      // response.data.features.forEach((feature) => {
-      //   // Create a React ref
-      //   const ref = React.createRef();
-      //   // Create a new DOM node and save it to the React ref
-      //   ref.current = document.createElement("div");
-      //   // Render a Marker Component on our new DOM node
-      //   ReactDOM.render(
-      //     <Marker onClick={markerClicked} feature={feature} />,
-      //     ref.current
-      //   );
-      //   console.log(feature.location)
-      //   // Create a Mapbox Marker at our new DOM node
-      //   new mapboxgl.Marker(ref.current)
-      //     .setLngLat(feature.geometry.coordinates)
-      //     .addTo(map);
-      // });
+
+      /*
+      response.data.features.forEach((feature) => {
+        // Create a React ref
+        const ref = React.createRef();
+        // Create a new DOM node and save it to the React ref
+        ref.current = document.createElement("div");
+        // Render a Marker Component on our new DOM node
+        ReactDOM.render(
+          <Marker onClick={markerClicked} feature={feature} />,
+          ref.current
+        );
+        console.log(feature.location)
+        // Create a Mapbox Marker at our new DOM node
+        new mapboxgl.Marker(ref.current)
+          .setLngLat(feature.geometry.coordinates)
+          .addTo(map);
+      });
+      */
     })
     .catch((error) => {
         console.log(error)
     });
+
     
 
     map.on('load', () => {
@@ -154,17 +151,22 @@ const Map = () => {
       });
 
       document.getElementById('slider').addEventListener('input', (event) => {
+        var sample = featureCollection([]);
         const date = parseInt(event.target.value);
         
         // update the map
-        
+
+        console.log(1800 <= 1600-10-6);
+
+        sample.features = responseData.features.filter(pt => parseInt(pt.properties.date) <= date); 
+        map.getSource('myData').setData(sample); 
         
       
         // converting 0-23 hour to AMPM format
         
       
         // update text in the UI
-        document.getElementById('active-year').innerText = date;
+        document.getElementById('active-hour').innerText = date;
       });
         
       map.on('click', 'unclustered-point', (e) => {
@@ -206,6 +208,7 @@ const Map = () => {
 
 
   return (
+  
       <div className="map-container" ref={mapContainerRef} />
   )
 };
