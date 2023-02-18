@@ -8,7 +8,20 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
+
 """
+GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal306'
+import os
+if os.name == 'nt':
+    import platform
+    OSGEO4W = r"C:\OSGeo4W"
+    if '64' in platform.architecture()[0]:
+        OSGEO4W += "64"
+    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
+    os.environ['OSGEO4W_ROOT'] = OSGEO4W
+    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
+    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
+    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 
 from pathlib import Path
 
@@ -98,7 +111,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mappingviolence', 
         'USER': 'postgres',
-        'PASSWORD': 'password',
+        'PASSWORD': '1516',
         'HOST': 'localhost', 
         'PORT': '5432',
     }

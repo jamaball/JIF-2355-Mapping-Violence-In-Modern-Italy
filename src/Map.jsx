@@ -20,6 +20,8 @@ const Marker = ({ onClick, children, feature }) => {
 
 const Map = () => {
   const mapContainerRef = useRef(null);
+  
+  
   let [responseData, setResponseData] = React.useState('')
 
   // Initialize map when component mounts
@@ -47,7 +49,7 @@ const Map = () => {
           <Marker onClick={markerClicked} feature={feature} />,
           ref.current
         );
-  
+        console.log(feature.location)
         // Create a Mapbox Marker at our new DOM node
         new mapboxgl.Marker(ref.current)
           .setLngLat(feature.geometry.coordinates)
@@ -57,15 +59,18 @@ const Map = () => {
     .catch((error) => {
         console.log(error)
     });
+    */
 
     map.on('load', () => {
       map.addSource('myData', {
         type: 'geojson',
-        data: geoJson,
+        data: responseData,
         cluster: true,
         clusterMaxZoom: 14, 
         clusterRadius: 50
       });
+
+      
 
       map.addLayer({
         'id': 'clusters',
@@ -119,6 +124,7 @@ const Map = () => {
           'circle-stroke-width': 1,
           'circle-stroke-color': '#fff'
         }
+
       });
       map.on('click', 'clusters', (e) => {
         const features = map.queryRenderedFeatures(e.point, {
@@ -137,6 +143,24 @@ const Map = () => {
           }
         );
       });
+
+      document.getElementById('slider').addEventListener('input', (event) => {
+        const date = parseInt(event.target.value);
+        
+        // update the map
+        console.log(1800 <= 1600-10-6);
+
+        map.setFilter('clusters', ['<=', ['date', ['get', 'date']], date]);
+        map.setFilter('cluster-count', ['<=', ['date', ['get', 'date']], date]);
+        map.setFilter('unclustered-point', ['<=', ['date', ['get', 'date']], date]);
+        
+      
+        // converting 0-23 hour to AMPM format
+        
+      
+        // update text in the UI
+        document.getElementById('active-year').innerText = date;
+      });
         
       map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
@@ -154,6 +178,10 @@ const Map = () => {
         )
         .addTo(map);
       });
+      
+
+
+
     });
 
 
@@ -170,5 +198,7 @@ const Map = () => {
 
   return <div className="map-container" ref={mapContainerRef} />;
 };
+
+
 
 export default Map;
