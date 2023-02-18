@@ -17,6 +17,14 @@ const Marker = ({ onClick, children, feature }) => {
     </button>
   );
 };
+const onInput = () => { 
+  var input = document.getElementById("slidbar"); 
+  var currentVal = input.val;
+  this.setState({ 
+
+    vale: currentVal
+  })
+}
 
 const Map = () => {
   const mapContainerRef = useRef(null);
@@ -59,7 +67,7 @@ const Map = () => {
     .catch((error) => {
         console.log(error)
     });
-    */
+    
 
     map.on('load', () => {
       map.addSource('myData', {
@@ -196,7 +204,14 @@ const Map = () => {
     window.alert(title);
   };
 
-  return <div className="map-container" ref={mapContainerRef} />;
+
+  return (
+    <div> 
+      <div className="map-container" ref={mapContainerRef} />
+      <h2>Year: <label id='active-year'>1700</label></h2>
+  <input id='slider' class='row' type='range' min='1500' max='1900' step='1' defaultValue='1700'  onInput={onInput}/>
+  </div> 
+  )
 };
 
 
