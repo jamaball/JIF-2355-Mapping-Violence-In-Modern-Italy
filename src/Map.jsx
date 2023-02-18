@@ -1,7 +1,6 @@
 import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import geoJson from "./geoJsonTest.json";
 import {featureCollection} from "@turf/helpers";
 import "./Map.css";
 import api from "./Api.js";
@@ -37,40 +36,37 @@ const Map = () => {
     //get the points from the database
     api.getData()
     .then((response) => {
-      setResponseData(response.data)
-      //plot the points on the map
-      response.data.features.forEach((feature) => {
-        // Create a React ref
-        const ref = React.createRef();
-        // Create a new DOM node and save it to the React ref
-        ref.current = document.createElement("div");
-        // Render a Marker Component on our new DOM node
-        ReactDOM.render(
-          <Marker onClick={markerClicked} feature={feature} />,
-          ref.current
-        );
-
-        // Create a Mapbox Marker at our new DOM node
-        new mapboxgl.Marker(ref.current)
-          .setLngLat(feature.geometry.coordinates)
-          .addTo(map);
+      responseData = response.data;
+      console.log(responseData)
+      responseData.features.forEach((feature) => {
+        console.log(feature.properties.weapon)
       });
+      //plot the points on the map
+      // response.data.features.forEach((feature) => {
+      //   // Create a React ref
+      //   const ref = React.createRef();
+      //   // Create a new DOM node and save it to the React ref
+      //   ref.current = document.createElement("div");
+      //   // Render a Marker Component on our new DOM node
+      //   ReactDOM.render(
+      //     <Marker onClick={markerClicked} feature={feature} />,
+      //     ref.current
+      //   );
+
+      //   // Create a Mapbox Marker at our new DOM node
+      //   new mapboxgl.Marker(ref.current)
+      //     .setLngLat(feature.geometry.coordinates)
+      //     .addTo(map);
+      // });
     })
     .catch((error) => {
         console.log(error)
-<<<<<<< HEAD
-
-   
-
-=======
->>>>>>> d5b757e76e61c7dc9067a2ae656ff0ccee219fc7
     });
-    */
 
     map.on('load', () => {
       map.addSource('myData', {
         type: 'geojson',
-        data: geoJson,
+        data: responseData,
         cluster: true,
         clusterMaxZoom: 14, 
         clusterRadius: 50
@@ -166,7 +162,8 @@ const Map = () => {
 
       document.getElementById('filter').addEventListener('click', function() {
         var sample = featureCollection([]);
-        sample.features = geoJson.features.filter(pt => pt.properties.title == "Homicide");
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "arme da punta - spada pugnale");
         map.getSource('myData').setData(sample);
       });
     });
