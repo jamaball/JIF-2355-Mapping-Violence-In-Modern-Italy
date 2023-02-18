@@ -3,11 +3,12 @@ import React from 'react';
 import Map from './Map.jsx';
 
 export default function App() {
-  return (
-    <main className='Main'>
+    return (
+    <div>
       <Map/>
-    </main>
-  )
+      {/* temp button */}
+      <button className='Button' id="filter"> filter by Homicide </button>
+    </div>)
 }
 
 //This is a test comment
