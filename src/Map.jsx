@@ -46,31 +46,7 @@ const Map = () => {
     //get the points from the database
     api.getData()
     .then((response) => {
-<<<<<<< HEAD
-      setResponseData(response.data)
-      //plot the points on the map
-      response.data.features.forEach((feature) => {
-        // Create a React ref
-        const ref = React.createRef();
-        // Create a new DOM node and save it to the React ref
-        ref.current = document.createElement("div");
-        // Render a Marker Component on our new DOM node
-        ReactDOM.render(
-          <Marker onClick={markerClicked} feature={feature} />,
-          ref.current
-        );
-        console.log(feature.location)
-        // Create a Mapbox Marker at our new DOM node
-        new mapboxgl.Marker(ref.current)
-          .setLngLat(feature.geometry.coordinates)
-          .addTo(map);
-=======
-      responseData = response.data;
-      console.log(responseData)
-      responseData.features.forEach((feature) => {
-        console.log(feature.properties.weapon)
->>>>>>> fad9ee9ce41401e8e29cb11ea04db852d5bbce31
-      });
+      responseData = response.data
       //plot the points on the map
       // response.data.features.forEach((feature) => {
       //   // Create a React ref
@@ -82,7 +58,7 @@ const Map = () => {
       //     <Marker onClick={markerClicked} feature={feature} />,
       //     ref.current
       //   );
-
+      //   console.log(feature.location)
       //   // Create a Mapbox Marker at our new DOM node
       //   new mapboxgl.Marker(ref.current)
       //     .setLngLat(feature.geometry.coordinates)
@@ -181,11 +157,7 @@ const Map = () => {
         const date = parseInt(event.target.value);
         
         // update the map
-        console.log(1800 <= 1600-10-6);
-
-        map.setFilter('clusters', ['<=', ['date', ['get', 'date']], date]);
-        map.setFilter('cluster-count', ['<=', ['date', ['get', 'date']], date]);
-        map.setFilter('unclustered-point', ['<=', ['date', ['get', 'date']], date]);
+        
         
       
         // converting 0-23 hour to AMPM format
@@ -211,12 +183,6 @@ const Map = () => {
         )
         .addTo(map);
       });
-<<<<<<< HEAD
-      
-
-
-
-=======
 
       document.getElementById('filter').addEventListener('click', function() {
         var sample = featureCollection([]);
@@ -224,7 +190,6 @@ const Map = () => {
         sample.features = responseData.features.filter(pt => pt.properties.weapon === "arme da punta - spada pugnale");
         map.getSource('myData').setData(sample);
       });
->>>>>>> fad9ee9ce41401e8e29cb11ea04db852d5bbce31
     });
 
 
@@ -241,11 +206,7 @@ const Map = () => {
 
 
   return (
-    <div> 
       <div className="map-container" ref={mapContainerRef} />
-      <h2>Year: <label id='active-year'>1700</label></h2>
-  <input id='slider' class='row' type='range' min='1500' max='1900' step='1' defaultValue='1700'  onInput={onInput}/>
-  </div> 
   )
 };
 
