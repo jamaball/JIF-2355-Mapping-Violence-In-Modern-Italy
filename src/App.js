@@ -6,7 +6,10 @@ export default function App() {
   return (
     <main className='Main'>
       <Map/>
-      
+      <div class='session' id='sliderbar'>
+  <h2>Hour: <label id='active-hour'>1700</label></h2>
+  <input id='slider' class='row' type='range' min='1500' max='1900' step='1' value='1700' />
+</div>
   
 
     </main>
