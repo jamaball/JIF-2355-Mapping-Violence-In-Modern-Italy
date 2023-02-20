@@ -192,21 +192,21 @@ const Map = () => {
       document.getElementById('filter_weapon1').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon === "gun");
+        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("sasso"));
         map.getSource('myData').setData(sample);
       });
 
       document.getElementById('filter_weapon2').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon === "knife");
+        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("pugnale"));
         map.getSource('myData').setData(sample);
       });
 
       document.getElementById('filter_weapon3').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon === "archibugio");
+        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("archibugio"));
         map.getSource('myData').setData(sample);
       });
 
