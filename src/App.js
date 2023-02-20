@@ -3,8 +3,8 @@ import React from 'react';
 import Map from './Map.jsx';
 
 export default function App() {
-    return (
-    <div>
+  return (
+    <main className='Main'>
       <Map/>
       <h1>&nbsp;Mapping Violence Page</h1>
       <div class='session' id='sliderbar'>
@@ -21,7 +21,10 @@ export default function App() {
       {/* temp button */}
       <button className='Button' id="filter"> Filter by Homicide </button>
       <button className='Button' id="filter2"> Filter by Conviction (yes) </button>
-    </div>)
+    </div>)   
+    </main>
+  )
+
 }
 
 //This is a test comment
