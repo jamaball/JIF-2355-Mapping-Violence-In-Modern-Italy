@@ -6,13 +6,13 @@ export default function App() {
     return (
     <div>
       <Map/>
+      <h1>&nbsp;Mapping Violence Page</h1>
       <div class='session' id='sliderbar'>
-      <h2>Year: <label id='active-hour'>1700</label></h2>
+      <h2>Year: <label id='active-year'>1700</label></h2>
       <input id='slider' class='row' type='range' min='1500' max='1900' step='1' value='1700' />
     </div>
       {/* temp button */}
       <button className='Button' id="filter"> filter by Weapon </button>
-      <h1>&nbsp;Mapping Violence Page</h1>
       <br></br>
       <br></br>
       <br></br>

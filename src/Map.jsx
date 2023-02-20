@@ -166,7 +166,7 @@ const Map = () => {
         
       
         // update text in the UI
-        document.getElementById('active-hour').innerText = date;
+        document.getElementById('active-year').innerText = date;
       });
         
       map.on('click', 'unclustered-point', (e) => {
