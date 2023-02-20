@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Map.css";
 import api from "./Api.js";
-import { FeatureCollection } from "@turf/helpers";
+import { featureCollection } from "@turf/helpers";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
@@ -189,17 +189,38 @@ const Map = () => {
       });
 
 
-      document.getElementById('filter').addEventListener('click', function() {
+      document.getElementById('filter_weapon1').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon === "arme da punta - spada pugnale");
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "gun");
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter2').addEventListener('click', function() {
+      document.getElementById('filter_weapon2').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "knife");
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_weapon3').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "archibugio");
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_conviction_yes').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
         sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes");
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_conviction_no').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no");
         map.getSource('myData').setData(sample);
       });
     });
