@@ -22,6 +22,7 @@ export default function App() {
       {/* temp button */}
       <button className='Button' id="filter_conviction_yes"> Filter by Conviction: yes </button>
       <button className='Button' id="filter_conviction_no"> Filter by Conviction: no </button>
+      <button className = 'Button' id = "reset"> Reset Data</button>
     </div> 
   
   
