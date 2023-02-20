@@ -13,8 +13,8 @@ export default function App() {
     </div>
     <div>
       {/* temp button */}
-      <button className='Button' id="filter_weapon1"> Filter by weapon: gun </button>
-      <button className='Button' id="filter_weapon2"> Filter by weapon: knife </button>
+      <button className='Button' id="filter_weapon1"> Filter by weapon: sasso </button>
+      <button className='Button' id="filter_weapon2"> Filter by weapon: pugnale </button>
       <button className='Button' id="filter_weapon3"> Filter by weapon: archibugio </button>
       <br></br>
       <br></br>
