@@ -6,9 +6,10 @@ export default function App() {
     return (
     <div>
       <Map/>
+      <h2>Filter Data:</h2>
       {/* temp button */}
-      <button className='Button' id="filter"> filter by Homicide </button>
-      <button className='Button' id="filter2"> filter by Conviction (yes) </button>
+      <button className='Button' id="filter"> Filter by Homicide </button>
+      <button className='Button' id="filter2"> Filter by Conviction (yes) </button>
     </div>)
 }
 
