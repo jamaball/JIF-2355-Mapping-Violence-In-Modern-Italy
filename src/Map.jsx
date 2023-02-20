@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Map.css";
 import api from "./Api.js";
+import { FeatureCollection } from "@turf/helpers";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
