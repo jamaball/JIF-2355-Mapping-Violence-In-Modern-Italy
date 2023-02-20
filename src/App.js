@@ -14,7 +14,6 @@ export default function App() {
   )
 }
 
-//This is a test comment
 
   /*   ***Old Snippets***
 
