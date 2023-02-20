@@ -1,7 +1,6 @@
 import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import {featureCollection} from "@turf/helpers";
 import "./Map.css";
 import api from "./Api.js";
 
@@ -40,6 +39,7 @@ const Map = () => {
     api.getData()
     .then((response) => {
       responseData = response.data
+
       //plot the points on the map
 
       /*
@@ -60,6 +60,7 @@ const Map = () => {
           .addTo(map);
       });
       */
+
     })
     .catch((error) => {
         console.log(error)
@@ -171,10 +172,7 @@ const Map = () => {
         
       map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const date = e.features[0].properties.date;
-        const location = e.features[0].properties.location;
-        const weapon = e.features[0].properties.weapon;
-        const conviction = e.features[0].properties.conviction;
+        const title = e.features[0].properties.title;
         const description = e.features[0].properties.description;
         
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -184,14 +182,11 @@ const Map = () => {
         new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-          `Date: ${date}<br>
-          Location: ${location}<br>
-          Weapon: ${weapon}<br>
-          Conviction: ${conviction}<br>
-          Description: ${description}<br>`
+          `Title: ${title}<br>Description: ${description}`
         )
         .addTo(map);
       });
+
 
       document.getElementById('filter').addEventListener('click', function() {
         var sample = featureCollection([]);
