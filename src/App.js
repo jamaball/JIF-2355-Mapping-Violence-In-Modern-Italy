@@ -4,7 +4,7 @@ import Map from './Map.jsx';
 
 export default function App() {
   return (
-    <main className='Main'>
+    <div>
       <Map/>
       <h1>&nbsp;Mapping Violence Page</h1>
       <div class='session' id='sliderbar'>
@@ -21,8 +21,10 @@ export default function App() {
       {/* temp button */}
       <button className='Button' id="filter"> Filter by Homicide </button>
       <button className='Button' id="filter2"> Filter by Conviction (yes) </button>
-    </div>)   
-    </main>
+      <button className = 'Button' id = "reset"> Reset Data</button>
+    </div> 
+  
+  
   )
 
 }
