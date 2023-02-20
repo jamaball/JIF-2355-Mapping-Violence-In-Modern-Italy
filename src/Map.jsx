@@ -182,17 +182,38 @@ const Map = () => {
       });
 
 
-      document.getElementById('filter').addEventListener('click', function() {
+      document.getElementById('filter_weapon1').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = filteredData.features.filter(pt => pt.properties.weapon === "arme da punta - spada pugnale");
+        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("sasso"));
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter2').addEventListener('click', function() {
+      document.getElementById('filter_weapon2').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = filteredData.features.filter(pt => pt.properties.conviction === "yes");
+        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("pugnale"));
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_weapon3').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("archibugio"));
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_conviction_yes').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes");
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_conviction_no').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no");
         map.getSource('myData').setData(sample);
       });
 
