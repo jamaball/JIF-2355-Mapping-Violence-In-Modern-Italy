@@ -2,8 +2,8 @@ import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Map.css";
-import api from "./Api.js";
 import { featureCollection } from "@turf/helpers";
+import api from "./Api.js";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
@@ -25,6 +25,7 @@ const Map = () => {
   
   
   let [responseData, setResponseData] = React.useState('')
+  let [filteredData, setFilteredData] = React.useState('')
 
   // Initialize map when component mounts
   useEffect(() => {
@@ -40,6 +41,7 @@ const Map = () => {
     api.getData()
     .then((response) => {
       responseData = response.data
+      filteredData = response.data
 
       //plot the points on the map
 
@@ -156,18 +158,9 @@ const Map = () => {
         var sample = featureCollection([]);
         const date = parseInt(event.target.value);
         
-        // update the map
-
-        console.log(1800 <= 1600-10-6);
-
-        sample.features = responseData.features.filter(pt => parseInt(pt.properties.date) <= date); 
+        sample.features = filteredData.features.filter(pt => parseInt(pt.properties.date) <= date); 
         map.getSource('myData').setData(sample); 
-        
-      
-        // converting 0-23 hour to AMPM format
-        
-      
-        // update text in the UI
+
         document.getElementById('active-year').innerText = date;
       });
         
@@ -189,40 +182,29 @@ const Map = () => {
       });
 
 
-      document.getElementById('filter_weapon1').addEventListener('click', function() {
+      document.getElementById('filter').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("sasso"));
+        sample.features = filteredData.features.filter(pt => pt.properties.weapon === "arme da punta - spada pugnale");
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter_weapon2').addEventListener('click', function() {
+      document.getElementById('filter2').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("pugnale"));
+        sample.features = filteredData.features.filter(pt => pt.properties.conviction === "yes");
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter_weapon3').addEventListener('click', function() {
+      document.getElementById('reset').addEventListener('click', function() {
         var sample = featureCollection([]);
+        filteredData = responseData;
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("archibugio"));
+        sample.features = responseData.features;
         map.getSource('myData').setData(sample);
+        document.getElementById('active-year').innerText = 1700;
       });
 
-      document.getElementById('filter_conviction_yes').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes");
-        map.getSource('myData').setData(sample);
-      });
-
-      document.getElementById('filter_conviction_no').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no");
-        map.getSource('myData').setData(sample);
-      });
     });
 
 
