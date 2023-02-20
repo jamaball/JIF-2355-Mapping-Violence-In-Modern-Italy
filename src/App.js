@@ -7,13 +7,20 @@ export default function App() {
     <div>
       <Map/>
       <div class='session' id='sliderbar'>
-  <h2>Year: <label id='active-hour'>1700</label></h2>
-  <input id='slider' class='row' type='range' min='1500' max='1900' step='1' value='1700' />
-</div>
-
-
+      <h2>Year: <label id='active-hour'>1700</label></h2>
+      <input id='slider' class='row' type='range' min='1500' max='1900' step='1' value='1700' />
+    </div>
       {/* temp button */}
       <button className='Button' id="filter"> filter by Weapon </button>
+      <h1>&nbsp;Mapping Violence Page</h1>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <h2>&nbsp;Filter Data:</h2>
+      {/* temp button */}
+      <button className='Button' id="filter"> Filter by Homicide </button>
+      <button className='Button' id="filter2"> Filter by Conviction (yes) </button>
     </div>)
 }
 
