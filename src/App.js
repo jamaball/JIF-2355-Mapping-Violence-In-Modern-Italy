@@ -13,15 +13,17 @@ export default function App() {
     </div>
     <div>
       {/* temp button */}
-      <button className='Button' id="filter"> filter by Weapon </button>
+      <button className='Button' id="filter_weapon1"> Filter by weapon: gun </button>
+      <button className='Button' id="filter_weapon2"> Filter by weapon: knife </button>
+      <button className='Button' id="filter_weapon3"> Filter by weapon: archibugio </button>
       <br></br>
       <br></br>
       <br></br>
       <br></br>
       <h2>&nbsp;Filter Data:</h2>
       {/* temp button */}
-      <button className='Button' id="filter"> Filter by Homicide </button>
-      <button className='Button' id="filter2"> Filter by Conviction (yes) </button>
+      <button className='Button' id="filter_conviction_yes"> Filter by Conviction: yes </button>
+      <button className='Button' id="filter_conviction_no"> Filter by Conviction: no </button>
     </div> 
     </main>
   )
