@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Map.css";
 import api from "./Api.js";
+import { featureCollection } from "@turf/helpers";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
@@ -17,6 +18,7 @@ const Marker = ({ onClick, children, feature }) => {
     </button>
   );
 };
+
 
 const Map = () => {
   const mapContainerRef = useRef(null);
@@ -37,8 +39,11 @@ const Map = () => {
     //get the points from the database
     api.getData()
     .then((response) => {
-      setResponseData(response.data)
+      responseData = response.data
+
       //plot the points on the map
+
+      /*
       response.data.features.forEach((feature) => {
         // Create a React ref
         const ref = React.createRef();
@@ -55,11 +60,14 @@ const Map = () => {
           .setLngLat(feature.geometry.coordinates)
           .addTo(map);
       });
+      */
+
     })
     .catch((error) => {
         console.log(error)
     });
-    */
+
+    
 
     map.on('load', () => {
       map.addSource('myData', {
@@ -145,14 +153,15 @@ const Map = () => {
       });
 
       document.getElementById('slider').addEventListener('input', (event) => {
+        var sample = featureCollection([]);
         const date = parseInt(event.target.value);
         
         // update the map
+
         console.log(1800 <= 1600-10-6);
 
-        map.setFilter('clusters', ['<=', ['date', ['get', 'date']], date]);
-        map.setFilter('cluster-count', ['<=', ['date', ['get', 'date']], date]);
-        map.setFilter('unclustered-point', ['<=', ['date', ['get', 'date']], date]);
+        sample.features = responseData.features.filter(pt => parseInt(pt.properties.date) <= date); 
+        map.getSource('myData').setData(sample); 
         
       
         // converting 0-23 hour to AMPM format
@@ -178,10 +187,42 @@ const Map = () => {
         )
         .addTo(map);
       });
-      
 
 
+      document.getElementById('filter_weapon1').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "gun");
+        map.getSource('myData').setData(sample);
+      });
 
+      document.getElementById('filter_weapon2').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "knife");
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_weapon3').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.weapon === "archibugio");
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_conviction_yes').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes");
+        map.getSource('myData').setData(sample);
+      });
+
+      document.getElementById('filter_conviction_no').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        console.log(map.getSource('myData').cluster);
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no");
+        map.getSource('myData').setData(sample);
+      });
     });
 
 
@@ -196,7 +237,11 @@ const Map = () => {
     window.alert(title);
   };
 
-  return <div className="map-container" ref={mapContainerRef} />;
+
+  return (
+  
+      <div className="map-container" ref={mapContainerRef} />
+  )
 };
 
 
