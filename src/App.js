@@ -8,6 +8,7 @@ export default function App() {
       <Map/>
       {/* temp button */}
       <button className='Button' id="filter"> filter by Homicide </button>
+      <button className='Button' id="filter2"> filter by Conviction (yes) </button>
     </div>)
 }
 
