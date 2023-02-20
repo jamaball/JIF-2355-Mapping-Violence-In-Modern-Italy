@@ -9,21 +9,41 @@
   flex-direction: column;
 }
 
-
+/*
  .Button {
   margin-top: 40px;
   position: fixed;
-  top: 11%;
-  right: 10%;
-  padding: 5px;
+  top: 10px;
+  right: 20px;
+  padding: 15px 32px;
   color: White;
   background-color: Black;
 }
+*/
+
+.Button {
+  background-color: #000000; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: 0.35s;
+}
 
 .Button:hover {
-  background-color:#002ead;
-  transition: 0.7s;
+  background-color:#828489;
+  transition: 0.35s;
 }
+
+.Button:active {
+  transform: scale(0.9);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+
 
 /*
 
