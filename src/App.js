@@ -9,8 +9,13 @@ export default function App() {
       <h1>&nbsp;Mapping Violence Page</h1>
       <div class='session' id='sliderbar'>
       <h2>Year: <label id='active-year'>1700</label></h2>
-      <input id='slider' class='row' type='range' min='1500' max='1900' step='50' value='1700' />
+      <input id='slider' name = 'sliderInput' class= "white" type='range' min='1500' max='1900' step='50' value='1700' onchange="updateTextInput(this.value);" oninput="amount.value=sliderInput.value" />
+
+      
+      
     </div>
+
+    
     <button className='Button' id="filter_weapon1"> Filter by weapon: sasso </button>
       <button className='Button' id="filter_weapon2"> Filter by weapon: pugnale </button>
       <button className='Button' id="filter_weapon3"> Filter by weapon: archibugio </button>
