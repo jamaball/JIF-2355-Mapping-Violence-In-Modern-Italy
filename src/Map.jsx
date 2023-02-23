@@ -162,6 +162,7 @@ const Map = () => {
         map.getSource('myData').setData(sample); 
 
         document.getElementById('active-year').innerText = date;
+        document.getElementById('slider').value = date;
       });
         
       map.on('click', 'unclustered-point', (e) => {
