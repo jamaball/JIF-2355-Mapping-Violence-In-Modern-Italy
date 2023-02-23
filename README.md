@@ -20,7 +20,7 @@ New Features
 - Added more data to our database
 - Added a coordinate field to data to allow for more accurate plotting
 - Added clustering of data points such that when you zoom in and out, data is clustered based on relative distance
-- Added filtering of data based on the weapon used, conviction type, and location of crime
+- Added filtering of data based on the weapon used and conviction type
 - Added a time slider to filter data based on the year the crime was committed
 
 Bug Fixes
