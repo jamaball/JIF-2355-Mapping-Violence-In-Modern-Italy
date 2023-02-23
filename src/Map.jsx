@@ -181,12 +181,31 @@ const Map = () => {
         new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-          `<strong>Location: ${location}</strong>
-          <br>
-          Date: ${date}<br>
-          Weapon: ${weapon}<br>
-          Conviction: ${conviction}<br>
-          Description: ${description}<br>`
+          `
+          <table>
+            <tr>
+              <strong>
+              <td>Location</td>
+              <td>${location}</td>
+              </strong>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>${date}</td>
+            </tr>
+            <tr>
+              <td>Weapon</td>
+              <td>${weapon}</td>
+            </tr>
+            <tr>
+              <td>Conviction</td>
+              <td>${conviction}</td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td>${description}</td>
+            </tr>
+          `
         )
         .addTo(map);
       });
