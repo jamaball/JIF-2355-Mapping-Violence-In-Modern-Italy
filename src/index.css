@@ -14,8 +14,10 @@ code {
 
 .map-container {
   margin: auto;
-  height: 500px;
+  height: 500px; 
   width: 600px;
+  /* height: 600px; */
+  /* width: 750px; */
   }
 
 .sidebar {
