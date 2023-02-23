@@ -158,7 +158,8 @@ const Map = () => {
         var sample = featureCollection([]);
         const date = parseInt(event.target.value);
         
-        sample.features = filteredData.features.filter(pt => parseInt(pt.properties.date) <= date); 
+        sample.features = filteredData.features.filter((pt => parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) ); 
+       
         map.getSource('myData').setData(sample); 
 
         document.getElementById('active-year').innerText = date;
