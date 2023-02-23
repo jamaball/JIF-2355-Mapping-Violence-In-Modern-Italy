@@ -158,15 +158,20 @@ const Map = () => {
         var sample = featureCollection([]);
         const date = parseInt(event.target.value);
         
-        sample.features = filteredData.features.filter(pt => parseInt(pt.properties.date) <= date); 
+        sample.features = filteredData.features.filter((pt => parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) ); 
+       
         map.getSource('myData').setData(sample); 
 
         document.getElementById('active-year').innerText = date;
+        document.getElementById('slider').value = date;
       });
         
       map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const title = e.features[0].properties.title;
+        const date = e.features[0].properties.date;
+        const location = e.features[0].properties.location;
+        const weapon = e.features[0].properties.weapon;
+        const conviction = e.features[0].properties.conviction;
         const description = e.features[0].properties.description;
         
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -176,7 +181,12 @@ const Map = () => {
         new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-          `Title: ${title}<br>Description: ${description}`
+          `<strong>Location: ${location}</strong>
+          <br>
+          Date: ${date}<br>
+          Weapon: ${weapon}<br>
+          Conviction: ${conviction}<br>
+          Description: ${description}<br>`
         )
         .addTo(map);
       });
