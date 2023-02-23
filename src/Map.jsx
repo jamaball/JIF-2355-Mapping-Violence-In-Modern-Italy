@@ -166,7 +166,10 @@ const Map = () => {
         
       map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const title = e.features[0].properties.title;
+        const date = e.features[0].properties.date;
+        const location = e.features[0].properties.location;
+        const weapon = e.features[0].properties.weapon;
+        const conviction = e.features[0].properties.conviction;
         const description = e.features[0].properties.description;
         
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -176,7 +179,11 @@ const Map = () => {
         new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-          `Title: ${title}<br>Description: ${description}`
+          `Date: ${date}<br>
+          Location: ${location}<br>
+          Weapon: ${weapon}<br>
+          Conviction: ${conviction}<br>
+          Description: ${description}<br>`
         )
         .addTo(map);
       });
