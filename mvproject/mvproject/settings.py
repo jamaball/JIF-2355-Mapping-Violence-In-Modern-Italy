@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 """
 
+""" Errors on some machines
 GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal306'
 import os
 if os.name == 'nt':
@@ -23,7 +24,7 @@ if os.name == 'nt':
     os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
     os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
     os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
-    
+"""
 
 from pathlib import Path
 
@@ -113,7 +114,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mappingviolence', 
         'USER': 'postgres',
-        'PASSWORD': '1516',
+        'PASSWORD': 'admin',
         'HOST': 'localhost', 
         'PORT': '5432',
     }
