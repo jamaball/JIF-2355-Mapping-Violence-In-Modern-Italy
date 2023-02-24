@@ -1,0 +1,166 @@
+{
+"id": 1,
+	"date": "1660-05-25",
+	"location": "Contrada di Bertiera verso Galiera",
+	"weapon": "arme da punta - spada pugnale",
+	"conviction": "yes",
+	"description": "Luca is coming home at night, and he sees a guy hanging around his house; thinking the guy is there to sleep with his sister, he says \\\"what are you doing? what do you want\\\" and the guy says \\\"mind yer own business\\\" and Luca says \\\"I think this is my business, go mind your own\\\" and the guy says \\\"mind yer own business\\\" and then comes at him with a sword.",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			11.3449917,
+			44.4983144
+		]
+	}
+}
+{
+"id": 2,
+	"date": "1700-09-11",
+	"location": "in Serraglio di Galiera",
+	"weapon": "arme bianca da punta e taglio eight finger long blade pugnale",
+	"conviction": "yes",
+	"description": "injury with death later",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			11.7230501,
+			44.3643159
+		]
+	}
+}
+{
+"id": 3,
+	"date": "1690-05-20",
+	"location": "Strada delle spadarie",
+	"weapon": "arme pugnale coltello",
+	"conviction": "yes",
+	"description": "injury with death later",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			9.1868837,
+			45.4637079
+		]
+	}
+}
+{
+"id": 4,
+	"date": "1680-10-30",
+	"location": "Portici di Strada MAggiore",
+	"weapon": "spada pugnale",
+	"conviction": "yes",
+	"description": "argument and fight",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			11.3516564,
+			44.4922563
+		]
+	}
+}
+{
+"id": 5,
+	"date": "1680-11-24",
+	"location": "piazza del mercato vecchio",
+	"weapon": "archibugio",
+	"conviction": "no",
+	"description": "sbirri di campagna start a brawl in mercato vecchio and one shoots another",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			11.0427703,
+			43.5470670
+		]
+	}
+}
+{
+"id": 6,
+	"date": "1680-09-28",
+	"location": "san mamolo verso celestini, nella bottegga della vittima",
+	"weapon": "archibugio",
+	"conviction": "no",
+	"description": "barber shot in his shop at nightt",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			11.3298203,
+			44.4786696
+		]
+	}
+}
+{
+"id": 7,
+	"date": "1680-07-17",
+	"location": "bottega di Acarino Colorini fornaro, via di pradello",
+	"weapon": "arma da punta pugnale",
+	"conviction": "yes",
+	"description": "body of victim found in bottega with a wound; no situation described",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			10.4945675,
+			45.5086746
+		]
+	}
+}
+{
+"id": 8,
+	"date": "1660-06-10",
+	"location": "Gaibolano (contado)",
+	"weapon": "sasso",
+	"conviction": "no",
+	"description": "victim walking home, and is outside of his house, when a bunch of baroni start throwing rocks at him",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			12.3155151,
+			45.4408474
+		]
+	}
+}
+{
+"id": 9,
+	"date": "1652-05-23",
+	"location": "S Benedetto",
+	"weapon": "bastone sasso",
+	"conviction": "no",
+	"description": "Gentile and her husband Francesco and kids were out walking and the group came out of a doorway and attacked them with bastone and sasso",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			9.153432,
+			45.1948331
+		]
+	}
+}
+{
+"id": 10,
+	"date": "1600-06-26",
+	"location": "S. Caterina, S Giuliano",
+	"weapon": "pugnale",
+	"conviction": "yes",
+	"description": "the soldiers and killers were all in the house of Lucia meretrice in Fondazza",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			11.3328625,
+			44.4912694
+		]
+	}
+}
+{
+"id": 11,
+	"date": "1700-09-11",
+	"location": "Balogna, Strada di Mirasole, sotto portico del Dottor Cortellini, parrochia S Maria/ S Marvolino(citta)",
+	"weapon": "archibugio",
+	"conviction": "no",
+	"description": "priest eating dinner when his servant stabbed him in the head repeatedly and robbed him",
+	"coordinates": {
+		"type": "Point",
+		"coordinates": [
+			9.1875892,
+			45.476611
+		]
+	}
+}
+
