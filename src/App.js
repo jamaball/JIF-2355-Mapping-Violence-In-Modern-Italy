@@ -1,35 +1,37 @@
 import './App.css';
 import React from 'react';
-import Map from './Map.jsx';
+import MapPage from "./MapPage"
+import LoginPage from "./LoginPage"
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  Link,
+} from "react-router-dom";
 
 export default function App() {
   return (
-    <div>
-      <Map/>
-      <h1>&nbsp;Mapping Violence Page</h1>
-      <div class='session' id='sliderbar'>
-      <h2>Year: <label id='active-year'>1700</label></h2>
-      <input id='slider' name = 'sliderInput' class= "white" type='range' min='1500' max='1900' step='50' value='1700' />
-
-      
-      
-    </div>
-
-    
-    <button className='Button' id="filter_weapon1"> Filter by weapon: sasso </button>
-      <button className='Button' id="filter_weapon2"> Filter by weapon: pugnale </button>
-      <button className='Button' id="filter_weapon3"> Filter by weapon: archibugio </button>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2>&nbsp;Filter Data:</h2>
-      {/* temp button */}
-      <button className='Button' id="filter_conviction_yes"> Filter by Conviction: yes </button>
-      <button className='Button' id="filter_conviction_no"> Filter by Conviction: no </button>
-      <button className = 'Button' id = "reset"> Reset Data</button>
-    </div> 
-  
+    <>
+      <BrowserRouter>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Map</Link>
+          </li>
+          <li>
+            <Link to="/LoginPage">Login Page</Link>
+          </li>
+        </ul>
+        <Routes>
+          <Route exact path="/" element={< MapPage />}></Route>
+          <Route exact path="/LoginPage" element={< LoginPage />}></Route>  
+        </Routes>
+        
+      </div>
+      </BrowserRouter>
+    </>
   
   )
 
