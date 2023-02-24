@@ -182,12 +182,10 @@ const Map = () => {
         .setLngLat(coordinates)
         .setHTML(
           `
-          <table>
+          <table classname="info-table">
             <tr>
-              <strong>
-              <td>Location</td>
-              <td>${location}</td>
-              </strong>
+              <td><strong>Location</strong></td>
+              <td><strong>${location}</strong></td>
             </tr>
             <tr>
               <td>Date</td>
