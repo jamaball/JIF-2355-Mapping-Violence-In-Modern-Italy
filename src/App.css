@@ -112,6 +112,11 @@ div.FilteringHeaders {
   box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
 }
 
+
+.LoginAlign {
+  text-align: center;
+
+}
 /*
 
 .DataInfo {

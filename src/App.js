@@ -16,14 +16,11 @@ export default function App() {
     <>
       <BrowserRouter>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Map</Link>
-          </li>
-          <li>
-            <Link to="/LoginPage">Login Page</Link>
-          </li>
-        </ul>
+        <div class = "FilteringHeaders">
+          <Link class = "ButtonLogin" to="/">Map</Link>
+          <Link class = "ButtonLogin" to="/LoginPage">Login</Link>
+          <Link class = "ButtonLogin" to="/LoginPage">Register</Link>
+        </div>
         <Routes>
           <Route exact path="/" element={< MapPage />}></Route>
           <Route exact path="/LoginPage" element={< LoginPage />}></Route>  
