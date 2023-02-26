@@ -210,35 +210,35 @@ const Map = () => {
       });
 
 
-      document.getElementById('filter_weapon1').addEventListener('click', function() {
+      document.getElementById('sasso').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
         sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("sasso"));
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter_weapon2').addEventListener('click', function() {
+      document.getElementById('pugnale').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
         sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("pugnale"));
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter_weapon3').addEventListener('click', function() {
+      document.getElementById('archibugio').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
         sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("archibugio"));
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter_conviction_yes').addEventListener('click', function() {
+      document.getElementById('conviction').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
         sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes");
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('filter_conviction_no').addEventListener('click', function() {
+      document.getElementById('noConviction').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
         sample.features = responseData.features.filter(pt => pt.properties.conviction === "no");
