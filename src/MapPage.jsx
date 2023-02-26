@@ -24,20 +24,44 @@ export default function MapPage() {
       <div class = "filterbox">
         <h2>&nbsp;Filter Data:</h2>
         <h4>&nbsp;Weapon:</h4>
-        <button className='Button' id="filter_weapon1"> Sasso </button>
-        <button className='Button' id="filter_weapon2"> Pugnale </button>
-        <button className='Button' id="filter_weapon3"> Archibugio </button>
+        <label class="container"> &nbsp; &nbsp;No Selection
+          <input type="checkbox"/>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">&nbsp; &nbsp;Sasso
+          <input type="checkbox"/>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">&nbsp; &nbsp;Pugnale
+          <input type="checkbox"/>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">&nbsp; &nbsp;Archibugio
+          <input type="checkbox"/>
+          <span class="checkmark"></span>
+        </label>
+        {/* <button className='Button' id="filter_weapon1"> Sasso </button> */}
+        {/* <button className='Button' id="filter_weapon2"> Pugnale </button> */}
+        {/* <button className='Button' id="filter_weapon3"> Archibugio </button> */}
         <br></br>
         <h4>&nbsp;Conviction Type:</h4>
-        <button className = 'Button' id="filter_conviction_yes"> Convicted </button>
-        <button className = 'Button' id="filter_conviction_no"> Not Convicted </button>
-        <br></br>
-        <br></br>
-        <br></br>
+        <label class="container">&nbsp; &nbsp;No Selection
+          <input type="radio" name="radio"/>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">&nbsp; &nbsp;Convicted
+          <input type="radio" name="radio"/>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">&nbsp; &nbsp;Not Convicted
+          <input type="radio" name="radio"/>
+          <span class="checkmark"></span>
+        </label>
+        {/* <button className = 'Button' id="filter_conviction_yes"> Convicted </button> */}
+        {/* <button className = 'Button' id="filter_conviction_no"> Not Convicted </button> */}
         <br></br>
         <button className = 'ButtonLogin' id = "reset"> Submit</button>
         <button className = 'ButtonReset' id = "reset"> Reset Data</button>
-        <br></br>
         <br></br>
         <br></br>
         <div class='slidecontainer session' id='sliderbar'>
