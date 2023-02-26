@@ -7,8 +7,8 @@ export default function MapPage() {
       <Map/>
       <h1>&nbsp;Mapping Violence Page</h1>
       <div class = "FilteringHeaders">
-      <button className = "ButtonLogin" id = "login">Login</button>
-      <button className = "ButtonLogin" id = "login">Register</button>
+      {/* <button className = "ButtonLogin" id = "login">Login</button> */}
+      {/* <button className = "ButtonLogin" id = "login">Register</button> */}
       </div>
       <br></br>
       <br></br>
