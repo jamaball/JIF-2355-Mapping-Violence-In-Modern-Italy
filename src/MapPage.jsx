@@ -22,8 +22,6 @@ export default function MapPage() {
       
 
       <div class = "filterbox">
-      {/* <h1>visytvi</h1> */}
-      {/* <p>kjd lkd alkdhaklhd klasj hdkjlas dhklajshd kajsd hkasjhd aksjh askljd halksjd haskjdh aksljdh aksljhd askjdh askjhd kasjhd laskjh dlkdh askjh lkasjd hlaksjdh askljdh asljdh sakjdh aslkjdh sakh</p> */}
         <h2>&nbsp;Filter Data:</h2>
         <h4>&nbsp;Weapon:</h4>
         <button className='Button' id="filter_weapon1"> Sasso </button>
@@ -40,14 +38,16 @@ export default function MapPage() {
         <button className = 'ButtonLogin' id = "reset"> Submit</button>
         <button className = 'ButtonReset' id = "reset"> Reset Data</button>
         <br></br>
-
+        <br></br>
+        <br></br>
+        <div class='slidecontainer session' id='sliderbar'>
+         <h4>&nbsp;Year: <label id='active-year'>1700</label></h4>
+            <input type="range" min="1500" max="1900" step="50" value="1700" class="slider" id = "slider" />
+        </div>
 
       </div>
 
-      <div class='session' id='sliderbar'>
-        <h3>&nbsp;Year: <label id='active-year'>1700</label></h3>
-        <input id = 'slider' class = 'row' type='range' min='1500' max='1900' step='50' value='1700' />
-      </div>
+      
 
 
     </div> 
