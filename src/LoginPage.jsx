@@ -8,6 +8,12 @@ const LoginPage = () => {
       <input />
       <h2>password</h2>
       <input />
+<<<<<<< Updated upstream
+=======
+      <br></br>
+      <button class = "ButtonLogin">Log In</button>
+      <button class = "Button">New Account</button>
+>>>>>>> Stashed changes
     </div>
   );
 };
