@@ -13,8 +13,7 @@ export default function MapPage() {
       <br></br>
       <br></br>
       <br></br>
-      <br></br>
-      
+
       <div class = "FilteringHeaders">
       </div>
 
