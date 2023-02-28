@@ -155,17 +155,7 @@ const Map = () => {
         );
       });
 
-      document.getElementById('slider').addEventListener('input', (event) => {
-        var sample = featureCollection([]);
-        const date = parseInt(event.target.value);
-        
-        sample.features = filteredData.features.filter((pt => parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) ); 
-       
-        map.getSource('myData').setData(sample); 
-
-        document.getElementById('active-year').innerText = date;
-        document.getElementById('slider').value = date;
-      });
+      
         
       map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
@@ -209,6 +199,14 @@ const Map = () => {
         .addTo(map);
       });
 
+      document.getElementById('slider').addEventListener('input', (event) => {
+        var sample = featureCollection([]);
+        const date = parseInt(event.target.value);
+        sample.features = filteredData.features.filter((pt => parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) );
+        map.getSource('myData').setData(sample);
+        document.getElementById('active-year').innerText = date;
+        document.getElementById('slider').value = date;
+      });
 
       document.getElementById('sasso').addEventListener('click', function() {
         var sample = featureCollection([]);
