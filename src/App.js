@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react';
 import MapPage from "./MapPage"
 import LoginPage from "./LoginPage"
+import RegisterPage from "./RegisterPage"
+import AdminPage from './AdminPage';
 
 import {
   BrowserRouter,
@@ -19,11 +21,14 @@ export default function App() {
         <div class = "FilteringHeaders">
           <Link class = "ButtonLogin" to="/">Map</Link>
           <Link class = "ButtonLogin" to="/LoginPage">Login</Link>
-          <Link class = "ButtonLogin" to="/LoginPage">Register</Link>
+          <Link class = "ButtonLogin" to="/RegisterPage">Register</Link>
+          <Link class = "ButtonLogin" to="/AdminPage">Admin</Link>
         </div>
         <Routes>
           <Route exact path="/" element={< MapPage />}></Route>
           <Route exact path="/LoginPage" element={< LoginPage />}></Route>  
+          <Route exact path="/RegisterPage" element={< RegisterPage />}></Route>
+          <Route exact path="/AdminPage" element={< AdminPage />}></Route>
         </Routes>
         
       </div>
