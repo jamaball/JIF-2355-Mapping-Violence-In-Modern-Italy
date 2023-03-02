@@ -5,7 +5,9 @@ export default function MapPage() {
   return (
     <div>
       <Map/>
-      <h1>&nbsp;Mapping Violence Page</h1>
+      <div class="LoginAlign">
+        <h1>&nbsp;Mapping Violence Page</h1>
+      </div>
       <div class = "FilteringHeaders">
       {/* <button className = "ButtonLogin" id = "login">Login</button> */}
       {/* <button className = "ButtonLogin" id = "login">Register</button> */}

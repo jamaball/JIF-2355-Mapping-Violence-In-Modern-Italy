@@ -1,4 +1,8 @@
 import React from "react";
+
+import {
+  Link,
+} from "react-router-dom";
   
 const LoginPage = () => {
   return (
@@ -9,10 +13,10 @@ const LoginPage = () => {
       <br></br>
       <br></br>
       <br></br>
-      <h1>Login Page</h1>
+      <h1>Admin Login</h1>
       <br></br>
       <br></br>
-      <h2>Username</h2>
+      <h2>Email</h2>
       <input id = "inputRoundedEdge"/>
       <br></br>
       <br></br>
@@ -20,8 +24,10 @@ const LoginPage = () => {
       <input id = "inputRoundedEdge"/>
       <br></br>
       <br></br>
-      <button class = "Button">New Account</button>
-      <button class = "ButtonLogin">Submit</button>
+      <Link class = "Button" to="/AdminPage">Login</Link>
+      <br></br>
+      {/*<button class = "Button">New Account</button>*/}
+      <Link class = "ButtonLogin" to="/RegisterPage">Need an account? Register</Link>
     </div>
   );
 };
