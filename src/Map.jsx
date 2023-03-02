@@ -252,6 +252,17 @@ const Map = () => {
         document.getElementById('active-year').innerText = 1700;
       });
 
+      document.getElementById('download').addEventListener('click', function() {
+        const element = document.createElement("a");
+        var jsonse = JSON.stringify(responseData);
+        console.log(jsonse)
+        const file = new Blob([jsonse], {type: 'application/json'});
+        element.href = URL.createObjectURL(file);
+        element.download = "data.json";
+        document.body.appendChild(element);
+        element.click();
+      });
+
     });
 
 
@@ -268,7 +279,6 @@ const Map = () => {
 
 
   return (
-  
       <div className="map-container" ref={mapContainerRef} />
   )
 };
