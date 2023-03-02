@@ -9,7 +9,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
   Link,
 } from "react-router-dom";
 
@@ -20,9 +19,9 @@ export default function App() {
       <div>
         <div class = "FilteringHeaders">
           <Link class = "ButtonLogin" to="/">Map</Link>
-          <Link class = "ButtonLogin" to="/LoginPage">Login</Link>
-          <Link class = "ButtonLogin" to="/RegisterPage">Register</Link>
-          <Link class = "ButtonLogin" to="/AdminPage">Admin</Link>
+          {/*<Link class = "ButtonLogin" to="/LoginPage">Login</Link>
+          <Link class = "ButtonLogin" to="/RegisterPage">Register</Link>*/}
+          <Link class = "ButtonLogin" to="/LoginPage">Admin</Link>
         </div>
         <Routes>
           <Route exact path="/" element={< MapPage />}></Route>
