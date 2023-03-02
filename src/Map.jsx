@@ -232,14 +232,14 @@ const Map = () => {
       document.getElementById('conviction').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes");
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y');
         map.getSource('myData').setData(sample);
       });
 
       document.getElementById('noConviction').addEventListener('click', function() {
         var sample = featureCollection([]);
         console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no");
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n');
         map.getSource('myData').setData(sample);
       });
 
