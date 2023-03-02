@@ -125,6 +125,11 @@ div.FilteringHeaders {
   text-align: center;
 }
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .slidecontainer {
   width: 100%;
 }

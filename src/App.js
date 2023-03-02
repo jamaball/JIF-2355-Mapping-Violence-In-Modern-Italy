@@ -4,6 +4,7 @@ import MapPage from "./MapPage"
 import LoginPage from "./LoginPage"
 import RegisterPage from "./RegisterPage"
 import AdminPage from './AdminPage';
+import UploadDataPage from './UploadDataPage';
 
 import {
   BrowserRouter,
@@ -21,6 +22,7 @@ export default function App() {
           <Link class = "ButtonLogin" to="/">Map</Link>
           {/*<Link class = "ButtonLogin" to="/LoginPage">Login</Link>
           <Link class = "ButtonLogin" to="/RegisterPage">Register</Link>*/}
+          <Link class = "ButtonLogin" to="/UploadDataPage">Upload Data</Link>
           <Link class = "ButtonLogin" to="/LoginPage">Admin</Link>
         </div>
         <Routes>
@@ -28,6 +30,7 @@ export default function App() {
           <Route exact path="/LoginPage" element={< LoginPage />}></Route>  
           <Route exact path="/RegisterPage" element={< RegisterPage />}></Route>
           <Route exact path="/AdminPage" element={< AdminPage />}></Route>
+          <Route exact path="/UploadDataPage" element={< UploadDataPage />}></Route>
         </Routes>
         
       </div>
