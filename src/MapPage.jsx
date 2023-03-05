@@ -5,7 +5,9 @@ export default function MapPage() {
   return (
     <div>
       <Map/>
-      <h1>&nbsp;Mapping Violence Page</h1>
+      <div class="LoginAlign">
+        <h1>&nbsp;Mapping Violence Page</h1>
+      </div>
       <div class = "FilteringHeaders">
       {/* <button className = "ButtonLogin" id = "login">Login</button> */}
       {/* <button className = "ButtonLogin" id = "login">Register</button> */}
@@ -16,6 +18,9 @@ export default function MapPage() {
 
       <div class = "FilteringHeaders">
       </div>
+       
+      <div id="map"></div>
+      <nav id="menu"></nav>
 
 
       
@@ -56,6 +61,7 @@ export default function MapPage() {
           <input type="radio" name="radio"/>
           <span class="checkmark"></span>
         </label>
+        
         {/* <button className = 'Button' id="filter_conviction_yes"> Convicted </button> */}
         {/* <button className = 'Button' id="filter_conviction_no"> Not Convicted </button> */}
         <br></br>
