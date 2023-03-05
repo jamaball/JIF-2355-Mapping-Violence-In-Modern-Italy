@@ -23,11 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
+  
   "browserslist": [
     "defaults",
     "not ie 11"
