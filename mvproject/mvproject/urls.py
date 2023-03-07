@@ -24,5 +24,5 @@ urlpatterns = [
     path('', include('crimes.urls')),
     # re_path('api/crimes', views.get),
     # path('get_points/', get_points)
-    path('', include('account.urls'))
+    path('', include('account.urls')),
 ]
