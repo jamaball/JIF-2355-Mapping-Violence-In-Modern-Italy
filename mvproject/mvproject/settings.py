@@ -42,7 +42,7 @@ SECRET_KEY = 'django-insecure-p^ve7&as9l@l#y#e^r=lg3e4j7p@kxv4!rvjt4u@z28fwtl9pi
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+   
 
 # Application definition
 
@@ -114,7 +114,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mappingviolence', 
         'USER': 'postgres',
-        'PASSWORD': '1516',
+        'PASSWORD': 'password',
         'HOST': 'localhost', 
         'PORT': '5432',
     }
