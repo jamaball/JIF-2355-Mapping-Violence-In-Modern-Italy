@@ -22,11 +22,11 @@ def handle(request, format=None):
         return Response(serializer.data)
     if (request.method == 'POST'):
         crime_data = JSONParser().parse(request)
-        mv_serializer = MvSerializer(data=crime_data)
+        mv_serializer = MvSerializer(data=crime_data, many=True)
         if mv_serializer.is_valid():
             mv_serializer.save()
-            return JsonResponse(mv_serializer.data, status=status.HTTP_201_CREATED) 
-        return JsonResponse(mv_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse(mv_serializer.data, status=status.HTTP_201_CREATED, safe=False) 
+        return JsonResponse(mv_serializer.errors, status=status.HTTP_400_BAD_REQUEST, safe=False)
 
 # # @api_view(['POST'])
 # # @parser_classes([JSONParser])

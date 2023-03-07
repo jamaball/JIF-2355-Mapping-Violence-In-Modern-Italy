@@ -2,7 +2,7 @@ import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Map.css";
-import { featureCollection } from "@turf/helpers";
+import { featureCollection, lineString } from "@turf/helpers";
 import api from "./Api.js";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
@@ -70,7 +70,15 @@ const Map = () => {
         console.log(error)
     });
 
-    
+   
+const Map = new mapboxgl.Map({
+container: 'map',
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/mapbox/light-v11',
+center: [-77.04, 38.907],
+zoom: 11.15
+});
+
 
     map.on('load', () => {
       map.addSource('myData', {
@@ -81,13 +89,15 @@ const Map = () => {
         clusterRadius: 50
       });
 
-      
-
       map.addLayer({
         'id': 'clusters',
         'type': 'circle',
         'source': 'myData',
         'filter': ['has', 'point_count'],
+        layout: {
+          // Make the layer visible by default.
+          'visibility': 'visible'
+          },
         'paint': {
           'circle-radius': [
             'step',
@@ -110,6 +120,7 @@ const Map = () => {
           'circle-stroke-width': 2,
           'circle-stroke-color': 'white'
         }
+        
       });
 
       map.addLayer({
@@ -120,84 +131,163 @@ const Map = () => {
         layout: {
           'text-field': ['get', 'point_count_abbreviated'],
           'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-          'text-size': 12
+          'text-size': 12,
+          'visibility': 'visible'
         }
+        
       });
 
-      map.addLayer({
-        id: 'unclustered-point',
-        type: 'circle',
-        source: 'myData',
-        filter: ['!', ['has', 'point_count']],
-        paint: {
-          'circle-color': '#ff4542',
-          'circle-radius': 4,
-          'circle-stroke-width': 1,
-          'circle-stroke-color': '#fff'
+      // After the last frame rendered before the map enters an "idle" state.
+      map.on('idle', () => {
+        let toggleableLayerIds = [];
+        let activeLinks = [];
+      for (const feature of filteredData.features) {
+        const symbol = feature.properties.weapon;
+        if (!toggleableLayerIds.includes(symbol)) {
+          toggleableLayerIds.push(symbol);
+        }
+      }
+
+      toggleableLayerIds.sort();
+        
+        
+        // Set up the corresponding toggle button for each layer.
+        for (const id of toggleableLayerIds) {
+        // Skip layers that already have a button set up.
+        if (document.getElementById(id)) {
+        continue;
         }
 
-      });
-      map.on('click', 'clusters', (e) => {
-        const features = map.queryRenderedFeatures(e.point, {
-          layers: ['clusters']
-        });
-        const clusterId = features[0].properties.cluster_id;
-        map.getSource('myData').getClusterExpansionZoom(
-          clusterId,
-          (err, zoom) => {
-            if (err) return;
-              
-            map.easeTo({
-              center: features[0].geometry.coordinates,
-              zoom: zoom
-            });
+        
+  
+        map.addLayer({
+          id: id,
+          type: 'circle',
+          source: 'myData',
+          filter: ['!', ['has', 'point_count']],
+          layout: {
+            // Make the layer visible by default.
+            'visibility': 'visible'
+            },
+          
+          paint: {
+            'circle-color': '#ff4542',
+            'circle-radius': 4,
+            'circle-stroke-width': 1,
+            'circle-stroke-color': '#fff'
           }
-        );
+          
+          
+          
+  
+        });
+        
+        // Create a link.
+        const link = document.createElement('a');
+        link.id = id;
+        link.href = '#';
+        link.textContent = id;
+        link.className = 'active';
+
+        
+        
+        
+        // Show or hide layer when the toggle is clicked.
+        link.onclick = function (e) {
+          const clickedLayer = this.textContent;
+          e.preventDefault();
+          e.stopPropagation();
+          const visibility = map.getLayoutProperty(
+          clickedLayer,
+          'visibility'
+          );
+          
+          
+          // Toggle layer visibility by changing the layout object's visibility property.
+          if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            activeLinks.push(clickedLayer)
+            var sample = featureCollection([]);
+            sample.features = responseData.features.filter(pt => activeLinks.includes(pt.properties.weapon));
+            map.getSource('myData').setData(sample);
+            
+            } else {
+              map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+              var index = activeLinks.indexOf(clickedLayer); // Let's say it's Bob.
+              activeLinks.splice(index, 1);
+              var sample = featureCollection([]);
+              sample.features = responseData.features.filter(pt => activeLinks.includes(pt.properties.weapon));
+              map.getSource('myData').setData(sample);
+              
+            }
+        };
+        
+        const layers = document.getElementById('menu');
+        layers.appendChild(link);
+        }
       });
 
-      
+        map.on('click', 'clusters', (e) => {
+          const features = map.queryRenderedFeatures(e.point, {
+            layers: ['clusters']
+          });
+          const clusterId = features[0].properties.cluster_id;
+          map.getSource('myData').getClusterExpansionZoom(
+            clusterId,
+            (err, zoom) => {
+              if (err) return;
+                
+              map.easeTo({
+                center: features[0].geometry.coordinates,
+                zoom: zoom
+              });
+            }
+          );
+        });
+  
         
-      map.on('click', 'unclustered-point', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const date = e.features[0].properties.date;
-        const location = e.features[0].properties.location;
-        const weapon = e.features[0].properties.weapon;
-        const conviction = e.features[0].properties.conviction;
-        const description = e.features[0].properties.description;
-        
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        
-        new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(
-          `
-          <table classname="info-table">
-            <tr>
-              <td><strong>Location</strong></td>
-              <td><strong>${location}</strong></td>
-            </tr>
-            <tr>
-              <td>Date</td>
-              <td>${date}</td>
-            </tr>
-            <tr>
-              <td>Weapon</td>
-              <td>${weapon}</td>
-            </tr>
-            <tr>
-              <td>Conviction</td>
-              <td>${conviction}</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td>${description}</td>
-            </tr>
-          `
-        )
-        .addTo(map);
-      });
+          
+        map.on('click', 'scythe', (e) => {
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const date = e.features[0].properties.date;
+          const location = e.features[0].properties.location;
+          const weapon = e.features[0].properties.weapon;
+          const conviction = e.features[0].properties.conviction;
+          const description = e.features[0].properties.description;
+          
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+          
+          new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `
+            <table classname="info-table">
+              <tr>
+                <td><strong>Location</strong></td>
+                <td><strong>${location}</strong></td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>${date}</td>
+              </tr>
+              <tr>
+                <td>Weapon</td>
+                <td>${weapon}</td>
+              </tr>
+              <tr>
+                <td>Conviction</td>
+                <td>${conviction}</td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td>${description}</td>
+              </tr>
+            `
+          )
+          .addTo(map);
+        });
 
       document.getElementById('slider').addEventListener('input', (event) => {
         var sample = featureCollection([]);
@@ -208,26 +298,6 @@ const Map = () => {
         document.getElementById('slider').value = date;
       });
 
-      document.getElementById('sasso').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("sasso"));
-        map.getSource('myData').setData(sample);
-      });
-
-      document.getElementById('pugnale').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("pugnale"));
-        map.getSource('myData').setData(sample);
-      });
-
-      document.getElementById('archibugio').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.weapon.includes("archibugio"));
-        map.getSource('myData').setData(sample);
-      });
 
       document.getElementById('conviction').addEventListener('click', function() {
         var sample = featureCollection([]);
@@ -243,11 +313,17 @@ const Map = () => {
         map.getSource('myData').setData(sample);
       });
 
+      document.getElementById('noSelectionConviction').addEventListener('click', function() {
+        var sample = featureCollection([]);
+        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n' || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y' ||  pt.properties.conviction === "yes");
+        map.getSource('myData').setData(sample);
+      });
+
       document.getElementById('reset').addEventListener('click', function() {
         var sample = featureCollection([]);
         filteredData = responseData;
-        console.log(map.getSource('myData').cluster);
         sample.features = responseData.features;
+        activeLinks = []
         map.getSource('myData').setData(sample);
         document.getElementById('active-year').innerText = 1700;
       });

@@ -1,0 +1,12 @@
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.inputRoundedEdge {
+    border-radius: 25px;
+    border: 2px solid #c71616;
+    padding: 20px; 
+    width: 200px;
+    height: 15px;    
+  }

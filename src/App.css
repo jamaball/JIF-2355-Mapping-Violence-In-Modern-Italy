@@ -46,13 +46,6 @@ div.filterbox {
   text-align: left;
 }
 
-#inputRoundedEdge {
-  border-radius: 25px;
-  border: 2px solid #c71616;
-  padding: 20px; 
-  width: 200px;
-  height: 15px;    
-}
 
 .Button:hover {
   background-color:#3d3f43;
@@ -123,6 +116,11 @@ div.FilteringHeaders {
 
 .LoginAlign {
   text-align: center;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slidecontainer {

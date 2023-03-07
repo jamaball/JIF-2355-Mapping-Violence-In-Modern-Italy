@@ -10,8 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 
 """
-
- 
 GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal306'
 import os
 if os.name == 'nt':
@@ -24,6 +22,7 @@ if os.name == 'nt':
     os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
     os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
     os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
+ 
 
 
 from pathlib import Path
@@ -49,6 +48,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'crimes',
     'rest_framework',
+    'knox',
+    'account',
     'rest_framework_gis',
     'corsheaders',
 
@@ -62,6 +63,10 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 CORS_ORIGIN_ALLOW_ALL = True
 
