@@ -1,6 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 
 const UploadDataPage = () => {
+  let [file, setFile] = useState({});
+
+
+  const onChangeHandler = event => {
+    //check mime type
+    if (event.target.files[0].type === "application/json"){
+      setFile(event.target.files[0]);
+      var error = document.getElementById("fileTypeError");
+      error.textContent = "";
+    } else {
+      //display wrong file type error
+      var error = document.getElementById("fileTypeError")
+      error.textContent = "invalid file type. Please upload a .json"
+    }
+  }
+
+  const onClickHandler = () => {
+    console.log(file)
+  }
+  
+
     return (
       <div class = "LoginAlign">
         <br></br>
@@ -20,18 +41,15 @@ const UploadDataPage = () => {
         <input id = "inputRoundedEdge"/>
         <br></br>
         <br></br>
-        <form action="/action_page.php" 
-            enctype="multipart/form-data">
-    
-            <label for="myfile">Select a file:</label>
-    
-            <input type="file" id="myfile" 
-                name="myfile" multiple="multiple" />
-            
-            <br /><br />
+        <label for="myfile">Select a file:</label>
+        <br></br>
+        <input type="file" id="myfile" name="myfile"
+               onChange={onChangeHandler} />
+        <br />
+        <label id="fileTypeError"></label>
+        <br />
         
-            <input type="submit" />
-        </form>
+        <input type="submit" onClick={onClickHandler}/>
       </div>
     );
   };
