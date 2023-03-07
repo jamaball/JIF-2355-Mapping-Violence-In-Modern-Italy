@@ -7,16 +7,17 @@ import AdminPage from './AdminPage';
 import UploadDataPage from './UploadDataPage';
 
 import {
-  BrowserRouter,
+  HashRouter as Router,
   Routes,
   Route,
+  Redirect,
   Link,
 } from "react-router-dom";
 
 export default function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
       <div>
         <div class = "FilteringHeaders">
           <Link class = "ButtonLogin" to="/">Map</Link>
@@ -34,7 +35,7 @@ export default function App() {
         </Routes>
         
       </div>
-      </BrowserRouter>
+      </Router>
     </>
   
   )

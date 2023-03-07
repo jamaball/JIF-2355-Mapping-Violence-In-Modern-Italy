@@ -1,35 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Link,
 } from "react-router-dom";
   
-const LoginPage = () => {
+export default function LoginPage() {
+  const [state, setState] = useState ({
+    username: '',
+    password: ''
+  })
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit');
+  }
+
+  const onChange = (e) => {
+    setState({...state, [e.target.name]:[e.target.value]});
+  }
   return (
-    <div class = "LoginAlign">
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h1>Admin Login</h1>
-      <br></br>
-      <br></br>
-      <h2>Email</h2>
-      <input id = "inputRoundedEdge"/>
-      <br></br>
-      <br></br>
-      <h2>Password</h2>
-      <input id = "inputRoundedEdge"/>
-      <br></br>
-      <br></br>
-      <Link class = "Button" to="/AdminPage">Login</Link>
-      <br></br>
-      {/*<button class = "Button">New Account</button>*/}
-      <Link class = "ButtonLogin" to="/RegisterPage">Need an account? Register</Link>
-    </div>
-  );
+      <div className = "col-md-4 m-auto">
+        <div className="card card-body mt-5">
+          <h2 className="text-center">Login</h2>
+          <form className="center" onSubmit={onSubmit}>
+            <div className="form=group">
+            <label>Username</label>
+              <input
+                className="form-control inputRoundedEdge"
+                placeholder="Username"
+                type="text"
+                name="username"
+                onChange={onChange}
+                value={state.username}
+              />
+            </div>
+            <div className="form=group">
+            <label>Password</label>
+              <input 
+                className="form-control inputRoundedEdge"
+                placeholder="Password"
+                type="password"
+                name="password"
+                onChange={onChange}
+                value={state.password}
+              />
+            </div>
+            <br></br>
+          </form>
+          <div className="form-group center">
+              <button type="submit" className="Button">Login</button>
+            </div>
+            <br></br>
+          <p text="text-center" className="center">
+              Need an account?
+            </p>
+            <Link class = "ButtonLogin center" to="/RegisterPage">Register</Link>
+        </div>
+      </div>
+    )
 };
-  
-export default LoginPage;
