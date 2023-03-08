@@ -73,7 +73,8 @@ export default function MapPage() {
          <h4>&nbsp;Year: <label id='active-year'>1700</label></h4>
             <input type="range" min="1500" max="1900" step="50" value="1700" class="slider" id = "slider" />
         </div>
-
+        <br></br>
+        <button className = 'ButtonLogin' id = "download"> Download</button>
       </div>
 
       

@@ -225,6 +225,15 @@ zoom: 11.15
         const layers = document.getElementById('menu');
         layers.appendChild(link);
         }
+
+        document.getElementById('reset').addEventListener('click', function() {
+          var sample = featureCollection([]);
+          filteredData = responseData;
+          sample.features = responseData.features;
+          activeLinks = []
+          map.getSource('myData').setData(sample);
+          document.getElementById('active-year').innerText = 1700;
+        });
       });
 
         map.on('click', 'clusters', (e) => {
@@ -319,13 +328,17 @@ zoom: 11.15
         map.getSource('myData').setData(sample);
       });
 
-      document.getElementById('reset').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        filteredData = responseData;
-        sample.features = responseData.features;
-        activeLinks = []
-        map.getSource('myData').setData(sample);
-        document.getElementById('active-year').innerText = 1700;
+
+
+      document.getElementById('download').addEventListener('click', function() {
+        const element = document.createElement("a");
+        var jsonse = JSON.stringify(responseData);
+        console.log(jsonse)
+        const file = new Blob([jsonse], {type: 'application/json'});
+        element.href = URL.createObjectURL(file);
+        element.download = "data.json";
+        document.body.appendChild(element);
+        element.click();
       });
 
     });
@@ -344,7 +357,6 @@ zoom: 11.15
 
 
   return (
-  
       <div className="map-container" ref={mapContainerRef} />
   )
 };
