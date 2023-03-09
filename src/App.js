@@ -31,8 +31,8 @@ export default function App() {
       <div>
         <div class = "FilteringHeaders">
           <Link class = "ButtonLogin" to="/">Map</Link>
-          {/*<Link class = "ButtonLogin" to="/LoginPage">Login</Link>
-          <Link class = "ButtonLogin" to="/RegisterPage">Register</Link>*/}
+          {/* <Link class = "ButtonLogin" to="/LoginPage">Login</Link> */}
+          {/* <Link class = "ButtonLogin" to="/RegisterPage">Register</Link>*/} 
           <Link class = "ButtonLogin" to="/UploadDataPage">Upload Data</Link>
           <Link class = "ButtonLogin" to="/LoginPage">Admin</Link>
         </div>
@@ -40,9 +40,17 @@ export default function App() {
           <Route exact path="/" element={< MapPage />}></Route>
           <Route exact path="/LoginPage" element={< LoginPage />}></Route>  
           <Route exact path="/RegisterPage" element={< RegisterPage />}></Route>
-          <Route exact path="/" element={<PrivateRoute/>}>
+          {/* <Route element={<PrivateRoute/>}> */}
             <Route exact path="/AdminPage" element={< AdminPage />}></Route>
-          </Route>
+          {/* </Route> */}
+          {/* <Route 
+            path="/"
+            element={
+              <PrivateRoute>
+                <AdminPage />
+              </PrivateRoute>
+            }
+          ></Route> */}
           <Route exact path="/UploadDataPage" element={< UploadDataPage />}></Route>
         </Routes>
         

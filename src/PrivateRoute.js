@@ -1,21 +1,17 @@
 import React from 'react';
 import {Route, Navigate} from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 
-const PrivateRoute = ({ auth, children }) => {
-    // const { isLoading, isAuthenticated } = useSelector((state) => state.auth)
-    if (auth.isLoading) {
+const PrivateRoute = ({ children }) => {
+    const { isLoading, isAuthenticated } = useSelector((state) => state.auth)
+    if (isLoading) {
         return <h2>Loading...</h2>;
-    } else if (!auth.isAuthenticated) {
+    } else if (!isAuthenticated) {
         return <Navigate to="/LoginPage"/>;
     } else {
         return children;
     }
 }
 
-const mapStateToProps = state => ({
-    auth: state.auth
-})
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default PrivateRoute;

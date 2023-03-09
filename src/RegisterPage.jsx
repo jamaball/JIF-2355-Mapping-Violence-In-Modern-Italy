@@ -70,11 +70,12 @@ export default function RegisterPage() {
               />
             </div>
             <br></br>
-          </form>
-          <div className="form-group center">
+            <div className="form-group center">
               <button type="submit" className="Button">Create Account</button>
             </div>
             <br></br>
+          </form>
+          
           <p text="text-center" className="center">
               Already have an account?
             </p>

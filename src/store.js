@@ -6,7 +6,7 @@ const initialState = {};
 const middleware = [thunk];
 const store = configureStore ({
     reducer:rootReducer, 
-    middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+    middleware:(getDefaultMiddleware) => getDefaultMiddleware(),
     initialState
 })
 
