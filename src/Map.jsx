@@ -181,6 +181,48 @@ zoom: 11.15
           
   
         });
+
+        map.on('click', id, (e) => {
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const date = e.features[0].properties.date;
+          const location = e.features[0].properties.location;
+          const weapon = e.features[0].properties.weapon;
+          const conviction = e.features[0].properties.conviction;
+          const description = e.features[0].properties.description;
+          
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+          
+          new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `
+            <table classname="info-table">
+              <tr>
+                <td><strong>Location</strong></td>
+                <td><strong>${location}</strong></td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>${date}</td>
+              </tr>
+              <tr>
+                <td>Weapon</td>
+                <td>${weapon}</td>
+              </tr>
+              <tr>
+                <td>Conviction</td>
+                <td>${conviction}</td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td>${description}</td>
+              </tr>
+            `
+          )
+          .addTo(map);
+        });
         
         // Create a link.
         const link = document.createElement('a');
@@ -256,47 +298,7 @@ zoom: 11.15
   
         
           
-        map.on('click', 'scythe', (e) => {
-          const coordinates = e.features[0].geometry.coordinates.slice();
-          const date = e.features[0].properties.date;
-          const location = e.features[0].properties.location;
-          const weapon = e.features[0].properties.weapon;
-          const conviction = e.features[0].properties.conviction;
-          const description = e.features[0].properties.description;
-          
-          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-          }
-          
-          new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(
-            `
-            <table classname="info-table">
-              <tr>
-                <td><strong>Location</strong></td>
-                <td><strong>${location}</strong></td>
-              </tr>
-              <tr>
-                <td>Date</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td>Weapon</td>
-                <td>${weapon}</td>
-              </tr>
-              <tr>
-                <td>Conviction</td>
-                <td>${conviction}</td>
-              </tr>
-              <tr>
-                <td>Description</td>
-                <td>${description}</td>
-              </tr>
-            `
-          )
-          .addTo(map);
-        });
+        
 
       document.getElementById('slider').addEventListener('input', (event) => {
         var sample = featureCollection([]);
