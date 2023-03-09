@@ -28,6 +28,22 @@ const Map = () => {
   let [responseData, setResponseData] = React.useState('')
   let [filteredData, setFilteredData] = React.useState('')
 
+  const combineGeoJsons = (gj1, gj2) => {
+    if (gj1 === null) {
+      return gj2;
+    } else if (gj1.features === null) {
+
+    } else if (gj2 === null) {
+      return gj1;
+    }
+    console.log(gj2);
+
+    gj2.features.forEach((feature) => {
+      gj1.features.push(feature);
+    });
+    return gj1;
+  }
+
   // Initialize map when component mounts
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -41,8 +57,11 @@ const Map = () => {
     //get the points from the database
     api.getData()
     .then((response) => {
-      responseData = response.data
-      filteredData = response.data
+      let data = combineGeoJsons(response.data, JSON.parse(localStorage.getItem("uploadedData")));
+      // responseData = response.data
+      // filteredData = response.data
+      responseData = data;
+      filteredData = data;
 
       //plot the points on the map
 

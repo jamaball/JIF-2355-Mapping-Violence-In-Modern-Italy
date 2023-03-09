@@ -1,13 +1,21 @@
 import React, {useState} from "react";
 
 const UploadDataPage = () => {
-  let [file, setFile] = useState({});
+  let [fileEvent, setFileEvent] = useState({});
+  const [ JsonFile, setJsonFile ] = useState({});
 
 
   const onChangeHandler = event => {
     //check mime type
     if (event.target.files[0].type === "application/json"){
-      setFile(event.target.files[0]);
+      setFileEvent(event);
+      const fileReader = new FileReader();
+      fileReader.readAsText(event.target.files[0], "UTF-8");
+      fileReader.onload = event => {
+        setJsonFile(event.target.result);
+      };
+
+      //remove error message
       var error = document.getElementById("fileTypeError");
       error.textContent = "";
     } else {
@@ -17,8 +25,41 @@ const UploadDataPage = () => {
     }
   }
 
+  const removeData = () => {
+    //console.log(JSON.parse(localStorage.getItem("uploadedData")));
+    localStorage.removeItem("uploadedData");
+  }
+
   const onClickHandler = () => {
-    console.log(file)
+    /*
+    https://stackoverflow.com/questions/61707105/react-app-upload-and-read-json-file-into-variable-without-a-server
+    */
+    let jsonData = JSON.parse(JsonFile);
+    //console.log(jsonData);
+    //geojson is the correct format of the json
+    let geojson = {
+      type: "FeatureCollection",
+      features: [],
+    };
+    for (let i = 0; i < jsonData.length; i++) {
+      geojson.features.push({
+          "type": "Feature",
+          "properties": {
+              "id": jsonData[i].id,
+              "date": jsonData[i].date,
+              "location": jsonData[i].location,
+              "weapon": jsonData[i].weapon,
+              "conviction": jsonData[i].conviction,
+              "description": jsonData[i].description
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": jsonData[i].coordinates.coordinates
+          },
+      })
+    }
+    console.log(geojson);
+    localStorage.setItem("uploadedData", JSON.stringify(geojson));
   }
   
 
@@ -50,6 +91,8 @@ const UploadDataPage = () => {
         <br />
         
         <input type="submit" onClick={onClickHandler}/>
+        <br />
+        <button onClick={removeData}>Remove Uploaded Data</button>
       </div>
     );
   };
