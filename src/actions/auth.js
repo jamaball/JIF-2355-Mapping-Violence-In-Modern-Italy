@@ -10,7 +10,9 @@ import {
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
     LOGIN_ERROR,
-    GET_ERRORS
+    GET_ERRORS,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL
 } from "./types";
 
 //CHECK TOKEN AND LOAD USER
@@ -57,9 +59,7 @@ export const login = (username, password) => dispatch => {
 
     //Request body
     const body = JSON.stringify( {username , password} );
-    console.log(body);
-    // console.log(username[0]);
-    // console.log(password[0]);
+
     axios.post('http://127.0.0.1:8000/api/auth/login', body, config)
         .then(res => {
             dispatch({
@@ -67,17 +67,52 @@ export const login = (username, password) => dispatch => {
                 payload: res.data
             });
         }).catch(err => {
-            const errors = {
-                msg: err.response.data,
-                status: err.response.status
-            }
-            dispatch({
-                type: GET_ERRORS,
-                payload: errors
-            })
+            // const errors = {
+            //     msg: err.response.data,
+            //     status: err.response.status
+            // }
+            // dispatch({
+            //     type: GET_ERRORS,
+            //     payload: errors
+            // })
             // dispatch(returnErrors(err.response.data, err.response.status));
             dispatch({
                 type: LOGIN_FAIL
+            })
+        })
+};
+
+//REGISTER USER
+export const register = ({ username, password, email } ) => dispatch => {
+    //Headers
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+
+    //Request body
+    const body = JSON.stringify( {username , password, email } );
+
+    axios.post('http://127.0.0.1:8000/api/auth/register', body, config)
+        .then(res => {
+            dispatch({
+                type: REGISTER_SUCCESS, 
+                payload: res.data
+            });
+        }).catch(err => {
+            console.log(err)
+            // const errors = {
+            //     msg: err.response.data,
+            //     status: err.response.status
+            // }
+            // dispatch({
+            //     type: GET_ERRORS,
+            //     payload: errors
+            // })
+            // dispatch(returnErrors(err.response.data, err.response.status));
+            dispatch({
+                type: REGISTER_FAIL
             })
         })
 };

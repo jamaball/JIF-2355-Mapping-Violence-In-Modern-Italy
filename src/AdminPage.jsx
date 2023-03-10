@@ -13,7 +13,6 @@ const AdminPage = () => {
 
   const authLinks = (
     <button onClick={ onClick } className="ButtonLogin">Logout</button>
-    // <button className="ButtonLogin">Logout</button>
     );
   
   const guestLinks = (

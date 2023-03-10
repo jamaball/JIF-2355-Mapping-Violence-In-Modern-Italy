@@ -18,8 +18,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
-    console.log("submit")
-    e.preventDefault();
+    e.preventDefault()
     return dispatch(login(state.username[0], state.password[0]));
   }
 

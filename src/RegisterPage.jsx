@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "./actions/auth";
+import { Navigate } from "react-router-dom"
 import {
   Link,
 } from "react-router-dom";
@@ -11,13 +14,30 @@ export default function RegisterPage() {
     password2: ''
   })
 
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
   const onSubmit = (e) => {
+
     e.preventDefault();
-    console.log('submit');
+    if (state.password[0] !== state.password2[0]) {
+     alert('Passwords do not match');
+    } else {
+      const newUser = { 
+        username: state.username[0],
+        password: state.password[0],
+        email: state.email[0]
+      }
+      dispatch(register(newUser));
+    }
   }
 
   const onChange = (e) => {
     setState({...state, [e.target.name]:[e.target.value]});
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/AdminPage"></Navigate>;
   }
 
   return(

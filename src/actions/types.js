@@ -7,3 +7,5 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAIL = "LOGOUT_FAIL";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const GET_ERRORS = "GET_ERRORS";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
