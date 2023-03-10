@@ -28,6 +28,22 @@ const Map = () => {
   let [responseData, setResponseData] = React.useState('')
   let [filteredData, setFilteredData] = React.useState('')
 
+  const combineGeoJsons = (gj1, gj2) => {
+    if (gj1 === null) {
+      return gj2;
+    } else if (gj1.features === null) {
+
+    } else if (gj2 === null) {
+      return gj1;
+    }
+    console.log(gj2);
+
+    gj2.features.forEach((feature) => {
+      gj1.features.push(feature);
+    });
+    return gj1;
+  }
+
   // Initialize map when component mounts
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -41,8 +57,11 @@ const Map = () => {
     //get the points from the database
     api.getData()
     .then((response) => {
-      responseData = response.data
-      filteredData = response.data
+      let data = combineGeoJsons(response.data, JSON.parse(localStorage.getItem("uploadedData")));
+      // responseData = response.data
+      // filteredData = response.data
+      responseData = data;
+      filteredData = data;
 
       //plot the points on the map
 
@@ -181,6 +200,48 @@ zoom: 11.15
           
   
         });
+
+        map.on('click', id, (e) => {
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const date = e.features[0].properties.date;
+          const location = e.features[0].properties.location;
+          const weapon = e.features[0].properties.weapon;
+          const conviction = e.features[0].properties.conviction;
+          const description = e.features[0].properties.description;
+          
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+          
+          new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `
+            <table classname="info-table">
+              <tr>
+                <td><strong>Location</strong></td>
+                <td><strong>${location}</strong></td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>${date}</td>
+              </tr>
+              <tr>
+                <td>Weapon</td>
+                <td>${weapon}</td>
+              </tr>
+              <tr>
+                <td>Conviction</td>
+                <td>${conviction}</td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td>${description}</td>
+              </tr>
+            `
+          )
+          .addTo(map);
+        });
         
         // Create a link.
         const link = document.createElement('a');
@@ -256,47 +317,7 @@ zoom: 11.15
   
         
           
-        map.on('click', 'scythe', (e) => {
-          const coordinates = e.features[0].geometry.coordinates.slice();
-          const date = e.features[0].properties.date;
-          const location = e.features[0].properties.location;
-          const weapon = e.features[0].properties.weapon;
-          const conviction = e.features[0].properties.conviction;
-          const description = e.features[0].properties.description;
-          
-          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-          }
-          
-          new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(
-            `
-            <table classname="info-table">
-              <tr>
-                <td><strong>Location</strong></td>
-                <td><strong>${location}</strong></td>
-              </tr>
-              <tr>
-                <td>Date</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td>Weapon</td>
-                <td>${weapon}</td>
-              </tr>
-              <tr>
-                <td>Conviction</td>
-                <td>${conviction}</td>
-              </tr>
-              <tr>
-                <td>Description</td>
-                <td>${description}</td>
-              </tr>
-            `
-          )
-          .addTo(map);
-        });
+        
 
       document.getElementById('slider').addEventListener('input', (event) => {
         var sample = featureCollection([]);
