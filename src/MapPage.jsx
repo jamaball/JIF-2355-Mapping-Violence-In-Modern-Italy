@@ -5,10 +5,10 @@ export default function MapPage() {
   return (
     <div>
       <Map/>
-      <div class="LoginAlign">
+      <div className="LoginAlign">
         <h1>&nbsp;Mapping Violence Page</h1>
       </div>
-      <div class = "FilteringHeaders">
+      <div className = "FilteringHeaders">
       {/* <button className = "ButtonLogin" id = "login">Login</button> */}
       {/* <button className = "ButtonLogin" id = "login">Register</button> */}
       </div>
@@ -16,7 +16,7 @@ export default function MapPage() {
       <br></br>
       <br></br>
 
-      <div class = "FilteringHeaders">
+      <div className= "FilteringHeaders">
       </div>
        
       <div id="map"></div>
@@ -25,41 +25,41 @@ export default function MapPage() {
 
       
 
-      <div class = "filterbox">
+      <div className = "filterbox">
         <h2>&nbsp;Filter Data:</h2>
         <h4>&nbsp;Weapon:</h4>
-        <label class="container" id = "noSelectionWeapon"> &nbsp; &nbsp;No Selection
+        <label className="container" id = "noSelectionWeapon"> &nbsp; &nbsp;No Selection
           <input type="checkbox"/>
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
-        <label class="container" id = "sasso">&nbsp; &nbsp;Sasso
+        <label className="container" id = "sasso">&nbsp; &nbsp;Sasso
           <input type="checkbox"/>
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
-        <label class="container" id = "pugnale">&nbsp; &nbsp;Pugnale
+        <label className="container" id = "pugnale">&nbsp; &nbsp;Pugnale
           <input type="checkbox"/>
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
-        <label class="container" id = "archibugio">&nbsp; &nbsp;Archibugio
+        <label className="container" id = "archibugio">&nbsp; &nbsp;Archibugio
           <input type="checkbox"/>
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
         {/* <button className='Button' id="filter_weapon1"> Sasso </button> */}
         {/* <button className='Button' id="filter_weapon2"> Pugnale </button> */}
         {/* <button className='Button' id="filter_weapon3"> Archibugio </button> */}
         <br></br>
         <h4>&nbsp;Conviction Type:</h4>
-        <label class="container" id = "noSelectionConviction">&nbsp; &nbsp;No Selection
+        <label className="container" id = "noSelectionConviction">&nbsp; &nbsp;No Selection
           <input type="radio" name="radio"/>
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
-        <label class="container" id = "conviction">&nbsp; &nbsp;Convicted
+        <label className="container" id = "conviction">&nbsp; &nbsp;Convicted
           <input type="radio" name="radio"/>
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
-        <label class="container" id = "noConviction">&nbsp; &nbsp;Not Convicted
+        <label className="container" id = "noConviction">&nbsp; &nbsp;Not Convicted
           <input type="radio" name="radio"/>
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
         
         {/* <button className = 'Button' id="filter_conviction_yes"> Convicted </button> */}

@@ -1,22 +1,32 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "./actions/auth";
+import { Navigate } from "react-router-dom"
+import AdminPage from './AdminPage';
 
 import {
   Link,
 } from "react-router-dom";
   
-export default function LoginPage() {
+const LoginPage = () => {
   const [state, setState] = useState ({
     username: '',
     password: ''
   })
 
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
   const onSubmit = (e) => {
-    e.preventDefault();
-    console.log('submit');
+    e.preventDefault()
+    return dispatch(login(state.username[0], state.password[0]));
   }
 
   const onChange = (e) => {
     setState({...state, [e.target.name]:[e.target.value]});
+  }
+  if (isAuthenticated) {
+    return <Navigate to="/AdminPage"></Navigate>;
   }
   return (
       <div className = "col-md-4 m-auto">
@@ -46,10 +56,11 @@ export default function LoginPage() {
               />
             </div>
             <br></br>
-          </form>
-          <div className="form-group center">
+            <div className="form-group center">
               <button type="submit" className="Button">Login</button>
             </div>
+          </form>
+
             <br></br>
           <p text="text-center" className="center">
               Need an account?
@@ -59,3 +70,5 @@ export default function LoginPage() {
       </div>
     )
 };
+
+export default LoginPage;
