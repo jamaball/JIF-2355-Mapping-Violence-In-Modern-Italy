@@ -44,7 +44,7 @@ background: #fff;
 position: absolute;
 z-index: 1;
 border-radius: 3px;
-width: 40%;
+width: 100%;
 border: 1px solid rgba(0, 0, 0, 0.4);
 font-family: 'Open Sans', sans-serif;
 }
@@ -70,10 +70,13 @@ color: #404040;
 }
  
 #menu a.active {
-background-color: #c71616;
-color: #ffffff;
+background-color: #ffffff;
+color: #ccc;
 }
  
 #menu a.active:hover {
-background: #a61212;
+  background: #c71616;
+  color:#ffffff
+/* background: #a61212; */
+  
 }

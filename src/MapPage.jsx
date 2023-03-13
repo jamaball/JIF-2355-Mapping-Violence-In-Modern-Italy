@@ -4,7 +4,7 @@ import Map from './Map.jsx';
 export default function MapPage() {
 
 
-  
+
 
   return (
     
@@ -28,12 +28,14 @@ export default function MapPage() {
 
         <h4>Weapon:</h4>
 
+        {/* <nav id="menu"></nav> */}
 
-        <button type="button" class="collapsible">Open Collapsible</button>
-          <div class="content">
-            <nav id="menu"></nav>
+          <div class="dropdown">
+            <button class="dropbtn">Filter Weapons</button>
+              <div class="dropdown-content">
+              <nav id="menu"></nav>
+              </div>
           </div>
-
 
 
         <br></br>
