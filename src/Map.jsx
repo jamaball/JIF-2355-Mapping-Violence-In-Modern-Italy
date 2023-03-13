@@ -137,10 +137,85 @@ zoom: 11.15
         
       });
 
+      
+
       // After the last frame rendered before the map enters an "idle" state.
+      let toggleableLayerIds = [];
+      let weaponList = [];
+      let convictionList = "y/n"
+      let timeList = []; 
+      
+      function Filter() {
+        var sample = featureCollection([]);
+        const date = timeList.at(0);
+        console.log(convictionList);
+        if (weaponList.length == 0 ) {
+          if (timeList.length == 0) {
+            if (convictionList == "y/n") {
+              sample.features = responseData.features; 
+            } else if(convictionList == "y") {
+              sample.features = responseData.features.filter((pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
+  
+            } else if (convictionList == "n") {
+              sample.features = responseData.features.filter(pt =>  (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
+  
+            }
+            
+          } else {
+
+            if (convictionList == "y/n") {
+              console.log(timeList);
+              sample.features = responseData.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date));
+
+            } else if(convictionList == "y") {
+              sample.features = responseData.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
+
+            } else if (convictionList == "n") {
+              sample.features = responseData.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
+
+            }
+          }
+
+        } else {
+          if (timeList.length == 0) {
+            if (convictionList == "y/n") {
+              sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon));
+
+            } else if (convictionList == "y") {
+              sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
+
+            } else if (convictionList == "n") {
+              sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
+
+            }
+
+          } else {
+              if (convictionList == "y/n") {
+                sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date));
+
+              } else if (convictionList == "y") {
+                sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
+
+              } else if (convictionList == "n") {
+                sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
+
+              }
+          }
+
+        }
+        map.getSource('myData').setData(sample);
+      }
+
+      document.getElementById('slider').addEventListener('input', (event) => {
+        timeList.pop(); 
+        const date = parseInt(event.target.value);
+        timeList.push(date);
+        document.getElementById('active-year').innerText = date;
+        document.getElementById('slider').value = date;
+        Filter(); 
+      });
       map.on('idle', () => {
-        let toggleableLayerIds = [];
-        let activeLinks = [];
+       
       for (const feature of filteredData.features) {
         const symbol = feature.properties.weapon;
         if (!toggleableLayerIds.includes(symbol)) {
@@ -181,73 +256,8 @@ zoom: 11.15
           
   
         });
-        
-        // Create a link.
-        const link = document.createElement('a');
-        link.id = id;
-        link.href = '#';
-        link.textContent = id;
-        link.className = 'active';
 
-        
-        
-        
-        // Show or hide layer when the toggle is clicked.
-        link.onclick = function (e) {
-          const clickedLayer = this.textContent;
-          e.preventDefault();
-          e.stopPropagation();
-          const visibility = map.getLayoutProperty(
-          clickedLayer,
-          'visibility'
-          );
-          
-          
-          // Toggle layer visibility by changing the layout object's visibility property.
-          if (visibility === 'visible') {
-            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-            activeLinks.push(clickedLayer)
-            var sample = featureCollection([]);
-            sample.features = responseData.features.filter(pt => activeLinks.includes(pt.properties.weapon));
-            map.getSource('myData').setData(sample);
-            
-            } else {
-              map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-              var index = activeLinks.indexOf(clickedLayer); // Let's say it's Bob.
-              activeLinks.splice(index, 1);
-              var sample = featureCollection([]);
-              sample.features = responseData.features.filter(pt => activeLinks.includes(pt.properties.weapon));
-              map.getSource('myData').setData(sample);
-              
-            }
-        };
-        
-        const layers = document.getElementById('menu');
-        layers.appendChild(link);
-        }
-      });
-
-        map.on('click', 'clusters', (e) => {
-          const features = map.queryRenderedFeatures(e.point, {
-            layers: ['clusters']
-          });
-          const clusterId = features[0].properties.cluster_id;
-          map.getSource('myData').getClusterExpansionZoom(
-            clusterId,
-            (err, zoom) => {
-              if (err) return;
-                
-              map.easeTo({
-                center: features[0].geometry.coordinates,
-                zoom: zoom
-              });
-            }
-          );
-        });
-  
-        
-          
-        map.on('click', 'scythe', (e) => {
+        map.on('click', id, (e) => {
           const coordinates = e.features[0].geometry.coordinates.slice();
           const date = e.features[0].properties.date;
           const location = e.features[0].properties.location;
@@ -288,42 +298,105 @@ zoom: 11.15
           )
           .addTo(map);
         });
+        
+        // Create a link.
+        const link = document.createElement('a');
+        link.id = id;
+        link.href = '#';
+        link.textContent = id;
+        link.className = 'active';
 
-      document.getElementById('slider').addEventListener('input', (event) => {
-        var sample = featureCollection([]);
-        const date = parseInt(event.target.value);
-        sample.features = filteredData.features.filter((pt => parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) );
-        map.getSource('myData').setData(sample);
-        document.getElementById('active-year').innerText = date;
-        document.getElementById('slider').value = date;
+        
+        
+        
+        // Show or hide layer when the toggle is clicked.
+        link.onclick = function (e) {
+          const clickedLayer = this.textContent;
+          e.preventDefault();
+          e.stopPropagation();
+          const visibility = map.getLayoutProperty(
+          clickedLayer,
+          'visibility'
+          );
+          
+          
+          // Toggle layer visibility by changing the layout object's visibility property.
+          if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            weaponList.push(clickedLayer)
+            Filter(); 
+            
+            } else {
+              map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+              var index = weaponList.indexOf(clickedLayer); // Let's say it's Bob.
+              weaponList.splice(index, 1);
+              Filter();
+              
+            }
+
+            
+            
+
+        };
+        
+        const layers = document.getElementById('menu');
+        layers.appendChild(link);
+        }
+
+
+        
+
+
       });
+
+        map.on('click', 'clusters', (e) => {
+          const features = map.queryRenderedFeatures(e.point, {
+            layers: ['clusters']
+          });
+          const clusterId = features[0].properties.cluster_id;
+          map.getSource('myData').getClusterExpansionZoom(
+            clusterId,
+            (err, zoom) => {
+              if (err) return;
+                
+              map.easeTo({
+                center: features[0].geometry.coordinates,
+                zoom: zoom
+              });
+            }
+          );
+        });
+  
+        
+          
+        
+
+      
 
 
       document.getElementById('conviction').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y');
-        map.getSource('myData').setData(sample);
+        convictionList = "y";
+        Filter(); 
       });
 
       document.getElementById('noConviction').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        console.log(map.getSource('myData').cluster);
-        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n');
-        map.getSource('myData').setData(sample);
+        convictionList = "n";
+        Filter();
       });
 
       document.getElementById('noSelectionConviction').addEventListener('click', function() {
-        var sample = featureCollection([]);
-        sample.features = responseData.features.filter(pt => pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n' || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y' ||  pt.properties.conviction === "yes");
-        map.getSource('myData').setData(sample);
+        convictionList = "y/n";
+        Filter();
       });
 
       document.getElementById('reset').addEventListener('click', function() {
         var sample = featureCollection([]);
         filteredData = responseData;
         sample.features = responseData.features;
-        activeLinks = []
+        toggleableLayerIds = [];
+        weaponList = [];
+        convictionList = []; 
+        timeList = []; 
         map.getSource('myData').setData(sample);
         document.getElementById('active-year').innerText = 1700;
       });
