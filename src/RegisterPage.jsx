@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,  useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "./actions/auth";
 import { Navigate } from "react-router-dom"
@@ -17,9 +17,12 @@ export default function RegisterPage() {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const error = useSelector(state => state.error);
+  const prevErrorRef = useRef();
 
+  const onSubmit = (e) => {
     e.preventDefault();
+
     if (state.password[0] !== state.password2[0]) {
      alert('Passwords do not match');
     } else {
@@ -31,6 +34,17 @@ export default function RegisterPage() {
       dispatch(register(newUser));
     }
   }
+
+  useEffect (() => {
+    console.log(error)
+    if (error !== prevErrorRef.current) {
+      if (error.msg.username) {
+        alert(error.msg.username[0]);
+      }
+      prevErrorRef.current = error;
+    }
+  } )
+  
 
   const onChange = (e) => {
     setState({...state, [e.target.name]:[e.target.value]});
