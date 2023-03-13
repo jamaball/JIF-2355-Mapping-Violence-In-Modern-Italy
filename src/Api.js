@@ -7,35 +7,36 @@ const instance = axios.create({
 });
 const api = {
     getData: () =>
-    instance({
-        'method':'GET',
-        'url':'/api/crimes',
-        transformResponse: [function (data) {
-            var geojson = {
-                type: "FeatureCollection",
-                features: [],
-              };
-            const jsonData = JSON.parse(data)
-            for (let i = 0; i < jsonData.length; i++) {
-                geojson.features.push({
-                    "type": "Feature",
-                    "properties": {
-                        "id": jsonData[i].id,
-                        "date": jsonData[i].date,
-                        "location": jsonData[i].location,
-                        "weapon": jsonData[i].weapon,
-                        "conviction": jsonData[i].conviction,
-                        "description": jsonData[i].description
-                    },
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": jsonData[i].coordinates.coordinates
-                    },
-                })
-            }
-            return geojson;
-    }],
-}),}
+        instance({
+            'method':'GET',
+            'url':'/api/crimes',
+            transformResponse: [function (data) {
+                var geojson = {
+                    type: "FeatureCollection",
+                    features: [],
+                };
+                const jsonData = JSON.parse(data)
+                for (let i = 0; i < jsonData.length; i++) {
+                    geojson.features.push({
+                        "type": "Feature",
+                        "properties": {
+                            "id": jsonData[i].id,
+                            "date": jsonData[i].date,
+                            "location": jsonData[i].location,
+                            "weapon": jsonData[i].weapon,
+                            "conviction": jsonData[i].conviction,
+                            "description": jsonData[i].description
+                        },
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": jsonData[i].coordinates.coordinates
+                        },
+                    })
+                }
+                return geojson;
+            }],
+        }),
+}
 
 export default api;
     // postData: () =>
