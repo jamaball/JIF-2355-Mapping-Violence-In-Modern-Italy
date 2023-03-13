@@ -37,10 +37,9 @@
 }
 
 div.filterbox {
-  width: 600px;
-  height: 500px;
+  width: 40%;
   border: 2px solid #ffffff;
-  padding-right: 30px;
+  padding-right: 20px;
   position: absolute;
   right:0;
   text-align: left;
@@ -307,4 +306,34 @@ div.FilteringHeaders {
   height: 8px;
   border-radius: 50%;
   background: white;
+}
+
+
+
+/* WOE TO THE BITCHASS WHO MADE THIS FUCK THIS */
+/* THE BITCHASS IS ME */
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }

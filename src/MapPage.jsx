@@ -1,52 +1,41 @@
 import React from "react";
 import Map from './Map.jsx';
-  
+
 export default function MapPage() {
+
+
+  
+
   return (
+    
     <div>
       <Map/>
       <div class="LoginAlign">
         <h1>&nbsp;Mapping Violence Page</h1>
       </div>
       <div class = "FilteringHeaders">
-      {/* <button className = "ButtonLogin" id = "login">Login</button> */}
-      {/* <button className = "ButtonLogin" id = "login">Register</button> */}
       </div>
       <br></br>
       <br></br>
-      <br></br>
-
       <div class = "FilteringHeaders">
       </div>
        
       <div id="map"></div>
-      <nav id="menu"></nav>
 
-
-      
 
       <div class = "filterbox">
         <h2>&nbsp;Filter Data:</h2>
-        <h4>&nbsp;Weapon:</h4>
-        <label class="container" id = "noSelectionWeapon"> &nbsp; &nbsp;No Selection
-          <input type="checkbox"/>
-          <span class="checkmark"></span>
-        </label>
-        <label class="container" id = "sasso">&nbsp; &nbsp;Sasso
-          <input type="checkbox"/>
-          <span class="checkmark"></span>
-        </label>
-        <label class="container" id = "pugnale">&nbsp; &nbsp;Pugnale
-          <input type="checkbox"/>
-          <span class="checkmark"></span>
-        </label>
-        <label class="container" id = "archibugio">&nbsp; &nbsp;Archibugio
-          <input type="checkbox"/>
-          <span class="checkmark"></span>
-        </label>
-        {/* <button className='Button' id="filter_weapon1"> Sasso </button> */}
-        {/* <button className='Button' id="filter_weapon2"> Pugnale </button> */}
-        {/* <button className='Button' id="filter_weapon3"> Archibugio </button> */}
+
+        <h4>Weapon:</h4>
+
+
+        <button type="button" class="collapsible">Open Collapsible</button>
+          <div class="content">
+            <nav id="menu"></nav>
+          </div>
+
+
+
         <br></br>
         <h4>&nbsp;Conviction Type:</h4>
         <label class="container" id = "noSelectionConviction">&nbsp; &nbsp;No Selection
@@ -75,8 +64,6 @@ export default function MapPage() {
         </div>
 
       </div>
-
-      
 
 
     </div> 

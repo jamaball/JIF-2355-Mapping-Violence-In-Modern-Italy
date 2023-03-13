@@ -7,6 +7,21 @@ import api from "./Api.js";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
+// let coll = document.getElementsByClassName("collapsible");
+// let i;
+
+// for (i = 0; i < coll.length; i++) {
+//   coll[i].addEventListener("click", function() {
+//     this.classList.toggle("active");
+//     let content = this.nextElementSibling;
+//     if (content.style.display === "block") {
+//       content.style.display = "none";
+//     } else {
+//       content.style.display = "block";
+//     }
+//   });
+// }
+
 const Marker = ({ onClick, children, feature }) => {
   const _onClick = () => {
     onClick(feature.properties.description);
@@ -18,8 +33,6 @@ const Marker = ({ onClick, children, feature }) => {
     </button>
   );
 };
-
-
 
 const Map = () => {
   const mapContainerRef = useRef(null);
@@ -70,7 +83,8 @@ const Map = () => {
         console.log(error)
     });
 
-   
+
+
 const Map = new mapboxgl.Map({
 container: 'map',
 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
