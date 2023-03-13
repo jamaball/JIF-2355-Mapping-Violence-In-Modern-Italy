@@ -20,7 +20,9 @@ export default function MapPage() {
       </div>
        
       <div id="map"></div>
-      <nav id="menu"></nav>
+
+
+      
 
 
       
@@ -28,22 +30,16 @@ export default function MapPage() {
       <div className = "filterbox">
         <h2>&nbsp;Filter Data:</h2>
         <h4>&nbsp;Weapon:</h4>
-        <label className="container" id = "noSelectionWeapon"> &nbsp; &nbsp;No Selection
-          <input type="checkbox"/>
-          <span className="checkmark"></span>
-        </label>
-        <label className="container" id = "sasso">&nbsp; &nbsp;Sasso
-          <input type="checkbox"/>
-          <span className="checkmark"></span>
-        </label>
-        <label className="container" id = "pugnale">&nbsp; &nbsp;Pugnale
-          <input type="checkbox"/>
-          <span className="checkmark"></span>
-        </label>
-        <label className="container" id = "archibugio">&nbsp; &nbsp;Archibugio
-          <input type="checkbox"/>
-          <span className="checkmark"></span>
-        </label>
+
+        <div class="dropdown">
+            <button class="dropbtn">Filter Weapons</button>
+              <div class="dropdown-content">
+              <nav id="menu"></nav>
+              </div>
+          </div>
+
+
+        
         {/* <button className='Button' id="filter_weapon1"> Sasso </button> */}
         {/* <button className='Button' id="filter_weapon2"> Pugnale </button> */}
         {/* <button className='Button' id="filter_weapon3"> Archibugio </button> */}
