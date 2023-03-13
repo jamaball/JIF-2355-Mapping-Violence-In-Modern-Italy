@@ -114,7 +114,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mappingviolence', 
         'USER': 'postgres',
-        'PASSWORD': 'password', #Everyone else keep this as admin
+        'PASSWORD': 'admin', #Everyone else keep this as admin
         #ETHAN^ Chnage password to password to work locally, everyone else ignore
         'HOST': 'localhost', 
         'PORT': '5432',
