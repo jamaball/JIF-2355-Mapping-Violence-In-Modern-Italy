@@ -6,7 +6,7 @@ export default function MapPage() {
     <div>
       <Map/>
       <div className="LoginAlign">
-        <h1>&nbsp;Mapping Violence Page</h1>
+        <h1>&nbsp;Mapping Violence in Early Modern Italy</h1>
       </div>
       <div className = "FilteringHeaders">
       {/* <button className = "ButtonLogin" id = "login">Login</button> */}
@@ -15,14 +15,11 @@ export default function MapPage() {
       <br></br>
       <br></br>
       <br></br>
-
       <div className= "FilteringHeaders">
       </div>
-       
+
+
       <div id="map"></div>
-
-
-      
 
 
       
@@ -61,7 +58,7 @@ export default function MapPage() {
         {/* <button className = 'Button' id="filter_conviction_yes"> Convicted </button> */}
         {/* <button className = 'Button' id="filter_conviction_no"> Not Convicted </button> */}
         <br></br>
-        <button className = 'ButtonLogin' id = "submit"> Submit</button>
+        {/* <button className = 'ButtonLogin' id = "submit"> Submit</button> */}
         <button className = 'ButtonReset' id = "reset"> Reset Data</button>
         <br></br>
         <br></br>

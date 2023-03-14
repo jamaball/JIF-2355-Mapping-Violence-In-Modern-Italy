@@ -37,12 +37,12 @@
 }
 
 div.filterbox {
-  width: 600px;
-  height: 500px;
+  width: 30%;
+  height: 30%;
   border: 2px solid #ffffff;
-  padding-right: 30px;
+  /* padding-right: 15%; */
   position: absolute;
-  right:0;
+  right:10%;
   text-align: left;
 }
 
@@ -115,7 +115,7 @@ div.FilteringHeaders {
 }
 
 .LoginAlign {
-  text-align: center;
+  text-align:center;
 }
 
 .center {
@@ -167,6 +167,7 @@ div.FilteringHeaders {
 
 /* CHECKBOX CODE IS BELOW */
 .container {
+  width: 50%;
   display: block;
   position: relative;
   padding-left: 35px;
@@ -306,7 +307,7 @@ div.FilteringHeaders {
   width: 100%;
   color: white;
   padding: 16px;
-  font-size: 16px;
+  font-size: 20px;
   border: none;
 }
 
