@@ -12,13 +12,6 @@ code {
     monospace;
 }
 
-.map-container {
-  margin: auto;
-  height: 500px; 
-  width: 600px;
-  /* height: 600px; */
-  /* width: 750px; */
-  }
 
 .sidebar {
   background-color: rgba(35, 55, 75, 0.9);
