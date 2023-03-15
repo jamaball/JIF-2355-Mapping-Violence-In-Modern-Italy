@@ -74,6 +74,7 @@ const UploadDataPage = () => {
         <h1>Upload Data</h1>
         <br></br>
         <br></br>
+        {/** 
         <h2>Title</h2>
         <input id = "inputRoundedEdge"/>
         <br></br>
@@ -82,6 +83,7 @@ const UploadDataPage = () => {
         <input id = "inputRoundedEdge"/>
         <br></br>
         <br></br>
+        */}
         <label for="myfile">Select a file:</label>
         <br></br>
         <input type="file" id="myfile" name="myfile"
