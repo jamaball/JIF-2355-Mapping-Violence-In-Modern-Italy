@@ -14,6 +14,20 @@ This repository contains code, documentation, and related resources for the Mapp
 
 # Release Notes
 
+## Version 0.3.0
+
+New Features
+- Created data download functionality
+- Added user ability to add data to their local view of the map
+- Added admin registration and login
+- Updated filtering system to show a dynamic list of all weapon types mapped
+
+Bug Fixes
+- Fixed the timeline slider bug so that the UI slider updates on drag
+
+Kown Isuues
+- If not resolved before visiting a different page, registration and login error popups will reappear when the user returns to the registration/login page
+
 ## Version 0.2.0
 
 New Features
