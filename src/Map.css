@@ -1,11 +1,11 @@
 .map-container {
   position: absolute;
-  top: 0;
+  top: 8%;
   bottom: 0;
-  left: 10%;
+  
   margin: auto;
-  height: 70%; 
-  width: 50%;
+  height: 93%; 
+  width: 65%;
   /* height: 600px; */
   /* width: 750px; */
   }
@@ -79,6 +79,30 @@ color: #000000;
 }
  
 #menu a.active:hover {
-background: #c71616;
+background: #a20303;
 color: #ffffff;
 }
+
+.vertical {
+  border-left: 3px solid #a20303;
+  height: 10px;
+}
+.timeline {
+  display: flex;
+  display:inline;
+}
+
+.timeline-axis {
+  display:inline;
+  float: left;
+  width:100%;
+}
+
+.axis-marker {
+  /* width: 50%; */
+  float: left;
+  padding-right: 10;
+  /* padding-left: 8.5px; */
+  white-space:nowrap;
+}
+
