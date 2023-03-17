@@ -54,6 +54,7 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
+
     //get the points from the database
     api.getData()
     .then((response) => {
