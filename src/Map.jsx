@@ -54,6 +54,15 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
+    const geocoder = new MapboxGeocoder({
+      // Initialize the geocoder
+      accessToken: mapboxgl.accessToken, // Set the access token
+      mapboxgl: mapboxgl, // Set the mapbox-gl instance
+      marker: false // Do not use the default marker style
+    });
+    
+    // Add the geocoder to the map
+    map.addControl(geocoder);
 
     //get the points from the database
     api.getData()
