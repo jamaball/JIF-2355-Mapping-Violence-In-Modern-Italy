@@ -57,6 +57,8 @@ const Map = () => {
     const geocoder = new MapboxGeocoder({
       // Initialize the geocoder
       accessToken: mapboxgl.accessToken, // Set the access token
+      placeholder: 'Search for a city',
+      bbox: [6.626556, 35.4122073, 18.6201843, 47.092146],
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: false // Do not use the default marker style
     });
