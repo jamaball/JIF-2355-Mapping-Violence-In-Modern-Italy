@@ -60,7 +60,8 @@ div.filterbox {
 
 div.FilteringHeaders {
   background-color: #a20303;
-  height: 70px;
+  /* height: 1%; */
+  margin-bottom: 10%;
 }
 
 .NavBarButtons {
