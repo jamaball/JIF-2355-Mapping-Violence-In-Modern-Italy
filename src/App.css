@@ -73,7 +73,7 @@ div.FilteringHeaders {
 .ButtonLogin {
   background-color: #ffffff;
   /* float: right; */
-  border: 2px solid #a20303;
+  /* border: 2px solid #161313; */
   border-radius: 24px;
   color: #a20303;
   padding: 10px 24px;
@@ -178,7 +178,7 @@ div.FilteringHeaders {
 }
 
 
-/* EXPIREMENTAL CODE BELOW BE CAREFUL */
+/* FUCKED UP CODE BELOW BE CAREFUL CAUSE RADIO BUTTONS ONLY WORK BY GRACE OF GOD */
 
 
 /* CHECKBOX CODE IS BELOW */

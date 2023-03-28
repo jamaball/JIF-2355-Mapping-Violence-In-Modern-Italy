@@ -431,7 +431,7 @@ zoom: 11.15
         timeList = []; 
         map.getSource('myData').setData(sample);
         
-        document.getElementById('noSelectionConviction').checked = checked;
+        document.getElementById('noSelectionConviction').checked = false;
 
         document.getElementById('active-year').innerText = 1700;
         document.getElementById('active-year-range').innerText = 1749;
