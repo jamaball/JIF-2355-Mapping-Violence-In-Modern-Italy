@@ -220,7 +220,7 @@ div.FilteringHeaders {
   background-color: #ffe7e7;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a reds background */
 .container input:checked ~ .checkmark {
   background-color: #a20303;
 }
@@ -318,6 +318,12 @@ div.FilteringHeaders {
   border-radius: 50%;
   background: white;
 }
+
+
+
+/* END OF EXPIREMENTAL BS */
+
+/* Below is the code for the weapons dropdown button */
 .dropbtn {
   background-color: #ccc;
   width: 100%;
@@ -354,3 +360,5 @@ div.FilteringHeaders {
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #a20303;}
+
+/* End of Weapons dropdown button */
