@@ -362,3 +362,8 @@ div.FilteringHeaders {
 .dropdown:hover .dropbtn {background-color: #a20303;}
 
 /* End of Weapons dropdown button */
+
+.descriptionSearch {
+  margin-left: 50px
+}
+
