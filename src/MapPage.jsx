@@ -16,6 +16,10 @@ export default function MapPage() {
               <nav id="menu"></nav>
               </div>
           </div>
+        
+        <input class="descriptionSearch" type="text" placeholder="Search Description" id = "descriptionSearch">
+        </input>
+
         <br></br>
         <h4>&nbsp;Conviction Type:</h4>
         <label className="container" id = "noSelectionConviction">&nbsp; &nbsp;No Selection
