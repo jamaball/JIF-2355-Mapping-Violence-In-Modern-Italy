@@ -55,7 +55,7 @@ export default function RegisterPage() {
   }
 
   return(
-      <div className = "col-md-4 m-auto">
+      <div className = "col-md-4 m-auto formCard">
         <div className="card card-body mt-5">
           <h2 className="text-center">Register</h2>
           <form className="center" onSubmit={onSubmit}>

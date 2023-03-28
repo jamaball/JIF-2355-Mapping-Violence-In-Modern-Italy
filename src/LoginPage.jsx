@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "./actions/auth";
 import { Navigate } from "react-router-dom"
 import AdminPage from './AdminPage';
+import "./registerLogin.css";
 
 import {
   Link,
@@ -47,7 +48,7 @@ const LoginPage = () => {
 
 
   return (
-      <div className = "col-md-4 m-auto" >
+      <div className = "col-md-4 m-auto">
         <div className="card card-body mt-5">
           <h2 className="text-center">Login</h2>
           <form className="center" onSubmit={onSubmit}>

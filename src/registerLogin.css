@@ -1,12 +1,16 @@
-.center {
+/* .center {
     display: flex;
     justify-content: center;
-}
+} */
 
-.inputRoundedEdge {
+/* .inputRoundedEdge {
     border-radius: 25px;
     border: 2px solid #c71616;
     padding: 20px; 
     width: 200px;
     height: 15px;    
-  }
+  } */
+
+/* .form {
+    padding-top: 20%;
+} */

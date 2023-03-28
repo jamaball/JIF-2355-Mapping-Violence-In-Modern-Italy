@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 
+
 const UploadDataPage = () => {
   let [fileEvent, setFileEvent] = useState({});
   const [ JsonFile, setJsonFile ] = useState({});
@@ -64,37 +65,37 @@ const UploadDataPage = () => {
   
 
     return (
-      <div class = "LoginAlign">
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h1>Upload Data</h1>
-        <br></br>
-        <br></br>
-        {/** 
-        <h2>Title</h2>
-        <input id = "inputRoundedEdge"/>
-        <br></br>
-        <br></br>
-        <h2>Email</h2>
-        <input id = "inputRoundedEdge"/>
-        <br></br>
-        <br></br>
-        */}
-        <label for="myfile">Select a file:</label>
-        <br></br>
-        <input type="file" id="myfile" name="myfile"
-               onChange={onChangeHandler} />
-        <br />
-        <label id="fileTypeError"></label>
-        <br />
-        
-        <input type="submit" onClick={onClickHandler}/>
-        <br />
-        <button onClick={removeData}>Remove Uploaded Data</button>
+      <div className = "col-md-4 m-auto">
+        <div className="card card-body mt-5">
+          <div class = "LoginAlign">
+          <h2 className="text-center">Upload Data</h2>
+            {/** 
+            <h2>Title</h2>
+            <input id = "inputRoundedEdge"/>
+            <br></br>
+            <br></br>
+            <h2>Email</h2>
+            <input id = "inputRoundedEdge"/>
+            <br></br>
+            <br></br>
+            */}
+            <div className="form=group">
+              <label for="myfile">Select a file:</label>
+              
+              <div>
+                <input className="file"  type="file" id="myfile" name="myfile"
+                      onChange={onChangeHandler} />
+                <br />
+                <label id="fileTypeError"></label>
+              </div>
+   
+            </div>
+            
+            <input className="ButtonLogin" type="submit" onClick={onClickHandler}/>
+            <br />
+            <button className="Button" onClick={removeData}>Remove Uploaded Data</button>
+          </div>
+        </div>
       </div>
     );
   };
