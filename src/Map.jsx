@@ -189,7 +189,7 @@ zoom: 11.15
               sample.features = responseData.features.filter((pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
   
             } else if (convictionList == "n") {
-              sample.features = responseData.features.filter(pt =>  (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
+              sample.features = responseData.features.filter((pt =>  pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
   
             }
             
@@ -434,14 +434,13 @@ zoom: 11.15
         sample.features = responseData.features;
         toggleableLayerIds = [];
         weaponList = [];
-        convictionList = []; 
+        convictionList = "y/n"; 
         timeList = []; 
         map.getSource('myData').setData(sample);
-        
-        document.getElementById('noSelectionConviction').checked = checked;
 
-        document.getElementById('active-year').innerText = 1700;
-        document.getElementById('active-year-range').innerText = 1749;
+        document.getElementById('active-year').innerText = 1500;
+        document.getElementById('active-year-range').innerText = 1800;
+        document.getElementById('slider').value = 1700;
       });
 
       document.getElementById('download').addEventListener('click', function() {
