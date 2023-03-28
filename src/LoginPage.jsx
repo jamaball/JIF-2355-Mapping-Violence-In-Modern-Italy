@@ -47,7 +47,7 @@ const LoginPage = () => {
 
 
   return (
-      <div className = "col-md-4 m-auto">
+      <div className = "col-md-4 m-auto" >
         <div className="card card-body mt-5">
           <h2 className="text-center">Login</h2>
           <form className="center" onSubmit={onSubmit}>
