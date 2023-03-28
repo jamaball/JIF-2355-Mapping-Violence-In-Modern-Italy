@@ -278,7 +278,7 @@ zoom: 11.15
           
           paint: {
             'circle-color': '#ff4542',
-            'circle-radius': 4,
+            'circle-radius': 8,
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff'
           }
