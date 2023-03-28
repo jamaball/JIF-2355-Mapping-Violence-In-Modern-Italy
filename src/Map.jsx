@@ -174,7 +174,8 @@ zoom: 11.15
       let toggleableLayerIds = [];
       let weaponList = [];
       let convictionList = "y/n"
-      let timeList = []; 
+      let timeList = [];
+      let descriptionSearchString = "";
       
       function Filter() {
         var sample = featureCollection([]);
@@ -233,6 +234,9 @@ zoom: 11.15
               }
           }
 
+        }
+        if (descriptionSearchString !== "") {
+          sample.features = responseData.features.filter(pt => pt.properties.description.includes(descriptionSearchString));
         }
         map.getSource('myData').setData(sample);
       }
@@ -404,7 +408,10 @@ zoom: 11.15
         
 
       
-
+      document.getElementById("descriptionSearch").addEventListener("input", function(e) {
+        descriptionSearchString = e.target.value;
+        Filter();
+      });
 
       document.getElementById('conviction').addEventListener('click', function() {
         convictionList = "y";
@@ -467,7 +474,6 @@ zoom: 11.15
       <div className="map-container" ref={mapContainerRef} />
   )
 };
-
 
 
 export default Map;
