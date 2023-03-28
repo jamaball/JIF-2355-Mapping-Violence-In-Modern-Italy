@@ -92,17 +92,17 @@ color: #ffffff;
   display:inline;
 }
 
-.timeline-axis {
+/* .timeline-axis {
   display:inline;
   float: left;
   width:100%;
 }
 
 .axis-marker {
-  /* width: 50%; */
+ 
   float: left;
   padding-right: 10;
-  /* padding-left: 8.5px; */
+  
   white-space:nowrap;
-}
+} */
 

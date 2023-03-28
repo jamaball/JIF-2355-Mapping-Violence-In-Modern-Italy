@@ -41,42 +41,6 @@ export default function MapPage() {
           <h4>&nbsp;Year: <label id='active-year'>1700</label></h4>
               <input type="range" min="1500" max="1800" step="50" value="1700" class="slider" id = "slider" />
           </div>
-          <div className="timeline-axis">
-            <div className="axis-marker">
-              <div className="vertical"></div>
-              <p>1500-1549</p>
-            </div>
-
-            <div className="axis-marker">
-              <div className="vertical"></div>
-              <p>1550-1599</p>
-            </div>
-
-            <div className="axis-marker">
-              <div className="vertical"></div>
-              <p>1600-1649</p>
-            </div>
-
-            <div className="axis-marker">
-              <div className="vertical"></div>
-              <p>1650-1699</p>
-            </div>
-
-            <div className="axis-marker">
-              <div className="vertical"></div>
-              <p>1700-1749</p>
-            </div>
-
-            <div className="axis-marker">
-              <div className="vertical"></div>
-              <p>1750-1799</p>
-            </div>
-
-            <div className="axis-marker">
-              <div className="vertical"></div>
-              <p>1800</p>
-            </div>
-        </div>
         </div>
         
       </div>
