@@ -38,7 +38,7 @@ export default function MapPage() {
         <br></br>
         <div className="timeline">
           <div class='slidecontainer session' id='sliderbar'>
-          <h4>&nbsp;Year: <label id='active-year'>1700</label></h4>
+          <h4>&nbsp;Years: <label id='active-year'>1700</label> - <label id='active-year-range'>1749</label></h4>
               <input type="range" min="1500" max="1800" step="50" value="1700" class="slider" id = "slider" />
           </div>
         </div>

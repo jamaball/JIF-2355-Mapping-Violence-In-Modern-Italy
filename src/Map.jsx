@@ -242,6 +242,7 @@ zoom: 11.15
         const date = parseInt(event.target.value);
         timeList.push(date);
         document.getElementById('active-year').innerText = date;
+        document.getElementById('active-year-range').innerText = date + 49;
         document.getElementById('slider').value = date;
         Filter(); 
       });
@@ -430,6 +431,7 @@ zoom: 11.15
         timeList = []; 
         map.getSource('myData').setData(sample);
         document.getElementById('active-year').innerText = 1700;
+        document.getElementById('active-year-range').innerText = 1749;
       });
 
       document.getElementById('download').addEventListener('click', function() {
