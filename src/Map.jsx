@@ -437,6 +437,9 @@ zoom: 11.15
         convictionList = []; 
         timeList = []; 
         map.getSource('myData').setData(sample);
+        
+        document.getElementById('noSelectionConviction').checked = checked;
+
         document.getElementById('active-year').innerText = 1700;
         document.getElementById('active-year-range').innerText = 1749;
       });
