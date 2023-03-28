@@ -32,7 +32,7 @@ export default function MapPage() {
         </label>
         
         <br></br>
-        <button className = 'ButtonReset' id = "reset"> Reset Data</button>
+        <button className = 'ButtonReset' id = "reset"> Reset Filters</button>
         <button className = 'ButtonLogin' id = "download"> Download Dataset</button>
         <br></br>
         <br></br>

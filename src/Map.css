@@ -74,14 +74,24 @@ color: #404040;
 }
  
 #menu a.active {
-background-color: #ffffff;
-color: #000000;
+  background-color: #f8f8f8;
+  color: #404040;
 }
  
 #menu a.active:hover {
 background: #a20303;
 color: #ffffff;
 }
+
+#menu a.active.clicked {
+  background-color: #a20303;
+  color:  #ffffff;
+}
+
+/* #menu a:focus {
+  background: #a20303;
+  color: #ffffff;
+  } */
 
 .vertical {
   border-left: 3px solid #a20303;
@@ -91,18 +101,4 @@ color: #ffffff;
   display: flex;
   display:inline;
 }
-
-/* .timeline-axis {
-  display:inline;
-  float: left;
-  width:100%;
-}
-
-.axis-marker {
- 
-  float: left;
-  padding-right: 10;
-  
-  white-space:nowrap;
-} */
 
