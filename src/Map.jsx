@@ -458,6 +458,12 @@ zoom: 11.15
         document.body.appendChild(element);
         element.click();
       });
+
+      document.getElementById('center').addEventListener('click', function() {
+        const center = new mapboxgl.LngLat(13, 43)
+        map.setCenter(center)
+        map.setZoom(5)
+      });
     
     });
 

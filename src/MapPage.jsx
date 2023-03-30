@@ -38,6 +38,7 @@ export default function MapPage() {
         <br></br>
         <button className = 'ButtonReset' id = "reset"> Reset Filters</button>
         <button className = 'ButtonLogin' id = "download"> Download Dataset</button>
+        <button className = 'ButtonLogin' id = "center">Center Map</button>
         <br></br>
         <br></br>
         <div className="timeline">
