@@ -265,12 +265,10 @@ zoom: 11.15
         // Set up the corresponding toggle button for each layer.
         for (const id of toggleableLayerIds) {
         // Skip layers that already have a button set up.
-        if (document.getElementById(id)) {
-        continue;
-        }
+          if (document.getElementById(id)) {
+            continue;
+          }
 
-        
-  
         map.addLayer({
           id: id,
           type: 'circle',
@@ -444,9 +442,7 @@ zoom: 11.15
         timeList = []; 
         map.getSource('myData').setData(sample);
         
-        document.getElementById('noSelectionConviction').checked = false;
-
-
+        document.getElementById('noSelectionConvictionRadio').checked = true;
         document.getElementById('active-year').innerText = 1500;
         document.getElementById('active-year-range').innerText = 1800;
         document.getElementById('slider').value = 1700;
