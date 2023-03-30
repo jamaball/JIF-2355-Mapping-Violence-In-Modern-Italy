@@ -14,3 +14,9 @@
 /* .form {
     padding-top: 20%;
 } */
+#loginError {
+    color: red;
+}
+#registerError {
+    color: red;
+}
