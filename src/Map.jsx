@@ -283,7 +283,7 @@ zoom: 11.15
           
           paint: {
             'circle-color': '#ff4542',
-            'circle-radius': 4,
+            'circle-radius': 8,
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff'
           }
@@ -443,6 +443,9 @@ zoom: 11.15
         convictionList = "y/n"; 
         timeList = []; 
         map.getSource('myData').setData(sample);
+        
+        document.getElementById('noSelectionConviction').checked = false;
+
 
         document.getElementById('active-year').innerText = 1500;
         document.getElementById('active-year-range').innerText = 1800;
