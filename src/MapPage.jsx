@@ -23,7 +23,7 @@ export default function MapPage() {
         <br></br>
         <h4>&nbsp;Conviction Type:</h4>
         <label className="container" id = "noSelectionConviction">&nbsp; &nbsp;No Selection
-          <input type="radio" name="radio"/>
+          <input type="radio" name="radio" id="noSelectionConvictionRadio" defaultChecked/>
           <span className="checkmark"></span>
         </label>
         <label className="container" id = "conviction">&nbsp; &nbsp;Convicted
