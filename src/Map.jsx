@@ -347,6 +347,7 @@ zoom: 11.15
         
         // Show or hide layer when the toggle is clicked.
         link.onclick = function (e) {
+          // link.className = "active clicked"
           const clickedLayer = this.textContent;
           e.preventDefault();
           e.stopPropagation();
@@ -360,12 +361,14 @@ zoom: 11.15
           if (visibility === 'visible') {
             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
             weaponList.push(clickedLayer)
+            link.className = 'active clicked';
             Filter(); 
             
             } else {
               map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
               var index = weaponList.indexOf(clickedLayer); // Let's say it's Bob.
               weaponList.splice(index, 1);
+              link.className = "active"
               Filter();
               
             }
@@ -433,6 +436,9 @@ zoom: 11.15
         filteredData = responseData;
         sample.features = responseData.features;
         toggleableLayerIds = [];
+        weaponList.forEach(function (w) {
+          document.getElementById(w).className="active";
+        })
         weaponList = [];
         convictionList = "y/n"; 
         timeList = []; 
