@@ -45,14 +45,31 @@ const Map = () => {
   }
 
   // Initialize map when component mounts
+  const coordinates = document.getElementById('coordinates');
+
   useEffect(() => {
     const map = new mapboxgl.Map({
+      
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [13, 43],
       zoom: 5,
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
+
+    const marker = new mapboxgl.Marker({
+      draggable: true
+      })
+      .setLngLat([38.907, -77.04])
+      .addTo(map);
+       
+      function onDragEnd() {
+      const lngLat = marker.getLngLat();
+      coordinates.style.display = 'block';
+      coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+      }
+       
+      marker.on('dragend', onDragEnd);
 
     //get the points from the database
     api.getData()
@@ -436,6 +453,8 @@ zoom: 11.15
 
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
+    
 
     // Clean up on unmount
     return () => map.remove();

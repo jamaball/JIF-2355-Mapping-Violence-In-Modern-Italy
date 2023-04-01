@@ -20,7 +20,7 @@ export default function MapPage() {
 
 
       <div id="map"></div>
-
+      <div id="coordinates" class="coordinates"></div>
 
       
 
