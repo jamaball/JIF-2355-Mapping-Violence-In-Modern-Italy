@@ -20,7 +20,7 @@ export default function MapPage() {
 
 
       <div id="map"></div>
-      <div id="coordinates" class="coordinates"></div>
+    
 
       
 
@@ -60,6 +60,7 @@ export default function MapPage() {
         <br></br>
         {/* <button className = 'ButtonLogin' id = "submit"> Submit</button> */}
         <button className = 'ButtonReset' id = "reset"> Reset Data</button>
+        <button className = 'ButtonReset' id = "marker"> Marker</button>
         <br></br>
         <br></br>
         <div class='slidecontainer session' id='sliderbar'>

@@ -57,19 +57,21 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
-    const marker = new mapboxgl.Marker({
-      draggable: true
-      })
-      .setLngLat([38.907, -77.04])
-      .addTo(map);
-       
-      function onDragEnd() {
-      const lngLat = marker.getLngLat();
-      coordinates.style.display = 'block';
-      coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
-      }
-       
-      marker.on('dragend', onDragEnd);
+    document.getElementById('marker').addEventListener('click', function() {
+      const marker = new mapboxgl.Marker({
+        draggable: true
+        })
+        .setLngLat([12.5, 42.5])
+        .addTo(map);
+         
+        function onDragEnd() {
+        const lngLat = marker.getLngLat();
+        }
+         
+        marker.on('dragend', onDragEnd);
+    });
+
+   
 
     //get the points from the database
     api.getData()
