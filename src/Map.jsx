@@ -57,7 +57,7 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
-    let remove = false
+   
     document.getElementById('marker').addEventListener('click', function() {
       const marker = new mapboxgl.Marker({
         draggable: true
