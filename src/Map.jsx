@@ -45,8 +45,11 @@ const Map = () => {
   }
 
   // Initialize map when component mounts
+  const coordinates = document.getElementById('coordinates');
+
   useEffect(() => {
     const map = new mapboxgl.Map({
+      
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [13, 43],
@@ -54,6 +57,27 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
+    let remove = false
+    document.getElementById('marker').addEventListener('click', function() {
+      const marker = new mapboxgl.Marker({
+        draggable: true
+        })
+        .setLngLat([12.5, 42.5])
+        .addTo(map);
+        function onDragEnd() {
+        const lngLat = marker.getLngLat();
+        
+        }
+        marker.on('dragend', onDragEnd);
+        document.getElementById('clearMarker').addEventListener('click', function() {
+        marker.remove();
+        });
+    });
+
+    
+      
+  
+   
     const geocoder = new MapboxGeocoder({
       // Initialize the geocoder
       accessToken: mapboxgl.accessToken, // Set the access token
@@ -167,6 +191,8 @@ const Map = () => {
         }
         
       });
+
+      
 
       
 
@@ -395,6 +421,7 @@ const Map = () => {
         weaponList = [];
         convictionList = "y/n"; 
         timeList = []; 
+        remove = true;
         map.getSource('myData').setData(sample);
         
         document.getElementById('noSelectionConvictionRadio').checked = true;
@@ -426,6 +453,8 @@ const Map = () => {
 
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
+    
 
     // Clean up on unmount
     return () => map.remove();

@@ -119,7 +119,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mappingviolence', 
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': '1516',
         'HOST': 'localhost', 
         'PORT': '5432',
     }
