@@ -44,8 +44,9 @@ div.filterbox {
   border: 2px solid #ffffff;
   /* padding-right: 15%; */
   position: absolute;
-  right:10%;
+  right:3%;
   text-align: left;
+  top: 10%;
 }
 
 
@@ -60,26 +61,34 @@ div.filterbox {
 }
 
 div.FilteringHeaders {
-  text-align: right;
+  background-color: #a20303;
+  height: 70px;
+  margin-bottom: 10%;
+}
+
+.NavBarButtons {
+  padding-top: 50px;
+  float: right;
+  font-weight: 600;
 }
 
 .ButtonLogin {
   background-color: #ffffff;
   /* float: right; */
-  border: 2px solid #c71616;
+  /* border: 2px solid #161313; */
   border-radius: 24px;
-  color: #c71616;
+  color: #a20303;
   padding: 10px 24px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 5px;
+  margin: 10px;
   transition: 0.35s;
 }
 
 .ButtonLogin:hover {
-  background-color:#c71616;
+  background-color:#a20303;
   color: #ffffff;
   transition: 0.35s;
 }
@@ -93,9 +102,9 @@ div.FilteringHeaders {
 .ButtonReset {
   background-color: #ffffff;
   float: right;
-  border: 2px solid #c71616;
+  border: 2px solid #a20303;
   border-radius: 24px;
-  color: #c71616;
+  color: #a20303;
   padding: 10px 24px;
   text-align: center;
   text-decoration: none;
@@ -106,7 +115,7 @@ div.FilteringHeaders {
 }
 
 .ButtonReset:hover {
-  background-color:#c71616;
+  background-color:#a20303;
   color: #ffffff;
   transition: 0.35s;
 }
@@ -114,6 +123,13 @@ div.FilteringHeaders {
 .ButtonReset:active {
   transform: scale(0.95);
   box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
+}
+
+#PageTitle {
+  text-align: left;
+  display: inline-block;
+  color: white;
+  margin: 10px;
 }
 
 .LoginAlign {
@@ -151,7 +167,7 @@ div.FilteringHeaders {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #c71616;
+  background: #a20303;
   cursor: pointer;
 }
 
@@ -159,12 +175,12 @@ div.FilteringHeaders {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #c71616;
+  background: #a20303;
   cursor: pointer;
 }
 
 
-/* EXPIREMENTAL CODE BELOW BE CAREFUL */
+/* FUCKED UP CODE BELOW BE CAREFUL CAUSE RADIO BUTTONS ONLY WORK BY GRACE OF GOD */
 
 
 /* CHECKBOX CODE IS BELOW */
@@ -206,9 +222,9 @@ div.FilteringHeaders {
   background-color: #ffe7e7;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a reds background */
 .container input:checked ~ .checkmark {
-  background-color: #c71616;
+  background-color: #a20303;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -304,6 +320,12 @@ div.FilteringHeaders {
   border-radius: 50%;
   background: white;
 }
+
+
+
+/* END OF EXPIREMENTAL BS */
+
+/* Below is the code for the weapons dropdown button */
 .dropbtn {
   background-color: #ccc;
   width: 100%;
@@ -339,5 +361,11 @@ div.FilteringHeaders {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #c71616;}
+.dropdown:hover .dropbtn {background-color: #a20303;}
+
+/* End of Weapons dropdown button */
+
+.descriptionSearch {
+  margin-left: 50px
+}
 

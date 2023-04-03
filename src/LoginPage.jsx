@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "./actions/auth";
 import { Navigate } from "react-router-dom"
 import AdminPage from './AdminPage';
+import "./registerLogin.css";
 
 import {
   Link,
@@ -25,7 +26,9 @@ const LoginPage = () => {
     console.log(prevErrorRef.current)
     if (error != prevErrorRef.current) {
       if (error.msg.non_field_errors) {
-        alert('Username or password incorrect');
+        var errorDisplay = document.getElementById("loginError")
+        errorDisplay.textContent = "Username or password incorrect"
+        //alert('Username or password incorrect');
       }
       prevErrorRef.current = error;
     }
@@ -73,6 +76,7 @@ const LoginPage = () => {
                 value={state.password}
               />
             </div>
+            <label id="loginError"></label>
             <br></br>
             <div className="form-group center">
               <button type="submit" className="Button">Login</button>

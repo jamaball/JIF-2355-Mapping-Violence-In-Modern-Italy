@@ -5,28 +5,10 @@ export default function MapPage() {
   return (
     <div>
       <Map/>
-      <div className="LoginAlign">
-        <h1>&nbsp;Mapping Violence in Early Modern Italy</h1>
-      </div>
-      <div className = "FilteringHeaders">
-      {/* <button className = "ButtonLogin" id = "login">Login</button> */}
-      {/* <button className = "ButtonLogin" id = "login">Register</button> */}
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <div className= "FilteringHeaders">
-      </div>
-
-
       <div id="map"></div>
-    
-
-      
-
       <div className = "filterbox">
         <h2>&nbsp;Filter Data:</h2>
-        <h4>&nbsp;Weapon:</h4>
+        {/* <h4>&nbsp;Weapon:</h4> */}
 
         <div class="dropdown">
             <button class="dropbtn">Filter Weapons</button>
@@ -34,16 +16,14 @@ export default function MapPage() {
               <nav id="menu"></nav>
               </div>
           </div>
-
-
         
-        {/* <button className='Button' id="filter_weapon1"> Sasso </button> */}
-        {/* <button className='Button' id="filter_weapon2"> Pugnale </button> */}
-        {/* <button className='Button' id="filter_weapon3"> Archibugio </button> */}
+        <input class="descriptionSearch" type="text" placeholder="Search Description" id = "descriptionSearch">
+        </input>
+
         <br></br>
         <h4>&nbsp;Conviction Type:</h4>
         <label className="container" id = "noSelectionConviction">&nbsp; &nbsp;No Selection
-          <input type="radio" name="radio"/>
+          <input type="radio" name="radio" id="noSelectionConvictionRadio" defaultChecked/>
           <span className="checkmark"></span>
         </label>
         <label className="container" id = "conviction">&nbsp; &nbsp;Convicted
@@ -55,24 +35,21 @@ export default function MapPage() {
           <span className="checkmark"></span>
         </label>
         
-        {/* <button className = 'Button' id="filter_conviction_yes"> Convicted </button> */}
-        {/* <button className = 'Button' id="filter_conviction_no"> Not Convicted </button> */}
         <br></br>
-        {/* <button className = 'ButtonLogin' id = "submit"> Submit</button> */}
-        <button className = 'ButtonReset' id = "reset"> Reset Data</button>
+        <button className = 'ButtonReset' id = "reset"> Reset Filters</button>
         <button className = 'ButtonReset' id = "marker"> Marker</button>
+        <button className = 'ButtonLogin' id = "download"> Download Dataset</button>
+        <button className = 'ButtonLogin' id = "center">Center Map</button>
         <br></br>
         <br></br>
-        <div class='slidecontainer session' id='sliderbar'>
-         <h4>&nbsp;Year: <label id='active-year'>1700</label></h4>
-            <input type="range" min="1500" max="1900" step="50" value="1700" class="slider" id = "slider" />
+        <div className="timeline">
+          <div class='slidecontainer session' id='sliderbar'>
+          <h4>&nbsp;Years: <label id='active-year'>1500</label> - <label id='active-year-range'>1800</label></h4>
+              <input type="range" min="1500" max="1800" step="50" value="1700" class="slider" id = "slider" />
+          </div>
         </div>
-        <br></br>
-        <button className = 'ButtonLogin' id = "download"> Download</button>
+        
       </div>
-
-      
-
 
     </div> 
   )

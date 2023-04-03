@@ -1,11 +1,11 @@
 .map-container {
   position: absolute;
-  top: 0;
+  top: 12%;
   bottom: 0;
-  left: 15%;
+  
   margin: auto;
-  height: 500px; 
-  width: 40%;
+  height: 93%; 
+  width: 65%;
   /* height: 600px; */
   /* width: 750px; */
   }
@@ -63,13 +63,30 @@ color: #404040;
 }
  
 #menu a.active {
-background-color: #ffffff;
-color: #000000;
+  background-color: #f8f8f8;
+  color: #404040;
 }
  
 #menu a.active:hover {
-background: #c71616;
+background: #a20303;
 color: #ffffff;
 }
 
+#menu a.active.clicked {
+  background-color: #a20303;
+  color:  #ffffff;
+}
 
+/* #menu a:focus {
+  background: #a20303;
+  color: #ffffff;
+  } */
+
+.vertical {
+  border-left: 3px solid #a20303;
+  height: 10px;
+}
+.timeline {
+  display: flex;
+  display:inline;
+}

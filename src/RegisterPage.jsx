@@ -2,6 +2,7 @@ import React, { useState,  useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "./actions/auth";
 import { Navigate } from "react-router-dom"
+import "./registerLogin.css";
 import {
   Link,
 } from "react-router-dom";
@@ -24,8 +25,11 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (state.password[0] !== state.password2[0]) {
-     alert('Passwords do not match');
+      var errorDisplay = document.getElementById("registerError")
+      errorDisplay.textContent = "Passwords do not match"
     } else {
+      var errorDisplay = document.getElementById("registerError")
+      errorDisplay.textContent = ""
       const newUser = { 
         username: state.username[0],
         password: state.password[0],
@@ -39,8 +43,10 @@ export default function RegisterPage() {
     console.log(error)
     if (error !== prevErrorRef.current) {
       if (error.msg.username) {
-        alert(error.msg.username[0]);
-      }
+        var errorDisplay = document.getElementById("registerError")
+        errorDisplay.textContent = error.msg.username[0]
+        // alert(error.msg.username[0]);
+      } 
       prevErrorRef.current = error;
     }
   } )
@@ -55,7 +61,7 @@ export default function RegisterPage() {
   }
 
   return(
-      <div className = "col-md-4 m-auto">
+      <div className = "col-md-4 m-auto formCard">
         <div className="card card-body mt-5">
           <h2 className="text-center">Register</h2>
           <form className="center" onSubmit={onSubmit}>
@@ -103,6 +109,7 @@ export default function RegisterPage() {
                 value={state.password2}
               />
             </div>
+            <label id="registerError"></label>
             <br></br>
             <div className="form-group center">
               <button type="submit" className="Button">Create Account</button>

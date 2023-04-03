@@ -57,6 +57,7 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
+    
     document.getElementById('marker').addEventListener('click', function() {
       const marker = new mapboxgl.Marker({
         draggable: true
@@ -70,8 +71,19 @@ const Map = () => {
          
         marker.on('dragend', onDragEnd);
     });
-
+  
    
+    const geocoder = new MapboxGeocoder({
+      // Initialize the geocoder
+      accessToken: mapboxgl.accessToken, // Set the access token
+      placeholder: 'Search for a city',
+      bbox: [6.626556, 35.4122073, 18.6201843, 47.092146],
+      mapboxgl: mapboxgl, // Set the mapbox-gl instance
+      marker: false // Do not use the default marker style
+    });
+    
+    // Add the geocoder to the map
+    map.addControl(geocoder);
 
     //get the points from the database
     api.getData()
@@ -181,7 +193,8 @@ zoom: 11.15
       let toggleableLayerIds = [];
       let weaponList = [];
       let convictionList = "y/n"
-      let timeList = []; 
+      let timeList = [];
+      let descriptionSearchString = "";
       
       function Filter() {
         var sample = featureCollection([]);
@@ -195,7 +208,7 @@ zoom: 11.15
               sample.features = responseData.features.filter((pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
   
             } else if (convictionList == "n") {
-              sample.features = responseData.features.filter(pt =>  (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
+              sample.features = responseData.features.filter((pt =>  pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
   
             }
             
@@ -241,6 +254,9 @@ zoom: 11.15
           }
 
         }
+        if (descriptionSearchString !== "") {
+          sample.features = responseData.features.filter(pt => pt.properties.description.includes(descriptionSearchString));
+        }
         map.getSource('myData').setData(sample);
       }
 
@@ -249,6 +265,7 @@ zoom: 11.15
         const date = parseInt(event.target.value);
         timeList.push(date);
         document.getElementById('active-year').innerText = date;
+        document.getElementById('active-year-range').innerText = date + 49;
         document.getElementById('slider').value = date;
         Filter(); 
       });
@@ -267,12 +284,10 @@ zoom: 11.15
         // Set up the corresponding toggle button for each layer.
         for (const id of toggleableLayerIds) {
         // Skip layers that already have a button set up.
-        if (document.getElementById(id)) {
-        continue;
-        }
+          if (document.getElementById(id)) {
+            continue;
+          }
 
-        
-  
         map.addLayer({
           id: id,
           type: 'circle',
@@ -285,7 +300,7 @@ zoom: 11.15
           
           paint: {
             'circle-color': '#ff4542',
-            'circle-radius': 4,
+            'circle-radius': 8,
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff'
           }
@@ -349,6 +364,7 @@ zoom: 11.15
         
         // Show or hide layer when the toggle is clicked.
         link.onclick = function (e) {
+          // link.className = "active clicked"
           const clickedLayer = this.textContent;
           e.preventDefault();
           e.stopPropagation();
@@ -362,12 +378,14 @@ zoom: 11.15
           if (visibility === 'visible') {
             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
             weaponList.push(clickedLayer)
+            link.className = 'active clicked';
             Filter(); 
             
             } else {
               map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
               var index = weaponList.indexOf(clickedLayer); // Let's say it's Bob.
               weaponList.splice(index, 1);
+              link.className = "active"
               Filter();
               
             }
@@ -410,7 +428,10 @@ zoom: 11.15
         
 
       
-
+      document.getElementById("descriptionSearch").addEventListener("input", function(e) {
+        descriptionSearchString = e.target.value;
+        Filter();
+      });
 
       document.getElementById('conviction').addEventListener('click', function() {
         convictionList = "y";
@@ -432,11 +453,18 @@ zoom: 11.15
         filteredData = responseData;
         sample.features = responseData.features;
         toggleableLayerIds = [];
+        weaponList.forEach(function (w) {
+          document.getElementById(w).className="active";
+        })
         weaponList = [];
-        convictionList = []; 
+        convictionList = "y/n"; 
         timeList = []; 
         map.getSource('myData').setData(sample);
-        document.getElementById('active-year').innerText = 1700;
+        
+        document.getElementById('noSelectionConvictionRadio').checked = true;
+        document.getElementById('active-year').innerText = 1500;
+        document.getElementById('active-year-range').innerText = 1800;
+        document.getElementById('slider').value = 1700;
       });
 
       document.getElementById('download').addEventListener('click', function() {
@@ -448,6 +476,12 @@ zoom: 11.15
         element.download = "data.json";
         document.body.appendChild(element);
         element.click();
+      });
+
+      document.getElementById('center').addEventListener('click', function() {
+        const center = new mapboxgl.LngLat(13, 43)
+        map.setCenter(center)
+        map.setZoom(5)
       });
     
     });
@@ -471,7 +505,6 @@ zoom: 11.15
       <div className="map-container" ref={mapContainerRef} />
   )
 };
-
 
 
 export default Map;
