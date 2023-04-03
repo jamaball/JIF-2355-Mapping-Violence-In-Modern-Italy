@@ -122,17 +122,17 @@ const Map = () => {
 
     })
     .catch((error) => {
-        console.log(error)
+      console.log(error)
     });
 
    
-const Map = new mapboxgl.Map({
-container: 'map',
-// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-style: 'mapbox://styles/mapbox/light-v11',
-center: [-77.04, 38.907],
-zoom: 11.15
-});
+    const Map = new mapboxgl.Map({
+      container: 'map',
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: 'mapbox://styles/mapbox/light-v11',
+      center: [-77.04, 38.907],
+      zoom: 11.15
+    });
 
 
     map.on('load', () => {
@@ -205,65 +205,29 @@ zoom: 11.15
       
       function Filter() {
         var sample = featureCollection([]);
+        sample.features = responseData.features;
         const date = timeList.at(0);
-        console.log(convictionList);
-        if (weaponList.length == 0 ) {
-          if (timeList.length == 0) {
-            if (convictionList == "y/n") {
-              sample.features = responseData.features; 
-            } else if(convictionList == "y") {
-              sample.features = responseData.features.filter((pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
-  
-            } else if (convictionList == "n") {
-              sample.features = responseData.features.filter((pt =>  pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
-  
-            }
-            
-          } else {
+        console.log(weaponList);
 
-            if (convictionList == "y/n") {
-              console.log(timeList);
-              sample.features = responseData.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date));
+        if(convictionList == "y") {
+          sample.features = sample.features.filter((pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
 
-            } else if(convictionList == "y") {
-              sample.features = responseData.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
-
-            } else if (convictionList == "n") {
-              sample.features = responseData.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
-
-            }
-          }
-
-        } else {
-          if (timeList.length == 0) {
-            if (convictionList == "y/n") {
-              sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon));
-
-            } else if (convictionList == "y") {
-              sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
-
-            } else if (convictionList == "n") {
-              sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
-
-            }
-
-          } else {
-              if (convictionList == "y/n") {
-                sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date));
-
-              } else if (convictionList == "y") {
-                sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
-
-              } else if (convictionList == "n") {
-                sample.features = responseData.features.filter(pt => weaponList.includes(pt.properties.weapon) && (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date) && (pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
-
-              }
-          }
-
+        } else if (convictionList == "n") {
+          sample.features = sample.features.filter((pt =>  pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
         }
+
+        if (timeList.length != 0) {
+          sample.features = sample.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date))
+        }
+
+        if (weaponList.length != 0) {
+          sample.features = sample.features.filter(pt => weaponList.includes(pt.properties.weapon));
+        }
+
         if (descriptionSearchString !== "") {
-          sample.features = responseData.features.filter(pt => pt.properties.description.includes(descriptionSearchString));
+          sample.features = sample.features.filter(pt => pt.properties.description.includes(descriptionSearchString));
         }
+
         map.getSource('myData').setData(sample);
       }
 
@@ -276,159 +240,150 @@ zoom: 11.15
         document.getElementById('slider').value = date;
         Filter(); 
       });
+
       map.on('idle', () => {
        
-      for (const feature of filteredData.features) {
-        const symbol = feature.properties.weapon;
-        if (!toggleableLayerIds.includes(symbol)) {
-          toggleableLayerIds.push(symbol);
+        for (const feature of filteredData.features) {
+          const symbol = feature.properties.weapon;
+          if (!toggleableLayerIds.includes(symbol)) {
+            toggleableLayerIds.push(symbol);
+          }
         }
-      }
 
-      toggleableLayerIds.sort();
-        
-        
+        toggleableLayerIds.sort();
+          
+          
         // Set up the corresponding toggle button for each layer.
         for (const id of toggleableLayerIds) {
-        // Skip layers that already have a button set up.
+          // Skip layers that already have a button set up.
           if (document.getElementById(id)) {
             continue;
           }
 
-        map.addLayer({
-          id: id,
-          type: 'circle',
-          source: 'myData',
-          filter: ['!', ['has', 'point_count']],
-          layout: {
-            // Make the layer visible by default.
-            'visibility': 'visible'
-            },
-          
-          paint: {
-            'circle-color': '#ff4542',
-            'circle-radius': 8,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff'
-          }
-          
-          
-          
-  
-        });
-
-        map.on('click', id, (e) => {
-          const coordinates = e.features[0].geometry.coordinates.slice();
-          const date = e.features[0].properties.date;
-          const location = e.features[0].properties.location;
-          const weapon = e.features[0].properties.weapon;
-          const conviction = e.features[0].properties.conviction;
-          const description = e.features[0].properties.description;
-          
-          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-          }
-          
-          new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(
-            `
-            <table classname="info-table">
-              <tr>
-                <td><strong>Location</strong></td>
-                <td><strong>${location}</strong></td>
-              </tr>
-              <tr>
-                <td>Date</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td>Weapon</td>
-                <td>${weapon}</td>
-              </tr>
-              <tr>
-                <td>Conviction</td>
-                <td>${conviction}</td>
-              </tr>
-              <tr>
-                <td>Description</td>
-                <td>${description}</td>
-              </tr>
-            `
-          )
-          .addTo(map);
-        });
-        
-        // Create a link.
-        const link = document.createElement('a');
-        link.id = id;
-        link.href = '#';
-        link.textContent = id;
-        link.className = 'active';
-
-        
-        
-        
-        // Show or hide layer when the toggle is clicked.
-        link.onclick = function (e) {
-          // link.className = "active clicked"
-          const clickedLayer = this.textContent;
-          e.preventDefault();
-          e.stopPropagation();
-          const visibility = map.getLayoutProperty(
-          clickedLayer,
-          'visibility'
-          );
-          
-          
-          // Toggle layer visibility by changing the layout object's visibility property.
-          if (visibility === 'visible') {
-            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-            weaponList.push(clickedLayer)
-            link.className = 'active clicked';
-            Filter(); 
+          map.addLayer({
+            id: id,
+            type: 'circle',
+            source: 'myData',
+            filter: ['!', ['has', 'point_count']],
+            layout: {
+              // Make the layer visible by default.
+              'visibility': 'visible'
+              },
             
-            } else {
-              map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-              var index = weaponList.indexOf(clickedLayer); // Let's say it's Bob.
-              weaponList.splice(index, 1);
-              link.className = "active"
-              Filter();
-              
+            paint: {
+              'circle-color': '#ff4542',
+              'circle-radius': 8,
+              'circle-stroke-width': 1,
+              'circle-stroke-color': '#fff'
             }
+            
+          });
 
+          map.on('click', id, (e) => {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const date = e.features[0].properties.date;
+            const location = e.features[0].properties.location;
+            const weapon = e.features[0].properties.weapon;
+            const conviction = e.features[0].properties.conviction;
+            const description = e.features[0].properties.description;
+            
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+            
+            new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(
+              `
+              <table classname="info-table">
+                <tr>
+                  <td><strong>Location</strong></td>
+                  <td><strong>${location}</strong></td>
+                </tr>
+                <tr>
+                  <td>Date</td>
+                  <td>${date}</td>
+                </tr>
+                <tr>
+                  <td>Weapon</td>
+                  <td>${weapon}</td>
+                </tr>
+                <tr>
+                  <td>Conviction</td>
+                  <td>${conviction}</td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td>${description}</td>
+                </tr>
+              `
+            )
+            .addTo(map);
+          });
+          
+          // Create a link.
+          const link = document.createElement('a');
+          link.id = id;
+          link.href = '#';
+          link.textContent = id;
+          link.className = 'active';
+
+          
+          
+          
+          // Show or hide layer when the toggle is clicked.
+          link.onclick = function (e) {
+            // link.className = "active clicked"
+            const clickedLayer = this.textContent;
+            e.preventDefault();
+            e.stopPropagation();
+            const visibility = map.getLayoutProperty(
+            clickedLayer,
+            'visibility'
+            );
             
             
-
-        };
-        
-        const layers = document.getElementById('menu');
-        layers.appendChild(link);
+            // Toggle layer visibility by changing the layout object's visibility property.
+            if (visibility === 'visible') {
+              map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+              weaponList.push(clickedLayer)
+              link.className = 'active clicked';
+              Filter(); 
+              
+              } else {
+                map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                var index = weaponList.indexOf(clickedLayer); // Let's say it's Bob.
+                weaponList.splice(index, 1);
+                link.className = "active"
+                Filter();
+                
+              }
+          };
+          
+          const layers = document.getElementById('menu');
+          layers.appendChild(link);
         }
-
-
-        
 
 
       });
 
-        map.on('click', 'clusters', (e) => {
-          const features = map.queryRenderedFeatures(e.point, {
-            layers: ['clusters']
-          });
-          const clusterId = features[0].properties.cluster_id;
-          map.getSource('myData').getClusterExpansionZoom(
-            clusterId,
-            (err, zoom) => {
-              if (err) return;
-                
-              map.easeTo({
-                center: features[0].geometry.coordinates,
-                zoom: zoom
-              });
-            }
-          );
+      map.on('click', 'clusters', (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ['clusters']
         });
+        const clusterId = features[0].properties.cluster_id;
+        map.getSource('myData').getClusterExpansionZoom(
+          clusterId,
+          (err, zoom) => {
+            if (err) return;
+              
+            map.easeTo({
+              center: features[0].geometry.coordinates,
+              zoom: zoom
+            });
+          }
+        );
+      });
   
         
           
@@ -473,6 +428,7 @@ zoom: 11.15
         document.getElementById('active-year').innerText = 1500;
         document.getElementById('active-year-range').innerText = 1800;
         document.getElementById('slider').value = 1700;
+        document.getElementById('descriptionSearch').value = "";
       });
 
       document.getElementById('download').addEventListener('click', function() {
