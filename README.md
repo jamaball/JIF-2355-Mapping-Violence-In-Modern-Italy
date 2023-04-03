@@ -27,8 +27,8 @@ This repository contains code, documentation, and related resources for the Mapp
 - Fixed UI bug concerning reseting the filters and the conviction radio buttons
 - Fixed error alert when returning to registration/login page
 
-### Kown Issues
-- 
+### Known Issues
+- Uploaded data doesn't get filtered by the weapon filtering
 
 ## Version 0.3.0
 
@@ -41,7 +41,7 @@ This repository contains code, documentation, and related resources for the Mapp
 ### Bug Fixes
 - Fixed the timeline slider bug so that the UI slider updates on drag
 
-### Kown Issues
+### Known Issues
 - If not resolved before visiting a different page, registration and login error popups will reappear when the user returns to the registration/login page
 
 ## Version 0.2.0
@@ -56,7 +56,7 @@ This repository contains code, documentation, and related resources for the Mapp
 ### Bug Fixes
 - Fixed zoom issues, you can now see all of Italy and zoom in and out
 
-### Kown Issues
+### Known Issues
 - Although its functionality is correct, the actual time slider component of the user interface does not slide
 ## Version 0.1.0
 
