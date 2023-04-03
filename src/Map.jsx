@@ -57,20 +57,25 @@ const Map = () => {
       maxBounds: [[4.91306038378405, 36.08567211105813], [19.225508855943896, 48.79804811867416]]
     });
 
-    
+    let remove = false
     document.getElementById('marker').addEventListener('click', function() {
       const marker = new mapboxgl.Marker({
         draggable: true
         })
         .setLngLat([12.5, 42.5])
         .addTo(map);
-         
         function onDragEnd() {
         const lngLat = marker.getLngLat();
+        
         }
-         
         marker.on('dragend', onDragEnd);
+        document.getElementById('clearMarker').addEventListener('click', function() {
+        marker.remove();
+        });
     });
+
+    
+      
   
    
     const geocoder = new MapboxGeocoder({
@@ -186,6 +191,8 @@ zoom: 11.15
         }
         
       });
+
+      
 
       
 
@@ -459,6 +466,7 @@ zoom: 11.15
         weaponList = [];
         convictionList = "y/n"; 
         timeList = []; 
+        remove = true;
         map.getSource('myData').setData(sample);
         
         document.getElementById('noSelectionConvictionRadio').checked = true;
