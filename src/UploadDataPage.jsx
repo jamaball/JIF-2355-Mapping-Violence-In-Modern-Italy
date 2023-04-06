@@ -2,18 +2,18 @@ import React, {useState} from "react";
 
 
 const UploadDataPage = () => {
-  let [fileEvent, setFileEvent] = useState({});
+  const [ JsonFileChanged, setJsonFileChanged ] = useState({});
   const [ JsonFile, setJsonFile ] = useState({});
 
 
   const onChangeHandler = event => {
     //check mime type
     if (event.target.files[0].type === "application/json"){
-      setFileEvent(event);
       const fileReader = new FileReader();
       fileReader.readAsText(event.target.files[0], "UTF-8");
       fileReader.onload = event => {
         setJsonFile(event.target.result);
+        setJsonFileChanged(true);
       };
 
       //remove error message
@@ -27,8 +27,9 @@ const UploadDataPage = () => {
   }
 
   const removeData = () => {
-    //console.log(JSON.parse(localStorage.getItem("uploadedData")));
     localStorage.removeItem("uploadedData");
+    var error = document.getElementById("fileTypeError");
+    error.textContent = "Uploaded Data reset";
   }
 
   const onClickHandler = () => {
@@ -59,8 +60,14 @@ const UploadDataPage = () => {
           },
       })
     }
-    console.log(geojson);
     localStorage.setItem("uploadedData", JSON.stringify(geojson));
+    if (JsonFileChanged) {
+      var error = document.getElementById("fileTypeError");
+      error.textContent = "Successfully uploaded!";
+      var fileInput = document.getElementById("fileInput");
+      fileInput.value = null;
+      setJsonFileChanged(false);
+    }
   }
   
 
@@ -80,10 +87,10 @@ const UploadDataPage = () => {
             <br></br>
             */}
             <div className="form=group">
-              <label for="myfile">Select a file:</label>
+              <label for="fileInput">Select a file:</label>
               
               <div>
-                <input className="file"  type="file" id="myfile" name="myfile"
+                <input className="file"  type="file" id="fileInput"
                       onChange={onChangeHandler} />
                 <br />
                 <label id="fileTypeError"></label>
