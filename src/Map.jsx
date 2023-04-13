@@ -116,12 +116,26 @@ const Map = () => {
 
 
     map.on('load', () => {
+      map.addSource('italy', {
+        'type': 'raster',
+        'url': 'mapbox://chernandez67.cs501xk0'
+      });
+
       map.addSource('myData', {
         type: 'geojson',
         data: responseData,
         cluster: true,
         clusterMaxZoom: 14, 
         clusterRadius: 50
+      });
+
+      map.addLayer({
+        'id': 'italy',
+        'source': 'italy',
+        'type': 'raster',
+        'layout': {
+          'visibility': 'visible'
+        },
       });
 
       map.addLayer({
@@ -172,16 +186,13 @@ const Map = () => {
         
       });
 
+
       let layers = document.getElementById("menu");
       function ResetList() {
         while (layers.firstChild) {
           layers.removeChild(layers.firstChild);
         }
       }
-
-      
-
-      
 
       // After the last frame rendered before the map enters an "idle" state.
       let toggleableLayerIds = [];
@@ -471,6 +482,15 @@ const Map = () => {
         const center = new mapboxgl.LngLat(13, 43)
         map.setCenter(center)
         map.setZoom(5)
+      });
+
+      document.getElementById('historical').addEventListener('click', function() {
+        const visibility = map.getLayoutProperty('italy', 'visibility');
+        if (visibility === 'visible') {
+          map.setLayoutProperty('italy', 'visibility', 'none');
+        } else {
+          map.setLayoutProperty('italy', 'visibility', 'visible');
+        }
       });
     
     });

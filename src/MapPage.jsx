@@ -41,6 +41,7 @@ export default function MapPage() {
         <button className = 'ButtonReset' id = "clearMarker"> Clear Marker</button>
         <button className = 'ButtonLogin' id = "download"> Download Dataset</button>
         <button className = 'ButtonLogin' id = "center">Center Map</button>
+        <button className = 'ButtonLogin' id = "historical">Historical Map</button>
         <br></br>
         <br></br>
         <div className="timeline">
