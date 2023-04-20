@@ -121,6 +121,11 @@ const Map = () => {
         'url': 'mapbox://chernandez67.cs501xk0'
       });
 
+      map.addSource('italy2', {
+        'type': 'raster',
+        'url': 'mapbox://chernandez67.d4808ng3'
+      });
+
       map.addSource('myData', {
         type: 'geojson',
         data: responseData,
@@ -134,7 +139,16 @@ const Map = () => {
         'source': 'italy',
         'type': 'raster',
         'layout': {
-          'visibility': 'visible'
+          'visibility': 'none'
+        },
+      });
+
+      map.addLayer({
+        'id': 'italy2',
+        'source': 'italy2',
+        'type': 'raster',
+        'layout': {
+          'visibility': 'none'
         },
       });
 
@@ -484,12 +498,21 @@ const Map = () => {
         map.setZoom(5)
       });
 
-      document.getElementById('historical').addEventListener('click', function() {
+      document.getElementById('demomap1').addEventListener('click', function() {
         const visibility = map.getLayoutProperty('italy', 'visibility');
         if (visibility === 'visible') {
           map.setLayoutProperty('italy', 'visibility', 'none');
         } else {
           map.setLayoutProperty('italy', 'visibility', 'visible');
+        }
+      });
+
+      document.getElementById('demomap2').addEventListener('click', function() {
+        const visibility = map.getLayoutProperty('italy2', 'visibility');
+        if (visibility === 'visible') {
+          map.setLayoutProperty('italy2', 'visibility', 'none');
+        } else {
+          map.setLayoutProperty('italy2', 'visibility', 'visible');
         }
       });
     
