@@ -54,6 +54,7 @@ export default function MapPage() {
         <h4>&nbsp;Map Layers:</h4>
         <button className = 'ButtonLogin' id = "demomap1">Map 1</button>
         <button className = 'ButtonLogin' id = "demomap2">Map 2</button>
+        <button className = 'ButtonLogin' id = "demomap3">Map 3</button>
       </div>
 
     </div> 
