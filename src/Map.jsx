@@ -536,6 +536,9 @@ const Map = () => {
           map.setLayoutProperty('italy3', 'visibility', 'none');
         } else {
           map.setLayoutProperty('italy3', 'visibility', 'visible');
+          const pos = new mapboxgl.LngLat(11.545, 45.545)
+          map.setZoom(15)
+          map.setCenter(pos)
         }
       });
     
