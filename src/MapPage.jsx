@@ -41,7 +41,6 @@ export default function MapPage() {
         <button className = 'ButtonReset' id = "clearMarker"> Clear Marker</button>
         <button className = 'ButtonLogin' id = "download"> Download Dataset</button>
         <button className = 'ButtonLogin' id = "center">Center Map</button>
-        <button className = 'ButtonLogin' id = "historical">Historical Map</button>
         <br></br>
         <br></br>
         <div className="timeline">
@@ -50,7 +49,11 @@ export default function MapPage() {
               <input type="range" min="1500" max="1800" step="50" value="1700" class="slider" id = "slider" />
           </div>
         </div>
-        
+        <br></br>
+        <br></br>
+        <h4>&nbsp;Map Layers:</h4>
+        <button className = 'ButtonLogin' id = "demomap1">Map 1</button>
+        <button className = 'ButtonLogin' id = "demomap2">Map 2</button>
       </div>
 
     </div> 
