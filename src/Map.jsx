@@ -126,6 +126,11 @@ const Map = () => {
         'url': 'mapbox://chernandez67.d4808ng3'
       });
 
+      map.addSource('italy3', {
+        'type': 'raster',
+        'url': 'mapbox://chernandez67.avkgpxbd'
+      });
+
       map.addSource('myData', {
         type: 'geojson',
         data: responseData,
@@ -146,6 +151,15 @@ const Map = () => {
       map.addLayer({
         'id': 'italy2',
         'source': 'italy2',
+        'type': 'raster',
+        'layout': {
+          'visibility': 'none'
+        },
+      });
+
+      map.addLayer({
+        'id': 'italy3',
+        'source': 'italy3',
         'type': 'raster',
         'layout': {
           'visibility': 'none'
@@ -513,6 +527,15 @@ const Map = () => {
           map.setLayoutProperty('italy2', 'visibility', 'none');
         } else {
           map.setLayoutProperty('italy2', 'visibility', 'visible');
+        }
+      });
+
+      document.getElementById('demomap3').addEventListener('click', function() {
+        const visibility = map.getLayoutProperty('italy3', 'visibility');
+        if (visibility === 'visible') {
+          map.setLayoutProperty('italy3', 'visibility', 'none');
+        } else {
+          map.setLayoutProperty('italy3', 'visibility', 'visible');
         }
       });
     
