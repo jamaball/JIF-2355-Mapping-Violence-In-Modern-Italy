@@ -49,7 +49,12 @@ export default function MapPage() {
               <input type="range" min="1500" max="1800" step="50" value="1700" class="slider" id = "slider" />
           </div>
         </div>
-        
+        <br></br>
+        <br></br>
+        <h4>&nbsp;Map Layers:</h4>
+        <button className = 'ButtonLogin' id = "demomap1">Map 1</button>
+        <button className = 'ButtonLogin' id = "demomap2">Map 2</button>
+        <button className = 'ButtonLogin' id = "demomap3">Map 3</button>
       </div>
 
     </div> 
