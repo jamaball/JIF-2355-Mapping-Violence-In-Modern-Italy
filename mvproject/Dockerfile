@@ -9,7 +9,7 @@ WORKDIR /mapping_violence
 
 COPY ./requirements.txt .
 
-RUN apk add gcc libc-dev libffi-dev libffi libressl postgresql-libs 
+RUN apk add gcc libc-dev libffi-dev libffi libressl postgresql-libs gdal-dev geos-dev
 RUN apk add --virtual .build-deps --no-cache postgresql-dev gcc python3-dev musl-dev && \
         pip install --no-cache-dir -r requirements.txt && \
         apk --purge del .build-deps 
