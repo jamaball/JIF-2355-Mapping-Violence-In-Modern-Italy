@@ -1,8 +1,3 @@
-/* .center {
-    display: flex;
-    justify-content: center;
-} */
-
 /* .inputRoundedEdge {
     border-radius: 25px;
     border: 2px solid #c71616;
@@ -11,9 +6,6 @@
     height: 15px;    
   } */
 
-/* .form {
-    padding-top: 20%;
-} */
 #loginError {
     color: red;
 }
