@@ -1,6 +1,26 @@
 import React from "react";
 import Map from './Map.jsx';
   
+{/*Here is the comments for this page as react doesnt like in line comments with 
+HTML. First we initialize Map as this is needed to instantiate it here. If changes
+are needed refer to Map.css and Map.jsx.
+
+Most elements are held within the div Filterbox, which keeps all respective elements
+to the right side of the main page.
+
+"Dropdown" contains the needed code for a dropdwon of all weapons to sleect for
+the weapon filters.
+
+Next there is the 3 blocks of code to deal with the crime conviction filtering
+
+Next any button resets or button logins are simply placeholder buttons for the demo.
+Their location doesn't matter as they are holders for functionality for the final expo.
+
+Finally we have the timeline. This is best for you to move as a single block if you
+choose to change the code; it is slightly finikey as the labels to denote the year
+limits are changed in other files so to avoid bugs please keep them within the same
+blocks.
+*/}
 export default function MapPage() {
   return (
     <div>
@@ -8,7 +28,6 @@ export default function MapPage() {
       <div id="map"></div>
       <div className = "filterbox">
         <h2>&nbsp;Filter Data:</h2>
-        {/* <h4>&nbsp;Weapon:</h4> */}
 
         <div class="dropdown">
             <button class="dropbtn">Filter Weapons</button>
