@@ -1,5 +1,6 @@
+/*This file is used for most of the CSS Across the site. Each unit or element type used in
+this sit has it's own section demarcated within this file.*/
 
-  
 .App {
   text-align: center;
 }
@@ -11,17 +12,10 @@
   flex-direction: column;
 }
 
-/*
- .Button {
-  margin-top: 40px;
-  position: fixed;
-  top: 10px;
-  right: 20px;
-  padding: 15px 32px;
-  color: White;
-  background-color: Black;
-}
-*/
+/*Below are buttons, There are several different types, with each button class named respectively 
+to their function. Note that some buttons have been reused in some irregular places and as such 
+you should take care to note the approprite places that will cahnge in reguards to any button changes,
+or simply create branching buttons instead of resusing the same css classes*/
 
 .Button {
   background-color: #000000;
@@ -38,55 +32,6 @@
   transition: 0.35s;
 }
 
-div.filterbox {
-  width: 30%;
-  height: 30%;
-  border: 2px solid #ffffff;
-  /* padding-right: 15%; */
-  position: absolute;
-  right:3%;
-  text-align: left;
-  top: 10%;
-}
-
-
-.Button:hover {
-  background-color:#3d3f43;
-  transition: 0.35s;
-}
-
-.Button:active {
-  transform: scale(0.95);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
-div.FilteringHeaders {
-  background-color: #a20303;
-  height: 70px;
-  margin-bottom: 10%;
-}
-
-.NavBarButtons {
-  padding-top: 50px;
-  float: right;
-  font-weight: 600;
-}
-
-.ButtonLogin {
-  background-color: #ffffff;
-  /* float: right; */
-  /* border: 2px solid #161313; */
-  border-radius: 24px;
-  color: #a20303;
-  padding: 10px 24px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  transition: 0.35s;
-}
-
 .ButtonLogin:hover {
   background-color:#a20303;
   color: #ffffff;
@@ -97,7 +42,6 @@ div.FilteringHeaders {
   transform: scale(0.95);
   box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
 }
-
 
 .ButtonReset {
   background-color: #ffffff;
@@ -125,6 +69,58 @@ div.FilteringHeaders {
   box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
 }
 
+.Button:hover {
+  background-color:#3d3f43;
+  transition: 0.35s;
+}
+
+.Button:active {
+  transform: scale(0.95);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.ButtonLogin {
+  background-color: #ffffff;
+  /* float: right; */
+  /* border: 2px solid #161313; */
+  border-radius: 24px;
+  color: #a20303;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  transition: 0.35s;
+}
+
+/*This div is aminly used for the filtering block of the main map page of the site. Most elements are
+held here such that we can easliy section off the filtering controls for the site and the map itself.
+There is a high potential to make this into a collapsible dropdown in future iterations*/
+
+div.filterbox {
+  width: 30%;
+  height: 30%;
+  border: 2px solid #ffffff;
+  /* padding-right: 15%; */
+  position: absolute;
+  right:3%;
+  text-align: left;
+  top: 10%;
+}
+
+div.FilteringHeaders {
+  background-color: #a20303;
+  height: 70px;
+  margin-bottom: 10%;
+}
+
+.NavBarButtons {
+  padding-top: 50px;
+  float: right;
+  font-weight: 600;
+}
+
 #PageTitle {
   text-align: left;
   display: inline-block;
@@ -140,6 +136,9 @@ div.FilteringHeaders {
   margin-left: auto;
   margin-right: auto;
 }
+
+/*Below is the silder. Be careful when changing the javascript of this as react has been finikey 
+whenever we wanted to make changes to the slider itself, but the css code here is relatively stable*/
 
 .slidecontainer {
   width: 100%;
@@ -180,7 +179,8 @@ div.FilteringHeaders {
 }
 
 
-/* FUCKED UP CODE BELOW BE CAREFUL CAUSE RADIO BUTTONS ONLY WORK BY GRACE OF GOD */
+/* Below is code for the checkboxes used for Conviction selection. These are very tempermental
+so use caution when changin or altering them */
 
 
 /* CHECKBOX CODE IS BELOW */
@@ -253,7 +253,7 @@ div.FilteringHeaders {
 }
 
 
-/* BELOW IS THE CODE FOR THE RADIO BUTTONS */
+/* Below is depreciated code used for radio buttons used to fit the theme of the site */
 
 /* Customize the label (the container) */
 .containerRADIO {
@@ -323,9 +323,8 @@ div.FilteringHeaders {
 
 
 
-/* END OF EXPIREMENTAL BS */
 
-/* Below is the code for the weapons dropdown button */
+/* Dropbtn is used for changing the weapon filtering dropdown dynamic section */
 .dropbtn {
   background-color: #ccc;
   width: 100%;
