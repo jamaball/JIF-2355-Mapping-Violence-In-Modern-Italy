@@ -1,3 +1,4 @@
+/*This file is maily for the Mapbox code itslef and the formattinf on the main page.*/
 .map-container {
   position: absolute;
   top: 12%;
@@ -6,8 +7,6 @@
   margin: auto;
   height: 93%; 
   width: 65%;
-  /* height: 600px; */
-  /* width: 750px; */
   }
 
 .sidebarStyle {
@@ -22,8 +21,6 @@
   padding: 6px;
   font-weight: bold;
 }
-
-
 
 table, tr, td {
   border:1px solid black;
@@ -40,7 +37,11 @@ border-radius: 3px;
 border: 1px solid rgba(0, 0, 0, 0.4);
 font-family: 'Open Sans', sans-serif;
 }
- 
+
+/*Menus is mainly used for the search and other interactive aspects of the Mapbox
+map itslef. Most of this is from examples from the mapbox site itself and should
+work without issue. In all, not much is needed to edit unless you want a custom
+look for the map itself.*/
 #menu a {
 font-size: 20px;
 color: #404040;
@@ -77,10 +78,8 @@ color: #ffffff;
   color:  #ffffff;
 }
 
-/* #menu a:focus {
-  background: #a20303;
-  color: #ffffff;
-  } */
+/*Below is futher formatting for the map. Again, refer to https://docs.mapbox.com/mapbox-gl-js/example/ to see
+any major examples for the mapbox map. Is also useful for expansion of the map for further research functionality*/
 
 .vertical {
   border-left: 3px solid #a20303;
