@@ -81,8 +81,9 @@ or simply create branching buttons instead of resusing the same css classes*/
 
 .ButtonLogin {
   background-color: #ffffff;
-  /* float: right; */
-  /* border: 2px solid #161313; */
+  /*float: right;*/
+  height:10 px;
+  border: 2px solid #a20303;
   border-radius: 24px;
   color: #a20303;
   padding: 10px 24px;
@@ -90,7 +91,7 @@ or simply create branching buttons instead of resusing the same css classes*/
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 10px;
+  margin: 5px;
   transition: 0.35s;
 }
 
