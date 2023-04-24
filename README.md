@@ -12,6 +12,14 @@ This repository contains code, documentation, and related resources for the Mapp
 - Caleb McFarland
 - Hannah Wysocki
 
+# Installation Guide
+
+## Pre-Requisites
+
+  You must have an operating system and hardware that can support Docker. The information for this can be found here. [Windows](https://docs.docker.com/desktop/install/windows-install/), [Mac](https://docs.docker.com/desktop/install/mac-install/), [Linux](https://docs.docker.com/desktop/install/linux-install/)
+  
+
+
 # Release Notes
 
 ## Version 0.4.0
