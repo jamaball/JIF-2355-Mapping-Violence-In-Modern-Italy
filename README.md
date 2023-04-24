@@ -50,6 +50,9 @@ This repository contains code, documentation, and related resources for the Mapp
 ### Troubleshooting
   - Attempting to run our application with an outdated version of React will cause errors. Ensure that you have installed React v. 18.
 
+# Additional Information
+  - Additional information on how to convert Excel data into a geoJSON file and how to upload geoJSON files to the database can be found [here](FormattedCrimeDataUpload.json).
+
 # Release Notes
 
 ## Version 1.0.0
