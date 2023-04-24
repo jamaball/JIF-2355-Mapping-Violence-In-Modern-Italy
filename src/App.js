@@ -30,7 +30,6 @@ export default function App() {
       <Router>
         <div class = "FilteringHeaders">
           <h1 id="PageTitle">&nbsp;Mapping Violence in Early Modern Italy</h1>
-         
             <Link class = "ButtonLogin NavBarButtons" to="/UploadDataPage">Upload Data</Link>
             <Link class = "ButtonLogin NavBarButtons" to="/LoginPage">Admin</Link>
             <Link class = "ButtonLogin NavBarButtons" to="/">Map</Link>

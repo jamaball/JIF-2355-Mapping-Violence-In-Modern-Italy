@@ -17,6 +17,17 @@ to their function. Note that some buttons have been reused in some irregular pla
 you should take care to note the approprite places that will cahnge in reguards to any button changes,
 or simply create branching buttons instead of resusing the same css classes*/
 
+div.filterbox {
+  width: 30%;
+  height: 30%;
+  border: 2px solid #ffffff;
+  /* padding-right: 15%; */
+  position: absolute;
+  right:3%;
+  text-align: left;
+  top: 10%;
+}
+
 .Button {
   background-color: #000000;
   /* float: right; */
@@ -32,15 +43,14 @@ or simply create branching buttons instead of resusing the same css classes*/
   transition: 0.35s;
 }
 
-.ButtonLogin:hover {
-  background-color:#a20303;
-  color: #ffffff;
+.Button:hover {
+  background-color:#3d3f43;
   transition: 0.35s;
 }
 
-.ButtonLogin:active {
+.Button:active {
   transform: scale(0.95);
-  box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
 .ButtonReset {
@@ -69,21 +79,11 @@ or simply create branching buttons instead of resusing the same css classes*/
   box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
 }
 
-.Button:hover {
-  background-color:#3d3f43;
-  transition: 0.35s;
-}
-
-.Button:active {
-  transform: scale(0.95);
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-}
-
 .ButtonLogin {
   background-color: #ffffff;
   /*float: right;*/
   height:10 px;
-  border: 2px solid #a20303;
+  /* border: 2px solid #19c519; */
   border-radius: 24px;
   color: #a20303;
   padding: 10px 24px;
@@ -95,20 +95,20 @@ or simply create branching buttons instead of resusing the same css classes*/
   transition: 0.35s;
 }
 
+.ButtonLogin:hover {
+  background-color:#a20303;
+  color: #ffffff;
+  transition: 0.35s;
+}
+
+.ButtonLogin:active {
+  transform: scale(0.95);
+  box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
+}
+
 /*This div is aminly used for the filtering block of the main map page of the site. Most elements are
 held here such that we can easliy section off the filtering controls for the site and the map itself.
 There is a high potential to make this into a collapsible dropdown in future iterations*/
-
-div.filterbox {
-  width: 30%;
-  height: 30%;
-  border: 2px solid #ffffff;
-  /* padding-right: 15%; */
-  position: absolute;
-  right:3%;
-  text-align: left;
-  top: 10%;
-}
 
 div.FilteringHeaders {
   background-color: #a20303;
@@ -120,6 +120,14 @@ div.FilteringHeaders {
   padding-top: 50px;
   float: right;
   font-weight: 600;
+}
+
+.NavBarButtons {
+  padding-top: 50px;
+  padding: 10px 24px;
+  float: right;
+  font-weight: 600;
+  box-shadow: 3px 2px 22px 1px rgba(230, 29, 29, 0.202);
 }
 
 #PageTitle {
