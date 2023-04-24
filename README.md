@@ -27,7 +27,31 @@ This repository contains code, documentation, and related resources for the Mapp
     - [React](https://react.dev/blog/2022/03/08/react-18-upgrade-guide) v. 18.2.0
     - [PostgressSQL](https://www.postgresql.org/download/) v. 15.2.0
 
+### Download
 
+  - The customer can access our project by cloning our GitHub [repository](https://github.com/jamaball/JIF-2355-Mapping-Violence-In-Modern-Italy).
+
+### Build
+
+  - Building the Docker container:
+    - Navigate to the \mvproject directory in the terminal
+    - Enter the terminal command “docker-compose build”
+
+### Installation
+
+  - Installing dependencies:
+    - Navigate to the root directory of the project in the terminal
+    - Enter the terminal command “npm install”
+
+### RUNNING APPLICATION
+
+  - Running the Docker container:
+    - Navigate to the \mvproject directory in the terminal
+    - Enter the terminal command “docker-compose up”
+  - Running the React frontend:
+    - Open a separate terminal
+    - Navigate to the root directory of the project
+    - Enter the terminal command “npm start”
 
 # Release Notes
 
