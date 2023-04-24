@@ -15,12 +15,10 @@ This repository contains code, documentation, and related resources for the Mapp
 # Installation Guide
 
 ### Pre-Requisites
-
   - You must have an operating system and hardware that can support Docker. The information for this can be found here. [Windows](https://docs.docker.com/desktop/install/windows-install/), [Mac](https://docs.docker.com/desktop/install/mac-install/), [Linux](https://docs.docker.com/desktop/install/linux-install/)
   - You also must have Python 3.8 or a later version installed. Information on how to download Python can be found [here](https://www.python.org/downloads/).
 
 ### Dependencies
-
   - Download and install: 
     - [Docker](https://docs.docker.com/get-docker/) v. 4.18.0
     - [Node.js](https://nodejs.org/en/download) v. 18.16.0, [NPM](https://nodejs.org/en/download) v. 9.5.1
@@ -28,23 +26,19 @@ This repository contains code, documentation, and related resources for the Mapp
     - [PostgressSQL](https://www.postgresql.org/download/) v. 15.2.0
 
 ### Download
-
   - The customer can access our project by cloning our GitHub [repository](https://github.com/jamaball/JIF-2355-Mapping-Violence-In-Modern-Italy).
 
 ### Build
-
   - Building the Docker container:
     - Navigate to the \mvproject directory in the terminal
     - Enter the terminal command “docker-compose build”
 
 ### Installation
-
   - Installing dependencies:
     - Navigate to the root directory of the project in the terminal
     - Enter the terminal command “npm install”
 
 ### Running the Application
-
   - Running the Docker container:
     - Navigate to the \mvproject directory in the terminal
     - Enter the terminal command “docker-compose up”
@@ -54,7 +48,6 @@ This repository contains code, documentation, and related resources for the Mapp
     - Enter the terminal command “npm start”
 
 ### Troubleshooting
-
   - Attempting to run our application with an outdated version of React will cause errors. Ensure that you have installed React v. 18.
 
 # Release Notes
