@@ -59,6 +59,18 @@ This repository contains code, documentation, and related resources for the Mapp
 
 # Release Notes
 
+## Version 1.0.0
+
+### New Features
+- Added option to view historical and topology maps 
+- List of weapons to filter by updates dynamically based on crimes currently displayed on map
+
+### Bug Fixes
+- Uploaded data can now be filtered by the weapons dropdown
+
+### Known Issues
+- Historical map 3 is rendered upside down due to the orientation of the map file 
+
 ## Version 0.4.0
 
 ### New Features
