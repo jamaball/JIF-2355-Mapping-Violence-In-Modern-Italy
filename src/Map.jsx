@@ -7,23 +7,8 @@ import api from "./Api.js";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHd5c29ja2kyMiIsImEiOiJjbGQyOG1kOTIwNWVnM3hvOW15a2syMnFqIn0.X5H6aAIVGej-R6QVWx4LVg';
 
-const Marker = ({ onClick, children, feature }) => {
-  const _onClick = () => {
-    onClick(feature.properties.description);
-  };
-
-  return (
-    <button onClick={_onClick} className="marker">
-      {children}
-    </button>
-  );
-};
-
-
-
 const Map = () => {
   const mapContainerRef = useRef(null);
-  
   
   let [responseData, setResponseData] = React.useState('')
   let [filteredData, setFilteredData] = React.useState('')
@@ -241,38 +226,28 @@ const Map = () => {
         list.features = responseData.features;
         const date = timeList.at(0);
         
-        
-        
-
         if(convictionList == "y") {
           sample.features = sample.features.filter((pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
           list.features = list.features.filter((pt => pt.properties.conviction === "yes" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'y'));
-
         } else if (convictionList == "n") {
           sample.features = sample.features.filter((pt =>  pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
           list.features = list.features.filter((pt =>  pt.properties.conviction === "no" || Array.from(pt.properties.conviction)[0].toLowerCase() == 'n'));
-
         }
 
         if (timeList.length != 0) {
           sample.features = sample.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date)); 
-          list.features = list.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date)); 
-
-          
+          list.features = list.features.filter(pt => (parseInt(pt.properties.date)  <= date + 49 && parseInt(pt.properties.date) >= date));           
         }
 
         if (weaponList.length != 0) {
           sample.features = sample.features.filter(pt => weaponList.includes(pt.properties.weapon));
-
         }
 
         if (descriptionSearchString !== "") {
           sample.features = sample.features.filter(pt => pt.properties.description.includes(descriptionSearchString));
           list.features = list.features.filter(pt => pt.properties.description.includes(descriptionSearchString));
-
         }
         
-
         map.getSource('myData').setData(sample);
       }
 
@@ -291,8 +266,6 @@ const Map = () => {
 
       map.on('idle', () => {
         toggleableLayerIds = []
-        
-        
         
         for (let feature of list.features) {
           let symbol = feature.properties.weapon;
@@ -379,9 +352,6 @@ const Map = () => {
           link.textContent = id;
           link.className = 'active';
 
-          
-          
-          
           // Show or hide layer when the toggle is clicked.
           link.onclick = function (e) {
             // link.className = "active clicked"
@@ -411,11 +381,8 @@ const Map = () => {
               }
           };
           
-        
           layers.appendChild(link);
         }
-        
-
       });
       
 
@@ -436,12 +403,7 @@ const Map = () => {
           }
         );
       });
-  
-        
-          
-        
 
-      
       document.getElementById("descriptionSearch").addEventListener("input", function(e) {
         descriptionSearchString = e.target.value;
         Filter();
@@ -544,20 +506,12 @@ const Map = () => {
     
     });
 
-
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
-
-    
 
     // Clean up on unmount
     return () => map.remove();
   }, []);
-
-  const markerClicked = (title) => {
-    window.alert(title);
-  };
-
 
   return (
       <div className="map-container" ref={mapContainerRef} />
