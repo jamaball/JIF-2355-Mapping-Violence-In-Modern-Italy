@@ -43,7 +43,7 @@ This repository contains code, documentation, and related resources for the Mapp
     - Navigate to the root directory of the project in the terminal
     - Enter the terminal command “npm install”
 
-### RUNNING APPLICATION
+### Running the Application
 
   - Running the Docker container:
     - Navigate to the \mvproject directory in the terminal
@@ -52,6 +52,10 @@ This repository contains code, documentation, and related resources for the Mapp
     - Open a separate terminal
     - Navigate to the root directory of the project
     - Enter the terminal command “npm start”
+
+### Troubleshooting
+
+  - Attempting to run our application with an outdated version of React will cause errors. Ensure that you have installed React v. 18.
 
 # Release Notes
 
