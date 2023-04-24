@@ -19,7 +19,14 @@ This repository contains code, documentation, and related resources for the Mapp
   - You must have an operating system and hardware that can support Docker. The information for this can be found here. [Windows](https://docs.docker.com/desktop/install/windows-install/), [Mac](https://docs.docker.com/desktop/install/mac-install/), [Linux](https://docs.docker.com/desktop/install/linux-install/)
   - You also must have Python 3.8 or a later version installed. Information on how to download Python can be found [here](https://www.python.org/downloads/).
 
-  
+### Dependencies
+
+  - Download and install: 
+    - [Docker](https://docs.docker.com/get-docker/) v. 4.18.0
+    - [Node.js](https://nodejs.org/en/download) v. 18.16.0, [NPM](https://nodejs.org/en/download) v. 9.5.1
+    - [React](https://react.dev/blog/2022/03/08/react-18-upgrade-guide) v. 18.2.0
+    - [PostgressSQL](https://www.postgresql.org/download/) v. 15.2.0
+
 
 
 # Release Notes
