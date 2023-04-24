@@ -14,9 +14,11 @@ This repository contains code, documentation, and related resources for the Mapp
 
 # Installation Guide
 
-## Pre-Requisites
+### Pre-Requisites
 
   You must have an operating system and hardware that can support Docker. The information for this can be found here. [Windows](https://docs.docker.com/desktop/install/windows-install/), [Mac](https://docs.docker.com/desktop/install/mac-install/), [Linux](https://docs.docker.com/desktop/install/linux-install/)
+  You also must have Python 3.8 or a later version installed. Information on how to download Python can be found [here](https://www.python.org/downloads/).
+
   
 
 
